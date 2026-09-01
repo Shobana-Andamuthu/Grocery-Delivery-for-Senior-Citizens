@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing & Delivery — Elderly Eats</title>
+  <meta name="description" content="View transparent pricing, senior-friendly delivery options, weekly auto-replenish benefits, and scheduled doorstep safety services.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            gray: {
+              750: '#232d3d',
+              850: '#18212f',
+              855: '#18212f',
+              955: '#0b0f17',
+            },
+            sage: {
+              50: '#f4f7f5',
+              100: '#e5ede7',
+              200: '#cedcd2',
+              300: '#abbfb1',
+              400: '#829d89',
+              500: '#617d69',
+              600: '#4d6554',
+              700: '#3e5244',
+              800: '#334237',
+              900: '#2b362e',
+            },
+            cream: {
+              50: '#fdfbf7',
+              100: '#faf6eb',
+              200: '#f2e8d3',
+              300: '#e5d3b0',
+              400: '#d5b786',
+              500: '#c59a5d',
+              600: '#b6834b',
+              700: '#97673c',
+              800: '#7c5335',
+              900: '#66452e',
+            },
+            charcoal: {
+              DEFAULT: '#2c3531',
+              50: '#f6f7f6',
+              100: '#eceeec',
+              800: '#1f2623',
+              900: '#111614',
+            }
+          },
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body class="bg-cream-100 text-charcoal dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+  <!-- Page Loader -->
+  <div id="page-loader">
+    <div class="flex flex-col items-center">
+      <div class="loader-spinner mb-4"></div>
+      <div class="flex items-center space-x-2 text-sage-600 dark:text-sage-300 font-semibold tracking-wide">
+        <svg class="w-6 h-6 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+        <span>Elderly Eats</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header id="site-header" class="sticky top-0 z-50 bg-cream-100/90 dark:bg-gray-900/90 backdrop-blur-md transition-all duration-300 border-b border-cream-200/50 dark:border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20 flex-nowrap gap-4">
+        
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center space-x-2.5 group shrink-0 whitespace-nowrap">
+          <div class="w-10 h-10 rounded-xl bg-sage-500 flex items-center justify-center text-white shadow-md shadow-sage-500/20 group-hover:scale-105 transition-transform duration-300">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <div>
+            <span class="text-xl font-bold tracking-tight text-sage-800 dark:text-white whitespace-nowrap block">Elderly Eats</span>
+            <span class="block text-[10px] uppercase tracking-widest text-cream-600 dark:text-sage-400 font-semibold -mt-1 whitespace-nowrap">Senior Grocery</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden xl:flex items-center space-x-6 xl:space-x-7 shrink-0 whitespace-nowrap">
+          <!-- Home Dropdown Menu -->
+          <div class="relative">
+            <button id="home-dropdown-trigger" class="flex items-center space-x-1 text-[15px] font-medium text-sage-800 hover:text-sage-600 dark:text-gray-200 dark:hover:text-white py-2 focus:outline-none transition-colors whitespace-nowrap">
+              <span>Home</span>
+              <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div id="home-dropdown-menu" class="absolute left-0 mt-2 w-48 rounded-2xl bg-white dark:bg-gray-800 shadow-xl border border-cream-200/50 dark:border-gray-700/50 py-2 opacity-0 pointer-events-none translate-y-2 transition-all duration-200 z-50">
+              <a href="index.html" class="block px-5 py-2.5 text-sm font-medium text-sage-800 hover:bg-cream-50 dark:text-gray-200 dark:hover:bg-gray-700/50 whitespace-nowrap">Home 1 (Classic)</a>
+              <a href="home-2.html" class="block px-5 py-2.5 text-sm font-medium text-sage-800 hover:bg-cream-50 dark:text-gray-200 dark:hover:bg-gray-700/50 whitespace-nowrap">Home 2 (Editorial)</a>
+            </div>
+          </div>
+
+          <a href="how-it-works.html" class="text-[15px] font-medium text-sage-800 hover:text-sage-600 dark:text-gray-200 dark:hover:text-white transition-colors whitespace-nowrap">How It Works</a>
+          <a href="supported-items.html" class="text-[15px] font-medium text-sage-800 hover:text-sage-600 dark:text-gray-200 dark:hover:text-white transition-colors whitespace-nowrap">Supported Items</a>
+          <a href="pricing-delivery.html" class="text-[15px] font-medium text-sage-800 hover:text-sage-600 dark:text-gray-200 dark:hover:text-white transition-colors whitespace-nowrap">Pricing & Delivery</a>
+          <a href="contact.html" class="text-[15px] font-medium text-sage-800 hover:text-sage-600 dark:text-gray-200 dark:hover:text-white transition-colors whitespace-nowrap">Contact</a>
+        </nav>
+
+        <!-- Desktop Action Controls -->
+        <div class="hidden xl:flex items-center space-x-3 shrink-0 whitespace-nowrap">
+          <!-- RTL/LTR Toggle -->
+          <button data-rtl-toggle class="w-9 h-9 flex items-center justify-center rounded-lg bg-cream-200/60 hover:bg-cream-300 dark:bg-gray-800 dark:hover:bg-gray-700 text-sage-800 dark:text-gray-200 font-bold text-xs transition-colors shrink-0" title="Toggle RTL/LTR">
+            <span class="text-xs font-bold" data-rtl-label>RTL</span>
+          </button>
+          
+          <!-- Dark Mode Toggle -->
+          <button data-theme-toggle class="w-9 h-9 flex items-center justify-center rounded-lg bg-cream-200/60 hover:bg-cream-300 dark:bg-gray-800 dark:hover:bg-gray-700 text-sage-800 dark:text-gray-200 transition-colors shrink-0" title="Toggle Dark/Light Mode">
+            <span data-theme-icon class="flex items-center justify-center">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </span>
+          </button>
+
+          <!-- Auth Buttons -->
+          <div data-show-auth="out" class="flex items-center space-x-3 shrink-0 whitespace-nowrap">
+            <a href="login.html" class="text-[15px] font-medium text-sage-800 hover:text-sage-600 dark:text-gray-200 dark:hover:text-white px-3 py-2 transition-colors whitespace-nowrap">Log In</a>
+            <a href="register.html" class="px-5 py-2.5 rounded-xl bg-sage-500 hover:bg-sage-600 dark:bg-sage-600 dark:hover:bg-sage-500 text-white font-medium text-[15px] shadow-sm hover:shadow transition-all whitespace-nowrap">Get Started</a>
+          </div>
+          <div data-show-auth="in" class="flex items-center space-x-3 shrink-0 whitespace-nowrap" style="display: none;">
+            <a href="dashboard.html" class="px-5 py-2.5 rounded-xl bg-sage-500 hover:bg-sage-600 dark:bg-sage-600 dark:hover:bg-sage-500 text-white font-medium text-[15px] shadow-sm hover:shadow transition-all whitespace-nowrap">My Dashboard</a>
+            <button onclick="doLogout()" class="text-[15px] font-medium text-red-600 hover:text-red-500 px-3 py-2 transition-colors whitespace-nowrap">Log Out</button>
+          </div>
+        </div>
+
+        <!-- Hamburger Icon (Mobile) -->
+        <button id="hamburger" class="xl:hidden p-2 rounded-xl bg-cream-200/50 dark:bg-gray-800 text-sage-800 dark:text-gray-200 focus:outline-none transition-colors shrink-0" aria-expanded="false" aria-label="Toggle Menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-overlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[90] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <div id="mobile-menu" class="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-cream-100 dark:bg-gray-900 border-l border-cream-200 dark:border-gray-800 shadow-2xl z-[100] translate-x-full transition-transform duration-300 flex flex-col justify-between">
+    <div class="p-6">
+      <div class="flex items-center justify-between mb-8">
+        <span class="text-lg font-bold text-sage-800 dark:text-white">Menu</span>
+        <button id="mobile-close" class="p-2 rounded-xl bg-cream-200/50 dark:bg-gray-800 text-sage-800 dark:text-gray-200 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="space-y-1">
+        <div>
+          <button id="mobile-home-toggle" class="flex items-center justify-between w-full text-left font-medium text-sage-800 dark:text-gray-200 py-2 border-b border-cream-200/50 dark:border-gray-800">
+            <span>Home</span>
+            <svg data-arrow class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="mobile-home-submenu" class="hidden pl-4 py-2 space-y-2 bg-cream-50/50 dark:bg-gray-800/40 rounded-xl mt-1">
+            <a href="index.html" class="block py-1.5 text-sm font-medium text-sage-700 dark:text-gray-300">Home 1 (Classic)</a>
+            <a href="home-2.html" class="block py-1.5 text-sm font-medium text-sage-700 dark:text-gray-300">Home 2 (Editorial)</a>
+          </div>
+        </div>
+        <a href="how-it-works.html" class="block font-medium text-sage-800 dark:text-gray-200 py-2 border-b border-cream-200/50 dark:border-gray-800">How It Works</a>
+        <a href="supported-items.html" class="block font-medium text-sage-800 dark:text-gray-200 py-2 border-b border-cream-200/50 dark:border-gray-800">Supported Items</a>
+        <a href="pricing-delivery.html" class="block font-medium text-sage-800 dark:text-gray-200 py-2 border-b border-cream-200/50 dark:border-gray-800">Pricing & Delivery</a>
+        <a href="contact.html" class="block font-medium text-sage-800 dark:text-gray-200 py-2 border-b border-cream-200/50 dark:border-gray-800">Contact</a>
+      </nav>
+    </div>
+
+    <div class="p-6 border-t border-cream-200 dark:border-gray-800 bg-cream-50 dark:bg-gray-850">
+      <div class="flex items-center justify-between mb-6">
+        <button data-rtl-toggle class="flex items-center gap-2 px-3 py-2.5 rounded-lg bg-cream-200/60 dark:bg-gray-800 text-sage-800 dark:text-gray-200 text-xs font-bold">
+          <span class="text-xs font-bold" data-rtl-label>RTL</span>
+        </button>
+        <!-- Dark Mode -->
+        <button data-theme-toggle class="flex items-center gap-2 px-3 py-2.5 rounded-lg bg-cream-200/60 dark:bg-gray-800 text-sage-800 dark:text-gray-200">
+          <span data-theme-icon class="flex items-center justify-center">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </span>
+          <span class="text-xs font-semibold" data-theme-label>Dark Mode</span>
+        </button>
+      </div>
+
+      <div data-show-auth="out" class="grid grid-cols-2 gap-3">
+        <a href="login.html" class="py-3 rounded-xl bg-cream-200/50 hover:bg-cream-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-center font-medium text-sage-800 dark:text-gray-200 text-sm">Log In</a>
+        <a href="register.html" class="py-3 rounded-xl bg-sage-500 hover:bg-sage-600 dark:bg-sage-600 dark:hover:bg-sage-500 text-center text-white font-medium text-sm shadow">Register</a>
+      </div>
+      <div data-show-auth="in" class="grid grid-cols-1 gap-3" style="display: none;">
+        <a href="dashboard.html" class="py-3 rounded-xl bg-sage-500 hover:bg-sage-600 dark:bg-sage-600 dark:hover:bg-sage-500 text-center text-white font-medium text-sm shadow">My Dashboard</a>
+        <button onclick="doLogout()" class="py-2.5 rounded-xl border border-red-200 text-red-600 text-center font-medium text-sm">Log Out</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main>
+
+    <!-- SECTION 1: Page Hero -->
+    <section class="relative py-20 sm:py-28 bg-gradient-to-b from-cream-100 via-cream-50 to-white dark:from-gray-900 dark:via-gray-900 dark:to-gray-950 overflow-hidden min-h-[420px] flex items-center">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <!-- Text Column -->
+          <div class="lg:col-span-7 space-y-6" data-reveal>
+            <span class="text-sage-600 dark:text-sage-400 font-bold uppercase tracking-wider text-xs">Transparent Pricing</span>
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-serif text-sage-900 dark:text-white leading-tight">Simple Pricing & Patient Doorstep Delivery</h1>
+            <p class="text-base sm:text-lg text-sage-800/80 dark:text-gray-300 leading-relaxed">
+              No hidden fees, surprise subscription traps, or complex club memberships. Choose flexible one-time delivery when needed, or enjoy discounted slots with our automated weekly plan.
+            </p>
+            <div class="flex flex-wrap gap-4 pt-2">
+              <a href="#plans" class="px-6 py-3.5 bg-sage-500 hover:bg-sage-600 text-white font-bold text-sm rounded-xl shadow-md transition-all">Explore Delivery Plans</a>
+              <a href="#faq" class="px-6 py-3.5 bg-white dark:bg-gray-800 hover:bg-cream-100 text-sage-800 dark:text-gray-200 font-bold text-sm rounded-xl border border-cream-200 dark:border-gray-700 shadow-sm transition-all">Pricing FAQ</a>
+            </div>
+          </div>
+          <!-- Hero Image Column -->
+          <div class="lg:col-span-5 relative" data-reveal>
+            <div class="absolute -inset-4 bg-sage-500/10 dark:bg-sage-400/10 rounded-[2.5rem] blur-xl transform rotate-2 -z-10"></div>
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/3] bg-cream-50 dark:bg-gray-800 border border-cream-200/60 dark:border-gray-700">
+              <img src="assets/images/hero/pricing_hero.png" alt="Caregiver reviewing pricing plans on smartphone with fresh groceries" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: Price Comparison Cards -->
+    <section id="plans" class="py-16 sm:py-24 bg-white dark:bg-gray-900 border-t border-cream-200/50 dark:border-gray-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+          
+          <!-- Card 1: One-Time -->
+          <div class="bg-cream-50 dark:bg-gray-800 p-8 rounded-3xl border border-cream-200 dark:border-gray-700/60 shadow-sm space-y-6 flex flex-col justify-between" data-reveal>
+            <div class="space-y-6">
+              <div class="space-y-2">
+                <span class="text-xs font-bold uppercase tracking-wider text-sage-600 dark:text-sage-400">Casual Orders</span>
+                <h3 class="text-2xl font-serif font-bold text-sage-900 dark:text-white">One-Time Delivery</h3>
+                <p class="text-xs text-sage-800/60 dark:text-gray-400">Best for occasional supplies, top-ups, or sudden family needs.</p>
+              </div>
+              
+              <div class="py-4 border-y border-cream-200/60 dark:border-gray-700">
+                <span class="text-4xl font-bold font-serif text-sage-900 dark:text-white">$6.99</span>
+                <span class="text-xs text-sage-800/60 dark:text-gray-400">/ per delivery</span>
+              </div>
+
+              <ul class="space-y-3 text-xs sm:text-sm text-sage-800/80 dark:text-gray-300 font-medium">
+                <li class="flex items-center space-x-2">
+                  <span class="text-sage-500 font-bold">✓</span> <span>$25 Minimum Order</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                  <span class="text-sage-500 font-bold">✓</span> <span>Certified patient drivers</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                  <span class="text-sage-500 font-bold">✓</span> <span>Real-time dashboard map</span>
+                </li>
+              </ul>
+            </div>
+
+            <a href="register.html" class="block w-full py-3 bg-white hover:bg-cream-50 dark:bg-gray-900 dark:hover:bg-gray-850 text-center font-bold text-xs sm:text-sm rounded-xl border border-cream-200 dark:border-gray-700 text-sage-800 dark:text-gray-200">Order One-Time</a>
+          </div>
+
+          <!-- Card 2: Weekly (Equalized, Badge Removed) -->
+          <div class="bg-cream-50 dark:bg-gray-800 p-8 rounded-3xl border border-cream-200 dark:border-gray-700/60 shadow-sm space-y-6 flex flex-col justify-between" data-reveal>
+            <div class="space-y-6">
+              <div class="space-y-2">
+                <span class="text-xs font-bold uppercase tracking-wider text-sage-600 dark:text-sage-400">Worry-Free Plan</span>
+                <h3 class="text-2xl font-serif font-bold text-sage-900 dark:text-white">Weekly Recurring</h3>
+                <p class="text-xs text-sage-800/60 dark:text-gray-400">Autopilot replenishment for daily milk, eggs, & fresh produce.</p>
+              </div>
+
+              <div class="py-4 border-y border-cream-200/60 dark:border-gray-700">
+                <span class="text-4xl font-bold font-serif text-sage-900 dark:text-white">$3.99</span>
+                <span class="text-xs text-sage-800/60 dark:text-gray-400">/ per delivery</span>
+              </div>
+
+              <ul class="space-y-3 text-xs sm:text-sm text-sage-800/80 dark:text-gray-300 font-medium">
+                <li class="flex items-center space-x-2">
+                  <span class="text-sage-500 font-bold">✓</span> <span>$20 Minimum Order</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                  <span class="text-sage-500 font-bold">✓</span> <span>Priority scheduling windows</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                  <span class="text-sage-500 font-bold">✓</span> <span>Pause, skip, or adjust free</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                  <span class="text-sage-500 font-bold">✓</span> <span>Automatic diet alert check</span>
+                </li>
+              </ul>
+            </div>
+
+            <a href="register.html" class="block w-full py-3 bg-sage-500 hover:bg-sage-600 text-white text-center font-bold text-xs sm:text-sm rounded-xl shadow">Schedule Weekly Plan</a>
+          </div>
+
+          <!-- Card 3: Priority -->
+          <div class="bg-cream-50 dark:bg-gray-800 p-8 rounded-3xl border border-cream-200 dark:border-gray-700/60 shadow-sm space-y-6 flex flex-col justify-between" data-reveal>
+            <div class="space-y-6">
+              <div class="space-y-2">
+                <span class="text-xs font-bold uppercase tracking-wider text-sage-600 dark:text-sage-400">Same-Day Priority</span>
+                <h3 class="text-2xl font-serif font-bold text-sage-900 dark:text-white">Priority Delivery</h3>
+                <p class="text-xs text-sage-800/60 dark:text-gray-400">Best for urgent personal care items or fresh meals.</p>
+              </div>
+
+              <div class="py-4 border-y border-cream-200/60 dark:border-gray-700">
+                <span class="text-4xl font-bold font-serif text-sage-900 dark:text-white">$9.99</span>
+                <span class="text-xs text-sage-800/60 dark:text-gray-400">/ per delivery</span>
+              </div>
+
+              <ul class="space-y-3 text-xs sm:text-sm text-sage-800/80 dark:text-gray-300 font-medium">
+                <li class="flex items-center space-x-2">
+                  <span class="text-sage-500 font-bold">✓</span> <span>Delivered in under 3 hours</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                  <span class="text-sage-500 font-bold">✓</span> <span>$15 Minimum Order</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                  <span class="text-sage-500 font-bold">✓</span> <span>Dedicated driver dispatch</span>
+                </li>
+              </ul>
+            </div>
+
+            <a href="register.html" class="block w-full py-3 bg-white hover:bg-cream-50 dark:bg-gray-900 dark:hover:bg-gray-850 text-center font-bold text-xs sm:text-sm rounded-xl border border-cream-200 dark:border-gray-700 text-sage-800 dark:text-gray-200">Request Priority</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Caregiver Subsidy & Co-Payment Setup -->
+    <section class="py-16 sm:py-24 bg-cream-50 dark:bg-gray-950 border-t border-cream-200/40 dark:border-gray-850">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-6 space-y-6" data-reveal>
+            <span class="text-sage-500 dark:text-sage-400 font-bold uppercase tracking-wider text-xs">Family Shared Billing</span>
+            <h2 class="text-3xl font-serif font-bold text-sage-900 dark:text-white leading-tight">Co-Payment & Shared Care Circle Billing</h2>
+            <p class="text-sm sm:text-base text-sage-800/80 dark:text-gray-300 leading-relaxed">
+              We make it easy to manage senior grocery bills collectively without awkward reimbursement tracking. Our Care Circle dashboard allows siblings, family members, or trust funds to link multiple funding sources seamlessly.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div class="p-4 bg-white dark:bg-gray-800 rounded-2xl border border-cream-200/60 dark:border-gray-700">
+                <h4 class="font-bold text-xs text-sage-900 dark:text-white">Multi-Payer Auto Split</h4>
+                <p class="text-[11px] text-sage-800/70 dark:text-gray-400 mt-1">Split weekly totals evenly across multiple siblings' cards.</p>
+              </div>
+              <div class="p-4 bg-white dark:bg-gray-800 rounded-2xl border border-cream-200/60 dark:border-gray-700">
+                <h4 class="font-bold text-xs text-sage-900 dark:text-white">Monthly PDF Summaries</h4>
+                <p class="text-[11px] text-sage-800/70 dark:text-gray-400 mt-1">Export itemized receipts for estate accounting or tax deductions.</p>
+              </div>
+              <div class="p-4 bg-white dark:bg-gray-800 rounded-2xl border border-cream-200/60 dark:border-gray-700">
+                <h4 class="font-bold text-xs text-sage-900 dark:text-white">Trust Fund Settlement</h4>
+                <p class="text-[11px] text-sage-800/70 dark:text-gray-400 mt-1">Direct monthly invoicing to trust officers and conservators.</p>
+              </div>
+              <div class="p-4 bg-white dark:bg-gray-800 rounded-2xl border border-cream-200/60 dark:border-gray-700">
+                <h4 class="font-bold text-xs text-sage-900 dark:text-white">Weekly Budget Caps</h4>
+                <p class="text-[11px] text-sage-800/70 dark:text-gray-400 mt-1">Set spending thresholds to prevent unexpected charges.</p>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-6 relative" data-reveal>
+            <div class="absolute -inset-4 bg-cream-200/50 dark:bg-gray-800/40 rounded-[2.5rem] blur-xl transform rotate-2 -z-10"></div>
+            <div class="relative rounded-3xl overflow-hidden shadow-lg aspect-[4/3] bg-cream-50 dark:bg-gray-850 border border-cream-200/60 dark:border-gray-700">
+              <img src="assets/images/sections/pricing_billing.png" alt="Daughter assisting elderly father with grocery billing on tablet" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: Dietary Security Compliance Surcharge Statement -->
+    <section class="py-16 sm:py-24 bg-white dark:bg-gray-900 border-t border-cream-200/40 dark:border-gray-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-6 lg:order-2 space-y-6" data-reveal>
+            <span class="text-sage-500 dark:text-sage-400 font-bold uppercase tracking-wider text-xs">Zero Extra Fees</span>
+            <h2 class="text-3xl font-serif font-bold text-sage-900 dark:text-white leading-tight">Dietary Compliance Verification is 100% Free</h2>
+            <p class="text-sm sm:text-base text-sage-800/80 dark:text-gray-300 leading-relaxed">
+              Unlike other platforms that charge premium surcharges for special dietary curation, Elderly Eats believes senior safety should never cost extra. Our Dietary Compliance Security checks are fully integrated into our standard checkout.
+            </p>
+            <div class="space-y-3.5 pt-2">
+              <div class="p-3.5 bg-cream-50 dark:bg-gray-800 rounded-xl border border-cream-200/60 dark:border-gray-700 flex items-center space-x-3">
+                <span class="w-6 h-6 rounded-full bg-sage-500 text-white flex items-center justify-center text-xs font-bold">✓</span>
+                <span class="text-xs sm:text-sm font-semibold text-sage-900 dark:text-white">No sodium-screening markup or hidden fees</span>
+              </div>
+              <div class="p-3.5 bg-cream-50 dark:bg-gray-800 rounded-xl border border-cream-200/60 dark:border-gray-700 flex items-center space-x-3">
+                <span class="w-6 h-6 rounded-full bg-sage-500 text-white flex items-center justify-center text-xs font-bold">✓</span>
+                <span class="text-xs sm:text-sm font-semibold text-sage-900 dark:text-white">No surcharge for soft food & texture sorting</span>
+              </div>
+              <div class="p-3.5 bg-cream-50 dark:bg-gray-800 rounded-xl border border-cream-200/60 dark:border-gray-700 flex items-center space-x-3">
+                <span class="w-6 h-6 rounded-full bg-sage-500 text-white flex items-center justify-center text-xs font-bold">✓</span>
+                <span class="text-xs sm:text-sm font-semibold text-sage-900 dark:text-white">Free sugar & allergen automated compliance alerts</span>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-6 lg:order-1 relative" data-reveal>
+            <div class="absolute -inset-4 bg-cream-200/50 dark:bg-gray-800/40 rounded-[2.5rem] blur-xl transform -rotate-2 -z-10"></div>
+            <div class="relative rounded-3xl overflow-hidden shadow-lg aspect-[4/3] bg-cream-50 dark:bg-gray-850 border border-cream-200/60 dark:border-gray-700">
+              <img src="assets/images/sections/pricing_dietary.png" alt="Selection of healthy organic food and dietary essentials" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: Punctual Delivery Safe Guarantee -->
+    <section class="py-16 sm:py-24 bg-cream-50 dark:bg-gray-950 border-t border-cream-200/40 dark:border-gray-850">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6" data-reveal>
+        <span class="text-sage-500 dark:text-sage-400 font-bold uppercase tracking-wider text-xs">Our Promise</span>
+        <h2 class="text-3xl font-serif font-bold text-sage-900 dark:text-white max-w-2xl mx-auto">No-Rush Doorstep Handoff Guarantee</h2>
+        <p class="text-sm sm:text-base text-sage-800/80 dark:text-gray-300 max-w-xl mx-auto leading-relaxed">
+          If our delivery captain rushes your senior parents, leaves groceries unattended outside without consent, or fails to assist with counter unpacking as requested, your next grocery delivery fee is completely free. We prioritize dignity and warm relationships over speed.
+        </p>
+        <div class="inline-flex items-center space-x-2.5 px-4 py-2 rounded-full bg-white dark:bg-gray-850 border border-cream-200 dark:border-gray-750 text-xs font-bold text-sage-900 dark:text-white shadow-sm">
+          <svg class="w-4 h-4 text-sage-600 dark:text-sage-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+          <span>Dignity-First Service Pledge</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: Custom Cooler Drop-off Program -->
+    <section class="py-16 sm:py-24 bg-white dark:bg-gray-900 border-t border-cream-200/40 dark:border-gray-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-6 space-y-6" data-reveal>
+            <span class="text-sage-500 dark:text-sage-400 font-bold uppercase tracking-wider text-xs">Freshness Protection</span>
+            <h2 class="text-3xl font-serif font-bold text-sage-900 dark:text-white leading-tight">Insulated Porch Safe Cooler Box</h2>
+            <p class="text-sm sm:text-base text-sage-800/80 dark:text-gray-300 leading-relaxed">
+              For seniors who are frequently active, visiting neighbors, or attending outpatient doctor visits, we offer our signature Insulated Porch Cooler program. You can buy or rent a heavy-duty, thermal lockable box for their porch. Our delivery captains can deposit chilled groceries inside, lock it, and slide a key code alert to your phone.
+            </p>
+            <div class="grid grid-cols-2 gap-4 text-xs font-semibold text-sage-900 dark:text-white">
+              <div class="p-4 bg-cream-50 dark:bg-gray-850 rounded-xl border border-cream-200/45 dark:border-gray-700/50">
+                <span class="block text-sage-600 dark:text-sage-400 text-sm">Purchase Box</span>
+                <span class="block mt-1 font-serif text-lg">$49.00 (One-Time)</span>
+              </div>
+              <div class="p-4 bg-cream-50 dark:bg-gray-850 rounded-xl border border-cream-200/45 dark:border-gray-700/50">
+                <span class="block text-sage-600 dark:text-sage-400 text-sm">Monthly Rental</span>
+                <span class="block mt-1 font-serif text-lg">$4.50 / Month</span>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-6 relative" data-reveal>
+            <div class="absolute -inset-4 bg-cream-200/50 dark:bg-gray-800/40 rounded-[2.5rem] blur-xl transform rotate-2 -z-10"></div>
+            <div class="relative rounded-3xl overflow-hidden shadow-lg aspect-[4/3] bg-cream-50 dark:bg-gray-850">
+              <img src="assets/images/sections/pricing_cooler.png" alt="Insulated porch cooler box with fresh groceries inside" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: Service Area & Scheduling Grid -->
+    <section class="py-16 sm:py-24 bg-cream-100/40 dark:bg-gray-950/40 border-y border-cream-200/50 dark:border-gray-850">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <div class="lg:col-span-6 space-y-6" data-reveal>
+            <span class="text-sage-500 dark:text-sage-400 font-bold uppercase tracking-wider text-xs">Punctuality</span>
+            <h2 class="text-3xl font-serif font-bold text-sage-900 dark:text-white leading-tight">Prompt Service Windows & Zip Code Coverage</h2>
+            <p class="text-sm sm:text-base text-sage-800/80 dark:text-gray-300 leading-relaxed">
+              We operate only during daylight hours (9:00 AM – 6:00 PM) to guarantee senior safety. Our drivers are trained to coordinate call updates before arriving so elders are never startled or rushed to the door. We deliver to over 55 zip codes across metropolitan and suburban zones.
+            </p>
+            <div class="flex items-center space-x-4 pt-2">
+              <div class="w-12 h-12 rounded-xl bg-sage-100 dark:bg-sage-900 flex items-center justify-center text-sage-700 dark:text-sage-300 text-xl font-bold">✓</div>
+              <div>
+                <h4 class="font-bold text-sage-900 dark:text-white text-sm">Flexible Rescheduling</h4>
+                <p class="text-xs text-sage-800/60 dark:text-gray-400 font-medium">Cancel or adjust delivery day up to 12 hours before packing starts.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-6" data-reveal>
+            <!-- Visually pleasing box detailing coverage -->
+            <div class="bg-white dark:bg-gray-800 p-8 rounded-3xl border border-cream-200 dark:border-gray-700 shadow-sm space-y-4">
+              <h3 class="font-bold text-sage-900 dark:text-white text-base">Check Zip Code Coverage</h3>
+              <p class="text-xs text-sage-800/60 dark:text-gray-400">Type your zip code to immediately verify if our certified delivery captains service your senior's neighborhood.</p>
+              <div class="flex space-x-2">
+                <input id="zip-input" type="text" placeholder="e.g. 30309" class="w-full px-4 py-2.5 rounded-xl bg-cream-50 dark:bg-gray-900 text-sage-850 dark:text-gray-200 border border-cream-200 dark:border-gray-700 focus:outline-none focus:border-sage-500 text-xs sm:text-sm">
+                <button onclick="const z = document.getElementById('zip-input').value.trim(); if(z){showToast('Elderly Eats delivers in ' + z + '! Support is active.', 'success');}else{showToast('Please enter a zip code first.', 'error');}" class="px-5 py-2.5 bg-sage-500 hover:bg-sage-600 text-white font-bold rounded-xl text-xs sm:text-sm transition-all whitespace-nowrap">Verify Coverage</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: Dedicated FAQ Accordion -->
+    <section id="faq" class="py-16 sm:py-24 bg-white dark:bg-gray-900">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center mb-16" data-reveal>
+          <span class="text-sage-500 dark:text-sage-400 font-bold uppercase tracking-wider text-xs">Pricing & Fees FAQ</span>
+          <h2 class="text-3xl font-serif font-bold text-sage-900 dark:text-white">Delivery Support & Fees</h2>
+        </div>
+
+        <div class="space-y-4" data-reveal>
+          
+          <div class="bg-cream-50/50 dark:bg-gray-800/50 rounded-2xl border border-cream-200/50 dark:border-gray-700 overflow-hidden" data-accordion-item>
+            <button data-accordion-trigger class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none">
+              <span class="font-bold text-sage-900 dark:text-white text-sm sm:text-base">Are there any hidden membership or service fees?</span>
+              <svg data-acc-icon class="w-5 h-5 text-sage-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div data-accordion-content class="hidden px-6 pb-5 text-xs sm:text-sm text-sage-800/80 dark:text-gray-300 border-t border-cream-100 dark:border-gray-700 pt-4 leading-relaxed">
+              No. We do not charge mandatory recurring membership club fees. You only pay for the grocery items you select and the flat delivery fee ($6.99 for one-time, $3.99 for weekly recurring plans). There are no additional packaging or loading fees.
+            </div>
+          </div>
+
+          <div class="bg-cream-50/50 dark:bg-gray-800/50 rounded-2xl border border-cream-200/50 dark:border-gray-700 overflow-hidden" data-accordion-item>
+            <button data-accordion-trigger class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none">
+              <span class="font-bold text-sage-900 dark:text-white text-sm sm:text-base">What is the minimum grocery order amount?</span>
+              <svg data-acc-icon class="w-5 h-5 text-sage-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div data-accordion-content class="hidden px-6 pb-5 text-xs sm:text-sm text-sage-800/80 dark:text-gray-300 border-t border-cream-100 dark:border-gray-700 pt-4 leading-relaxed">
+              To keep our patient doorstep delivery model sustainable, the minimum grocery order is $25 for one-time deliveries and $20 for weekly recurring deliveries. This ensures we can provide trained drivers who carry groceries inside.
+            </div>
+          </div>
+
+          <div class="bg-cream-50/50 dark:bg-gray-800/50 rounded-2xl border border-cream-200/50 dark:border-gray-700 overflow-hidden" data-accordion-item>
+            <button data-accordion-trigger class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none">
+              <span class="font-bold text-sage-900 dark:text-white text-sm sm:text-base">How does driver tipping work?</span>
+              <svg data-acc-icon class="w-5 h-5 text-sage-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div data-accordion-content class="hidden px-6 pb-5 text-xs sm:text-sm text-sage-800/80 dark:text-gray-300 border-t border-cream-100 dark:border-gray-700 pt-4 leading-relaxed">
+              Tipping is completely optional. Our certified delivery captains are paid higher hourly wages specifically to ensure they never rush senior recipients. If you choose to tip, 100% of it goes to the driver.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9: Final Care Liaison CTA Banner -->
+    <section class="py-16 bg-sage-500 text-white dark:bg-sage-900 text-center">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6" data-reveal>
+        <h2 class="text-3xl sm:text-4xl font-bold font-serif leading-tight">Ready to Connect with a Personal Care Liaison?</h2>
+        <p class="text-sage-100 max-w-xl mx-auto text-sm sm:text-base font-medium">Have questions about co-payments, billing setups, or custom diets? Our team is standing by.</p>
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+          <a href="register.html" class="px-8 py-3.5 bg-white text-sage-800 hover:bg-cream-50 font-bold rounded-xl shadow-md transition-all">Get Started Online</a>
+          <a href="contact.html" class="px-8 py-3.5 border border-white/40 hover:bg-white/10 text-white font-bold rounded-xl transition-all">Speak to Liaison</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-charcoal dark:bg-charcoal-900 text-cream-200/90 pt-16 pb-8 border-t border-charcoal-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-12 border-b border-charcoal-800">
+        
+        <!-- About -->
+        <div class="space-y-4">
+          <a href="index.html" class="flex items-center space-x-2">
+            <div class="w-9 h-9 rounded-xl bg-sage-500 flex items-center justify-center text-white font-bold">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+            </div>
+            <span class="text-lg font-bold text-white tracking-tight">Elderly Eats</span>
+          </a>
+          <p class="text-xs sm:text-sm text-cream-200/70 leading-relaxed">
+            Delivering simple groceries, dietary compliance, and absolute peace of mind. We make food access smooth and convenient for elderly parents and their caregivers.
+          </p>
+        </div>
+
+        <!-- Site Navigation -->
+        <div>
+          <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Service Links</h4>
+          <ul class="space-y-2.5 text-xs sm:text-sm">
+            <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+            <li><a href="how-it-works.html" class="hover:text-white transition-colors">How It Works</a></li>
+            <li><a href="supported-items.html" class="hover:text-white transition-colors">Supported Items</a></li>
+            <li><a href="pricing-delivery.html" class="hover:text-white transition-colors">Pricing & Delivery</a></li>
+          </ul>
+        </div>
+
+        <!-- Help Support -->
+        <div>
+          <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Support & FAQ</h4>
+          <ul class="space-y-2.5 text-xs sm:text-sm">
+            <li><a href="contact.html" class="hover:text-white transition-colors">Contact Support</a></li>
+            <li><a href="pricing-delivery.html#faq" class="hover:text-white transition-colors">Help Center / FAQs</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Delivery Standards</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="space-y-4">
+          <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Newsletter</h4>
+          <p class="text-xs text-cream-200/70 leading-relaxed">Stay updated with fresh senior recipes, safety tips, and grocery discounts.</p>
+          <form class="flex space-x-2" onsubmit="event.preventDefault(); showToast('Subscribed to newsletter successfully!'); this.reset();">
+            <input type="email" placeholder="Email Address" required class="w-full px-4 py-2.5 rounded-xl bg-charcoal-800 text-cream-200 border border-charcoal-800 focus:outline-none focus:border-sage-500 text-xs sm:text-sm">
+            <button type="submit" class="px-4 py-2.5 bg-sage-500 hover:bg-sage-600 text-white font-semibold rounded-xl text-xs sm:text-sm transition-all">Subscribe</button>
+          </form>
+        </div>
+
+      </div>
+
+      <div class="flex flex-col md:flex-row items-center justify-between pt-8 text-xs text-cream-200/50">
+        <span>© 2026 Elderly Eats. All rights reserved.</span>
+        <div class="flex space-x-6 mt-4 md:mt-0">
+          <a href="#" class="hover:text-cream-200 transition-colors">Facebook</a>
+          <a href="#" class="hover:text-cream-200 transition-colors">Twitter</a>
+          <a href="#" class="hover:text-cream-200 transition-colors">Instagram</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Back to Top Button -->
+  <button id="back-to-top" class="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-sage-500 hover:bg-sage-600 text-white shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 opacity-0 pointer-events-none" aria-label="Back to Top">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+  </button>
+
+  <!-- Site Script -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

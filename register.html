@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register — Elderly Eats</title>
+  <meta name="description" content="Register a Caregiver profile on Elderly Eats to coordinate, track, and manage senior grocery deliveries.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            gray: {
+              750: '#232d3d',
+              850: '#18212f',
+              855: '#18212f',
+              955: '#0b0f17',
+            },
+            sage: {
+              50: '#f4f7f5',
+              100: '#e5ede7',
+              200: '#cedcd2',
+              300: '#abbfb1',
+              400: '#829d89',
+              500: '#617d69',
+              600: '#4d6554',
+              700: '#3e5244',
+              800: '#334237',
+              900: '#2b362e',
+            },
+            cream: {
+              50: '#fdfbf7',
+              100: '#faf6eb',
+              200: '#f2e8d3',
+              300: '#e5d3b0',
+              400: '#d5b786',
+              500: '#c59a5d',
+              600: '#b6834b',
+              700: '#97673c',
+              800: '#7c5335',
+              900: '#66452e',
+            },
+            charcoal: {
+              DEFAULT: '#2c3531',
+              50: '#f6f7f6',
+              100: '#eceeec',
+              800: '#1f2623',
+              900: '#111614',
+            }
+          },
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body class="bg-white dark:bg-gray-950 text-charcoal dark:text-gray-100 transition-colors duration-300 min-h-screen overflow-x-hidden">
+
+  <!-- Page Loader -->
+  <div id="page-loader">
+    <div class="flex flex-col items-center">
+      <div class="loader-spinner mb-4"></div>
+      <div class="flex items-center space-x-2 text-sage-600 dark:text-sage-300 font-semibold tracking-wide">
+        <svg class="w-6 h-6 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+        <span>Elderly Eats</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Full-Screen Split Layout Wrapper -->
+  <div class="min-h-screen w-full flex flex-col md:flex-row">
+    
+    <!-- Left Accent Image Column (Hidden on Mobile) -->
+    <div class="hidden md:flex md:w-1/2 relative text-white flex-col justify-between p-6 lg:p-8 pt-5 select-none overflow-hidden bg-cream-100 dark:bg-gray-900">
+      <!-- Full Bleed Natural Image Background (No Dark Overlay) -->
+      <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('assets/images/hero/register.png');"></div>
+      
+      <!-- Top Brand Header & Controls -->
+      <div class="relative z-10 flex items-center justify-between">
+        <a href="index.html" class="flex items-center space-x-3 text-white group bg-sage-900/70 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-white/20 shadow-lg">
+          <div class="w-8 h-8 rounded-xl bg-sage-500 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform duration-300">
+            <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <div>
+            <span class="text-base font-bold tracking-tight text-white block leading-tight">Elderly Eats</span>
+            <span class="block text-[8px] uppercase tracking-widest text-sage-200 font-semibold">Senior Grocery</span>
+          </div>
+        </a>
+
+        <!-- Controls -->
+        <div class="flex items-center gap-2">
+          <button data-rtl-toggle class="w-9 h-9 flex items-center justify-center rounded-xl bg-sage-900/70 backdrop-blur-md text-white border border-white/20 text-xs font-bold transition-all"><span data-rtl-label>RTL</span></button>
+          <button data-theme-toggle class="w-9 h-9 flex items-center justify-center rounded-xl bg-sage-900/70 backdrop-blur-md text-white border border-white/20 transition-all">
+            <span data-theme-icon class="flex items-center justify-center"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Bottom Overlay Info -->
+      <div class="relative z-10 space-y-5 max-w-lg mt-auto bg-sage-900/80 backdrop-blur-md p-8 rounded-3xl border border-white/20 text-white shadow-2xl">
+        <span class="inline-block px-3 py-1 rounded-full bg-white/20 text-[10px] font-bold tracking-wider text-sage-100 uppercase border border-white/20">Handoff Standards</span>
+        <h2 class="text-3xl lg:text-4xl font-serif font-bold leading-tight">We bring packages inside the kitchen counter</h2>
+        
+        <div class="pt-2 border-t border-white/15">
+          <p class="text-xs sm:text-sm text-sage-100 leading-relaxed">
+            We don't leave grocery packages on the cold porch or curb. Our vetting process ensures drivers are trained in patience and sensitivity to place bags directly inside the home.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Form Column -->
+    <div class="w-full md:w-1/2 min-h-screen bg-cream-50/40 dark:bg-gray-950 flex flex-col justify-between items-center p-6 sm:p-10 lg:p-12 relative">
+      
+      <!-- Top Row Controls (Mobile & Desktop) -->
+      <div class="w-full flex items-center justify-between md:justify-end mb-6">
+        <!-- Mobile Brand Header (Single Logo Header) -->
+        <a href="index.html" class="flex items-center space-x-2.5 md:hidden">
+          <div class="w-9 h-9 rounded-xl bg-sage-500 flex items-center justify-center text-white shadow-md">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+          </div>
+          <span class="font-bold text-sage-900 dark:text-white text-lg">Elderly Eats</span>
+        </a>
+
+        <div class="flex items-center gap-2">
+          <button data-rtl-toggle class="w-9 h-9 flex items-center justify-center rounded-xl bg-cream-200/60 hover:bg-cream-300 dark:bg-gray-800 dark:hover:bg-gray-700 text-sage-800 dark:text-gray-200 text-xs font-bold transition-all"><span data-rtl-label>RTL</span></button>
+          <button data-theme-toggle class="w-9 h-9 flex items-center justify-center rounded-xl bg-cream-200/60 hover:bg-cream-300 dark:bg-gray-800 dark:hover:bg-gray-700 text-sage-800 dark:text-gray-200 transition-all">
+            <span data-theme-icon class="flex items-center justify-center"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Centered Form Container -->
+      <div class="w-full max-w-md mx-auto my-auto space-y-6 sm:space-y-8">
+        
+        <!-- Header (Title & Subtitle) -->
+        <div class="space-y-2">
+          <h2 class="text-2xl sm:text-3xl font-serif font-bold text-sage-900 dark:text-white leading-tight">Create Caregiver Account</h2>
+          <p class="text-xs sm:text-sm text-sage-800/60 dark:text-gray-400">Set up your caregiver profile to manage dietary files and delivery schedules for your parents.</p>
+        </div>
+
+        <!-- Form Elements -->
+        <form id="register-form" class="space-y-4" onsubmit="event.preventDefault(); handleRegisterSubmit(this);">
+          
+          <div class="space-y-1">
+            <label class="block text-xs font-bold text-sage-800 dark:text-gray-300 uppercase tracking-wider">Caregiver Full Name</label>
+            <input type="text" name="name" data-required class="w-full px-4 py-3 rounded-xl bg-white dark:bg-gray-800 text-sage-850 dark:text-gray-200 border border-cream-200 dark:border-gray-700 focus:outline-none focus:border-sage-500 text-sm shadow-sm transition-all focus:ring-2 focus:ring-sage-500/10">
+            <span data-error="name" class="hidden text-xs text-red-500 mt-1">Please enter your name.</span>
+          </div>
+
+          <div class="space-y-1">
+            <label class="block text-xs font-bold text-sage-800 dark:text-gray-300 uppercase tracking-wider">Caregiver Email</label>
+            <input type="email" name="email" data-required class="w-full px-4 py-3 rounded-xl bg-white dark:bg-gray-800 text-sage-850 dark:text-gray-200 border border-cream-200 dark:border-gray-700 focus:outline-none focus:border-sage-500 text-sm shadow-sm transition-all focus:ring-2 focus:ring-sage-500/10">
+            <span data-error="email" class="hidden text-xs text-red-500 mt-1">Please enter a valid email address.</span>
+          </div>
+
+          <div class="space-y-1">
+            <label class="block text-xs font-bold text-sage-800 dark:text-gray-300 uppercase tracking-wider">Password</label>
+            <input type="password" name="password" data-required class="w-full px-4 py-3 rounded-xl bg-white dark:bg-gray-800 text-sage-850 dark:text-gray-200 border border-cream-200 dark:border-gray-700 focus:outline-none focus:border-sage-500 text-sm shadow-sm transition-all focus:ring-2 focus:ring-sage-500/10">
+            <span data-error="password" class="hidden text-xs text-red-500 mt-1">Password is required.</span>
+          </div>
+
+          <div class="space-y-1">
+            <label class="block text-xs font-bold text-sage-800 dark:text-gray-300 uppercase tracking-wider">Primary Contact Number</label>
+            <input type="text" name="phone" data-required class="w-full px-4 py-3 rounded-xl bg-white dark:bg-gray-800 text-sage-850 dark:text-gray-200 border border-cream-200 dark:border-gray-700 focus:outline-none focus:border-sage-500 text-sm shadow-sm transition-all focus:ring-2 focus:ring-sage-500/10">
+            <span data-error="phone" class="hidden text-xs text-red-500 mt-1">Contact number is required.</span>
+          </div>
+
+          <div class="pt-2">
+            <label class="flex items-start space-x-3 cursor-pointer select-none">
+              <input type="checkbox" required class="w-4 h-4 rounded text-sage-500 border-cream-300 dark:border-gray-750 focus:ring-sage-500 focus:ring-offset-0 mt-0.5">
+              <span class="text-xs text-sage-800/70 dark:text-gray-400 leading-normal">
+                I agree to the Terms of Service and acknowledge the doorstep delivery safety protocols for seniors.
+              </span>
+            </label>
+          </div>
+
+          <button type="submit" class="w-full py-3.5 bg-sage-500 hover:bg-sage-600 text-white font-bold rounded-xl text-sm transition-all shadow hover:shadow-lg hover:shadow-sage-500/10 transform active:scale-[0.99] duration-150">Create Account</button>
+        </form>
+
+        <!-- Form Footer -->
+        <div class="pt-6 border-t border-cream-200/50 dark:border-gray-800 text-xs sm:text-sm text-sage-800/60 dark:text-gray-400 text-center">
+          <span>Already have an account? </span>
+          <a href="login.html" class="text-sage-600 dark:text-sage-400 font-bold hover:underline">Log in here</a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Site Script -->
+  <script src="assets/js/main.js"></script>
+  <script>
+    function handleRegisterSubmit(form) {
+      if (validateForm(form)) {
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const phone = form.phone.value;
+        
+        const result = doRegister({ name, email, password, phone });
+        if (result.success) {
+          showToast('Account registered successfully! Welcome aboard.', 'success');
+          setTimeout(() => {
+            window.location.href = 'dashboard.html';
+          }, 1000);
+        } else {
+          showToast(result.message, 'error');
+        }
+      }
+    }
+  </script>
+</body>
+</html>

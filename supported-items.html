@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supported Grocery Items — Elderly Eats</title>
+  <meta name="description" content="Browse our catalog of fresh produce, dairy products, grains, dietary wellness goods, and hygiene essentials curated for senior comfort.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            gray: {
+              750: '#232d3d',
+              850: '#18212f',
+              855: '#18212f',
+              955: '#0b0f17',
+            },
+            sage: {
+              50: '#f4f7f5',
+              100: '#e5ede7',
+              200: '#cedcd2',
+              300: '#abbfb1',
+              400: '#829d89',
+              500: '#617d69',
+              600: '#4d6554',
+              700: '#3e5244',
+              800: '#334237',
+              900: '#2b362e',
+            },
+            cream: {
+              50: '#fdfbf7',
+              100: '#faf6eb',
+              200: '#f2e8d3',
+              300: '#e5d3b0',
+              400: '#d5b786',
+              500: '#c59a5d',
+              600: '#b6834b',
+              700: '#97673c',
+              800: '#7c5335',
+              900: '#66452e',
+            },
+            charcoal: {
+              DEFAULT: '#2c3531',
+              50: '#f6f7f6',
+              100: '#eceeec',
+              800: '#1f2623',
+              900: '#111614',
+            }
+          },
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body class="bg-cream-100 text-charcoal dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+  <!-- Page Loader -->
+  <div id="page-loader">
+    <div class="flex flex-col items-center">
+      <div class="loader-spinner mb-4"></div>
+      <div class="flex items-center space-x-2 text-sage-600 dark:text-sage-300 font-semibold tracking-wide">
+        <svg class="w-6 h-6 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+        <span>Elderly Eats</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header id="site-header" class="sticky top-0 z-50 bg-cream-100/90 dark:bg-gray-900/90 backdrop-blur-md transition-all duration-300 border-b border-cream-200/50 dark:border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20 flex-nowrap gap-4">
+        
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center space-x-2.5 group shrink-0 whitespace-nowrap">
+          <div class="w-10 h-10 rounded-xl bg-sage-500 flex items-center justify-center text-white shadow-md shadow-sage-500/20 group-hover:scale-105 transition-transform duration-300">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <div>
+            <span class="text-xl font-bold tracking-tight text-sage-800 dark:text-white whitespace-nowrap block">Elderly Eats</span>
+            <span class="block text-[10px] uppercase tracking-widest text-cream-600 dark:text-sage-400 font-semibold -mt-1 whitespace-nowrap">Senior Grocery</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden xl:flex items-center space-x-6 xl:space-x-7 shrink-0 whitespace-nowrap">
+          <!-- Home Dropdown Menu -->
+          <div class="relative">
+            <button id="home-dropdown-trigger" class="flex items-center space-x-1 text-[15px] font-medium text-sage-800 hover:text-sage-600 dark:text-gray-200 dark:hover:text-white py-2 focus:outline-none transition-colors whitespace-nowrap">
+              <span>Home</span>
+              <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div id="home-dropdown-menu" class="absolute left-0 mt-2 w-48 rounded-2xl bg-white dark:bg-gray-800 shadow-xl border border-cream-200/50 dark:border-gray-700/50 py-2 opacity-0 pointer-events-none translate-y-2 transition-all duration-200 z-50">
+              <a href="index.html" class="block px-5 py-2.5 text-sm font-medium text-sage-800 hover:bg-cream-50 dark:text-gray-200 dark:hover:bg-gray-700/50 whitespace-nowrap">Home 1 (Classic)</a>
+              <a href="home-2.html" class="block px-5 py-2.5 text-sm font-medium text-sage-800 hover:bg-cream-50 dark:text-gray-200 dark:hover:bg-gray-700/50 whitespace-nowrap">Home 2 (Editorial)</a>
+            </div>
+          </div>
+
+          <a href="how-it-works.html" class="text-[15px] font-medium text-sage-800 hover:text-sage-600 dark:text-gray-200 dark:hover:text-white transition-colors whitespace-nowrap">How It Works</a>
+          <a href="supported-items.html" class="text-[15px] font-medium text-sage-800 hover:text-sage-600 dark:text-gray-200 dark:hover:text-white transition-colors whitespace-nowrap">Supported Items</a>
+          <a href="pricing-delivery.html" class="text-[15px] font-medium text-sage-800 hover:text-sage-600 dark:text-gray-200 dark:hover:text-white transition-colors whitespace-nowrap">Pricing & Delivery</a>
+          <a href="contact.html" class="text-[15px] font-medium text-sage-800 hover:text-sage-600 dark:text-gray-200 dark:hover:text-white transition-colors whitespace-nowrap">Contact</a>
+        </nav>
+
+        <!-- Desktop Action Controls -->
+        <div class="hidden xl:flex items-center space-x-3 shrink-0 whitespace-nowrap">
+          <!-- RTL/LTR Toggle -->
+          <button data-rtl-toggle class="w-9 h-9 flex items-center justify-center rounded-lg bg-cream-200/60 hover:bg-cream-300 dark:bg-gray-800 dark:hover:bg-gray-700 text-sage-800 dark:text-gray-200 font-bold text-xs transition-colors shrink-0" title="Toggle RTL/LTR">
+            <span class="text-xs font-bold" data-rtl-label>RTL</span>
+          </button>
+          
+          <!-- Dark Mode Toggle -->
+          <button data-theme-toggle class="w-9 h-9 flex items-center justify-center rounded-lg bg-cream-200/60 hover:bg-cream-300 dark:bg-gray-800 dark:hover:bg-gray-700 text-sage-800 dark:text-gray-200 transition-colors shrink-0" title="Toggle Dark/Light Mode">
+            <span data-theme-icon class="flex items-center justify-center">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </span>
+          </button>
+
+          <!-- Auth Buttons -->
+          <div data-show-auth="out" class="flex items-center space-x-3 shrink-0 whitespace-nowrap">
+            <a href="login.html" class="text-[15px] font-medium text-sage-800 hover:text-sage-600 dark:text-gray-200 dark:hover:text-white px-3 py-2 transition-colors whitespace-nowrap">Log In</a>
+            <a href="register.html" class="px-5 py-2.5 rounded-xl bg-sage-500 hover:bg-sage-600 dark:bg-sage-600 dark:hover:bg-sage-500 text-white font-medium text-[15px] shadow-sm hover:shadow transition-all whitespace-nowrap">Get Started</a>
+          </div>
+          <div data-show-auth="in" class="flex items-center space-x-3 shrink-0 whitespace-nowrap" style="display: none;">
+            <a href="dashboard.html" class="px-5 py-2.5 rounded-xl bg-sage-500 hover:bg-sage-600 dark:bg-sage-600 dark:hover:bg-sage-500 text-white font-medium text-[15px] shadow-sm hover:shadow transition-all whitespace-nowrap">My Dashboard</a>
+            <button onclick="doLogout()" class="text-[15px] font-medium text-red-600 hover:text-red-500 px-3 py-2 transition-colors whitespace-nowrap">Log Out</button>
+          </div>
+        </div>
+
+        <!-- Hamburger Icon (Mobile) -->
+        <button id="hamburger" class="xl:hidden p-2 rounded-xl bg-cream-200/50 dark:bg-gray-800 text-sage-800 dark:text-gray-200 focus:outline-none transition-colors shrink-0" aria-expanded="false" aria-label="Toggle Menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-overlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[90] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <div id="mobile-menu" class="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-cream-100 dark:bg-gray-900 border-l border-cream-200 dark:border-gray-800 shadow-2xl z-[100] translate-x-full transition-transform duration-300 flex flex-col justify-between">
+    <div class="p-6">
+      <div class="flex items-center justify-between mb-8">
+        <span class="text-lg font-bold text-sage-800 dark:text-white">Menu</span>
+        <button id="mobile-close" class="p-2 rounded-xl bg-cream-200/50 dark:bg-gray-800 text-sage-800 dark:text-gray-200 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="space-y-1">
+        <div>
+          <button id="mobile-home-toggle" class="flex items-center justify-between w-full text-left font-medium text-sage-800 dark:text-gray-200 py-2 border-b border-cream-200/50 dark:border-gray-800">
+            <span>Home</span>
+            <svg data-arrow class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="mobile-home-submenu" class="hidden pl-4 py-2 space-y-2 bg-cream-50/50 dark:bg-gray-800/40 rounded-xl mt-1">
+            <a href="index.html" class="block py-1.5 text-sm font-medium text-sage-700 dark:text-gray-300">Home 1 (Classic)</a>
+            <a href="home-2.html" class="block py-1.5 text-sm font-medium text-sage-700 dark:text-gray-300">Home 2 (Editorial)</a>
+          </div>
+        </div>
+        <a href="how-it-works.html" class="block font-medium text-sage-800 dark:text-gray-200 py-2 border-b border-cream-200/50 dark:border-gray-800">How It Works</a>
+        <a href="supported-items.html" class="block font-medium text-sage-800 dark:text-gray-200 py-2 border-b border-cream-200/50 dark:border-gray-800">Supported Items</a>
+        <a href="pricing-delivery.html" class="block font-medium text-sage-800 dark:text-gray-200 py-2 border-b border-cream-200/50 dark:border-gray-800">Pricing & Delivery</a>
+        <a href="contact.html" class="block font-medium text-sage-800 dark:text-gray-200 py-2 border-b border-cream-200/50 dark:border-gray-800">Contact</a>
+      </nav>
+    </div>
+
+    <div class="p-6 border-t border-cream-200 dark:border-gray-800 bg-cream-50 dark:bg-gray-850">
+      <div class="flex items-center justify-between mb-6">
+        <button data-rtl-toggle class="flex items-center gap-2 px-3 py-2.5 rounded-lg bg-cream-200/60 dark:bg-gray-800 text-sage-800 dark:text-gray-200 text-xs font-bold">
+          <span class="text-xs font-bold" data-rtl-label>RTL</span>
+        </button>
+        <!-- Dark Mode -->
+        <button data-theme-toggle class="flex items-center gap-2 px-3 py-2.5 rounded-lg bg-cream-200/60 dark:bg-gray-800 text-sage-800 dark:text-gray-200">
+          <span data-theme-icon class="flex items-center justify-center">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </span>
+          <span class="text-xs font-semibold" data-theme-label>Dark Mode</span>
+        </button>
+      </div>
+
+      <div data-show-auth="out" class="grid grid-cols-2 gap-3">
+        <a href="login.html" class="py-3 rounded-xl bg-cream-200/50 hover:bg-cream-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-center font-medium text-sage-800 dark:text-gray-200 text-sm">Log In</a>
+        <a href="register.html" class="py-3 rounded-xl bg-sage-500 hover:bg-sage-600 dark:bg-sage-600 dark:hover:bg-sage-500 text-center text-white font-medium text-sm shadow">Register</a>
+      </div>
+      <div data-show-auth="in" class="grid grid-cols-1 gap-3" style="display: none;">
+        <a href="dashboard.html" class="py-3 rounded-xl bg-sage-500 hover:bg-sage-600 dark:bg-sage-600 dark:hover:bg-sage-500 text-center text-white font-medium text-sm shadow">My Dashboard</a>
+        <button onclick="doLogout()" class="py-2.5 rounded-xl border border-red-200 text-red-600 text-center font-medium text-sm">Log Out</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main>
+
+    <!-- SECTION 1: Page Hero -->
+    <section class="py-16 bg-gradient-to-b from-cream-100 to-cream-50/20 dark:from-gray-900 dark:to-gray-950/20">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6" data-reveal>
+        <span class="text-sage-500 dark:text-sage-400 font-bold uppercase tracking-wider text-xs">Curated Catalog</span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold font-serif text-sage-900 dark:text-white leading-tight">Supported Senior Groceries</h1>
+        <p class="text-base sm:text-lg text-sage-800/80 dark:text-gray-300 max-w-3xl mx-auto">
+          Explore our selection of senior-friendly, lactose-free, low-sodium, and diabetic-safe food items. We carry everyday fresh foods alongside specific household hygiene items that are easy to unpack and organize.
+        </p>
+        
+        <!-- Supporting Category Cards Grid inside the Hero -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto pt-6">
+          <a href="#produce" class="p-4 rounded-2xl bg-white dark:bg-gray-800 border border-cream-200/50 dark:border-gray-700 shadow-sm hover:shadow-md hover:scale-[1.02] transition-all flex flex-col items-center space-y-2">
+            <svg class="w-6 h-6 text-sage-600 dark:text-sage-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-11.314l.707.707m11.314 11.314l.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z"></path></svg>
+            <span class="text-xs font-bold text-sage-900 dark:text-white">Fresh Produce</span>
+          </a>
+          <a href="#dairy" class="p-4 rounded-2xl bg-white dark:bg-gray-800 border border-cream-200/50 dark:border-gray-700 shadow-sm hover:shadow-md hover:scale-[1.02] transition-all flex flex-col items-center space-y-2">
+            <svg class="w-6 h-6 text-sage-600 dark:text-sage-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+            <span class="text-xs font-bold text-sage-900 dark:text-white">Dairy & Eggs</span>
+          </a>
+          <a href="#healthy" class="p-4 rounded-2xl bg-white dark:bg-gray-800 border border-cream-200/50 dark:border-gray-700 shadow-sm hover:shadow-md hover:scale-[1.02] transition-all flex flex-col items-center space-y-2">
+            <svg class="w-6 h-6 text-sage-600 dark:text-sage-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+            <span class="text-xs font-bold text-sage-900 dark:text-white">Healthy Essentials</span>
+          </a>
+          <a href="#household" class="p-4 rounded-2xl bg-white dark:bg-gray-800 border border-cream-200/50 dark:border-gray-700 shadow-sm hover:shadow-md hover:scale-[1.02] transition-all flex flex-col items-center space-y-2">
+            <svg class="w-6 h-6 text-sage-600 dark:text-sage-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+            <span class="text-xs font-bold text-sage-900 dark:text-white">Household Items</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: Category Catalog Grid -->
+    <section class="py-16 sm:py-24 bg-white dark:bg-gray-900">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+        
+        <!-- Category 1: Fresh Produce -->
+        <div id="produce" class="space-y-6" data-reveal>
+          <div class="border-b border-cream-200 dark:border-gray-800 pb-4">
+            <h2 class="text-2xl sm:text-3xl font-serif font-bold text-sage-900 dark:text-white">Fresh Produce</h2>
+            <p class="text-xs sm:text-sm text-sage-800/60 dark:text-gray-400 mt-1">Naturally rich in vitamins, fibers, and easy to wash/prep.</p>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            
+            <div class="bg-cream-50/50 dark:bg-gray-800/40 p-4 rounded-2xl border border-cream-200/30 dark:border-gray-800 space-y-3">
+              <div class="h-40 rounded-xl overflow-hidden bg-gray-100">
+                <img src="assets/images/products/organic-red-apples.jpg" alt="Fresh Apples" class="w-full h-full object-cover">
+              </div>
+              <h4 class="font-bold text-sage-900 dark:text-white text-sm">Organic Red Apples</h4>
+              <p class="text-xs text-sage-800/60 dark:text-gray-400">Sweet, crisp apples loaded with vitamin C.</p>
+            </div>
+
+            <div class="bg-cream-50/50 dark:bg-gray-800/40 p-4 rounded-2xl border border-cream-200/30 dark:border-gray-800 space-y-3">
+              <div class="h-40 rounded-xl overflow-hidden bg-gray-100">
+                <img src="assets/images/products/soft-ripe-bananas.jpg" alt="Ripe Bananas" class="w-full h-full object-cover">
+              </div>
+              <h4 class="font-bold text-sage-900 dark:text-white text-sm">Soft Ripe Bananas</h4>
+              <p class="text-xs text-sage-800/60 dark:text-gray-400">Soft texture, high potassium, easy to peel.</p>
+            </div>
+
+            <div class="bg-cream-50/50 dark:bg-gray-800/40 p-4 rounded-2xl border border-cream-200/30 dark:border-gray-800 space-y-3">
+              <div class="h-40 rounded-xl overflow-hidden bg-gray-100">
+                <img src="assets/images/products/broccoli-crowns.jpg" alt="Fresh Broccoli" class="w-full h-full object-cover">
+              </div>
+              <h4 class="font-bold text-sage-900 dark:text-white text-sm">Crisp Broccoli Crowns</h4>
+              <p class="text-xs text-sage-800/60 dark:text-gray-400">Perfect for steaming and high in vitamins.</p>
+            </div>
+
+            <div class="bg-cream-50/50 dark:bg-gray-800/40 p-4 rounded-2xl border border-cream-200/30 dark:border-gray-800 space-y-3">
+              <div class="h-40 rounded-xl overflow-hidden bg-gray-100">
+                <img src="assets/images/products/seedless-oranges.jpg" alt="Sweet Oranges" class="w-full h-full object-cover">
+              </div>
+              <h4 class="font-bold text-sage-900 dark:text-white text-sm">Seedless Oranges</h4>
+              <p class="text-xs text-sage-800/60 dark:text-gray-400">Juicy citrus, high fiber, seedless crowns.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Category 2: Dairy & Eggs -->
+        <div id="dairy" class="space-y-6" data-reveal>
+          <div class="border-b border-cream-200 dark:border-gray-800 pb-4">
+            <h2 class="text-2xl sm:text-3xl font-serif font-bold text-sage-900 dark:text-white">Dairy & Eggs</h2>
+            <p class="text-xs sm:text-sm text-sage-800/60 dark:text-gray-400 mt-1">Excellent sources of protein and bone-strengthening calcium.</p>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            
+            <div class="bg-cream-50/50 dark:bg-gray-800/40 p-4 rounded-2xl border border-cream-200/30 dark:border-gray-800 space-y-3">
+              <div class="h-40 rounded-xl overflow-hidden bg-gray-100">
+                <img src="assets/images/products/lactose-free-milk.jpg" alt="Organic Milk" class="w-full h-full object-cover">
+              </div>
+              <h4 class="font-bold text-sage-900 dark:text-white text-sm">Lactose-Free Whole Milk</h4>
+              <p class="text-xs text-sage-800/60 dark:text-gray-400">Gentle on digestion, packed with vitamin D.</p>
+            </div>
+
+            <div class="bg-cream-50/50 dark:bg-gray-800/40 p-4 rounded-2xl border border-cream-200/30 dark:border-gray-800 space-y-3">
+              <div class="h-40 rounded-xl overflow-hidden bg-gray-100">
+                <img src="assets/images/products/cage-free-eggs.jpg" alt="Fresh Eggs" class="w-full h-full object-cover">
+              </div>
+              <h4 class="font-bold text-sage-900 dark:text-white text-sm">Cage-Free Large Eggs</h4>
+              <p class="text-xs text-sage-800/60 dark:text-gray-400">Rich in protein, vitamins, and easy to scramble.</p>
+            </div>
+
+            <div class="bg-cream-50/50 dark:bg-gray-800/40 p-4 rounded-2xl border border-cream-200/30 dark:border-gray-800 space-y-3">
+              <div class="h-40 rounded-xl overflow-hidden bg-gray-100">
+                <img src="assets/images/products/low-sodium-cottage-cheese.jpg" alt="Cottage Cheese" class="w-full h-full object-cover">
+              </div>
+              <h4 class="font-bold text-sage-900 dark:text-white text-sm">Low-Sodium Cottage Cheese</h4>
+              <p class="text-xs text-sage-800/60 dark:text-gray-400">Soft, high-protein snack, light sodium level.</p>
+            </div>
+
+            <div class="bg-cream-50/50 dark:bg-gray-800/40 p-4 rounded-2xl border border-cream-200/30 dark:border-gray-800 space-y-3">
+              <div class="h-40 rounded-xl overflow-hidden bg-gray-100">
+                <img src="assets/images/products/cheddar-slices.jpg" alt="Soft Cheese" class="w-full h-full object-cover">
+              </div>
+              <h4 class="font-bold text-sage-900 dark:text-white text-sm">Pasteurized Cheddar Slices</h4>
+              <p class="text-xs text-sage-800/60 dark:text-gray-400">Pre-sliced and perfect for easy sandwhich prep.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Category 3: Healthy Essentials -->
+        <div id="healthy" class="space-y-6" data-reveal>
+          <div class="border-b border-cream-200 dark:border-gray-800 pb-4">
+            <h2 class="text-2xl sm:text-3xl font-serif font-bold text-sage-900 dark:text-white">Healthy Essentials</h2>
+            <p class="text-xs sm:text-sm text-sage-800/60 dark:text-gray-400 mt-1">Carefully formulated or screened dietary compliance options.</p>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            
+            <div class="bg-cream-50/50 dark:bg-gray-800/40 p-4 rounded-2xl border border-cream-200/30 dark:border-gray-800 space-y-3">
+              <div class="h-40 rounded-xl overflow-hidden bg-gray-100">
+                <img src="assets/images/products/beef-carrot-stew.jpg" alt="Ready Meal Stew" class="w-full h-full object-cover">
+              </div>
+              <h4 class="font-bold text-sage-900 dark:text-white text-sm">Soft-Cooked Beef & Carrot Stew</h4>
+              <p class="text-xs text-sage-800/60 dark:text-gray-400">Melt-in-mouth textures, extremely low sodium level.</p>
+            </div>
+
+            <div class="bg-cream-50/50 dark:bg-gray-800/40 p-4 rounded-2xl border border-cream-200/30 dark:border-gray-800 space-y-3">
+              <div class="h-40 rounded-xl overflow-hidden bg-gray-100">
+                <img src="assets/images/products/berry-spread.jpg" alt="Sugar Free Jam" class="w-full h-full object-cover">
+              </div>
+              <h4 class="font-bold text-sage-900 dark:text-white text-sm">Sugar-Conscious Berry Spread</h4>
+              <p class="text-xs text-sage-800/60 dark:text-gray-400">Sweetened naturally with stevia extract.</p>
+            </div>
+
+            <div class="bg-cream-50/50 dark:bg-gray-800/40 p-4 rounded-2xl border border-cream-200/30 dark:border-gray-800 space-y-3">
+              <div class="h-40 rounded-xl overflow-hidden bg-gray-100">
+                <img src="assets/images/products/low-sodium-veg-soup.jpg" alt="Low Sodium Soup" class="w-full h-full object-cover">
+              </div>
+              <h4 class="font-bold text-sage-900 dark:text-white text-sm">Low-Sodium Vegetable Soup</h4>
+              <p class="text-xs text-sage-800/60 dark:text-gray-400">Warm and satisfying with only 120mg of sodium.</p>
+            </div>
+
+            <div class="bg-cream-50/50 dark:bg-gray-800/40 p-4 rounded-2xl border border-cream-200/30 dark:border-gray-800 space-y-3">
+              <div class="h-40 rounded-xl overflow-hidden bg-gray-100">
+                <img src="assets/images/products/nutrition-shake.jpg" alt="Nutrition Drinks" class="w-full h-full object-cover">
+              </div>
+              <h4 class="font-bold text-sage-900 dark:text-white text-sm">Complete Nutrition Shake</h4>
+              <p class="text-xs text-sage-800/60 dark:text-gray-400">Vanilla meal replacement shake packed with protein.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Category 4: Household Essentials -->
+        <div id="household" class="space-y-6" data-reveal>
+          <div class="border-b border-cream-200 dark:border-gray-800 pb-4">
+            <h2 class="text-2xl sm:text-3xl font-serif font-bold text-sage-900 dark:text-white">Household Essentials</h2>
+            <p class="text-xs sm:text-sm text-sage-800/60 dark:text-gray-400 mt-1">Everyday household goods that are heavy and difficult to carry.</p>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            
+            <div class="bg-cream-50/50 dark:bg-gray-800/40 p-4 rounded-2xl border border-cream-200/30 dark:border-gray-800 space-y-3">
+              <div class="h-40 rounded-xl overflow-hidden bg-gray-100">
+                <img src="assets/images/products/paper-towels.jpg" alt="Paper Towels" class="w-full h-full object-cover">
+              </div>
+              <h4 class="font-bold text-sage-900 dark:text-white text-sm">Ultra-Soft Paper Towels</h4>
+              <p class="text-xs text-sage-800/60 dark:text-gray-400">Absorbent 4-pack of soft household paper.</p>
+            </div>
+
+            <div class="bg-cream-50/50 dark:bg-gray-800/40 p-4 rounded-2xl border border-cream-200/30 dark:border-gray-800 space-y-3">
+              <div class="h-40 rounded-xl overflow-hidden bg-gray-100">
+                <img src="assets/images/products/liquid-hand-soap.jpg" alt="Hand Soap" class="w-full h-full object-cover">
+              </div>
+              <h4 class="font-bold text-sage-900 dark:text-white text-sm">Hypoallergenic Liquid Hand Soap</h4>
+              <p class="text-xs text-sage-800/60 dark:text-gray-400">Gentle on dry skin, completely fragrance-free.</p>
+            </div>
+
+            <div class="bg-cream-50/50 dark:bg-gray-800/40 p-4 rounded-2xl border border-cream-200/30 dark:border-gray-800 space-y-3">
+              <div class="h-40 rounded-xl overflow-hidden bg-gray-100">
+                <img src="assets/images/products/premium-toilet-paper.jpg" alt="Toilet Paper" class="w-full h-full object-cover">
+              </div>
+              <h4 class="font-bold text-sage-900 dark:text-white text-sm">Premium 2-Ply Toilet Paper</h4>
+              <p class="text-xs text-sage-800/60 dark:text-gray-400">Soft, comfortable, septic-safe 12-roll pack.</p>
+            </div>
+
+            <div class="bg-cream-50/50 dark:bg-gray-800/40 p-4 rounded-2xl border border-cream-200/30 dark:border-gray-800 space-y-3">
+              <div class="h-40 rounded-xl overflow-hidden bg-gray-100">
+                <img src="assets/images/products/multi-surface-spray.jpg" alt="Cleaning Spray" class="w-full h-full object-cover">
+              </div>
+              <h4 class="font-bold text-sage-900 dark:text-white text-sm">Non-Toxic Multi-Surface Spray</h4>
+              <p class="text-xs text-sage-800/60 dark:text-gray-400">Plant-based cleaning formula with zero strong chemical fumes.</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    </section>
+
+    <!-- SECTION 3: Dietary Allergy Alert Protocol Board -->
+    <section class="py-16 sm:py-24 bg-cream-50 dark:bg-gray-950 border-t border-cream-200/40 dark:border-gray-850">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-16" data-reveal>
+          <span class="text-sage-500 dark:text-sage-400 font-bold uppercase tracking-wider text-xs">Allergen Safety</span>
+          <h2 class="text-3xl font-serif font-bold text-sage-900 dark:text-white mt-2">Allergen Safeguards & Alert Protocol</h2>
+          <p class="text-xs sm:text-sm text-sage-800/70 dark:text-gray-400 mt-2">How we prevent accidental allergen orders with real-time system alerts.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Protocol 1 -->
+          <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl border border-cream-200 dark:border-gray-700 shadow-sm space-y-4" data-reveal>
+            <div class="w-12 h-12 rounded-xl bg-sage-100 dark:bg-sage-900 flex items-center justify-center text-sage-600 dark:text-sage-300">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+            </div>
+            <h4 class="font-serif font-bold text-sage-900 dark:text-white text-base">Automatic Cart Bans</h4>
+            <p class="text-xs text-sage-800/70 dark:text-gray-400 leading-relaxed">Once you configure allergy filters (e.g. peanut or gluten), the shopping cart automatically prevents adding matching items.</p>
+          </div>
+          <!-- Protocol 2 -->
+          <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl border border-cream-200 dark:border-gray-700 shadow-sm space-y-4" data-reveal>
+            <div class="w-12 h-12 rounded-xl bg-sage-100 dark:bg-sage-900 flex items-center justify-center text-sage-600 dark:text-sage-300">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </div>
+            <h4 class="font-serif font-bold text-sage-900 dark:text-white text-base">Double Vetting Pack Checks</h4>
+            <p class="text-xs text-sage-800/70 dark:text-gray-400 leading-relaxed">Packers scan barcodes at dispatch. If an item contains a registered allergen, the scanner issues a warning vibration alert.</p>
+          </div>
+          <!-- Protocol 3 -->
+          <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl border border-cream-200 dark:border-gray-700 shadow-sm space-y-4" data-reveal>
+            <div class="w-12 h-12 rounded-xl bg-sage-100 dark:bg-sage-900 flex items-center justify-center text-sage-600 dark:text-sage-300">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </div>
+            <h4 class="font-serif font-bold text-sage-900 dark:text-white text-base">Special Color Coding</h4>
+            <p class="text-xs text-sage-800/70 dark:text-gray-400 leading-relaxed">Bags with strict allergy restrictions are packed with bright yellow compliance security ribbons to warn drivers and seniors.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: Brand Standards & Local Sourcing Map -->
+    <section class="py-16 sm:py-24 bg-white dark:bg-gray-900 border-t border-cream-200/40 dark:border-gray-850">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-6 space-y-6" data-reveal>
+            <span class="text-sage-500 dark:text-sage-400 font-bold uppercase tracking-wider text-xs">Fresh Sourcing</span>
+            <h2 class="text-3xl font-serif font-bold text-sage-900 dark:text-white leading-tight">Partnerships with Organic Cooperatives</h2>
+            <p class="text-sm sm:text-base text-sage-800/80 dark:text-gray-300 leading-relaxed">
+              We partner with local, sustainable farms across the Atlanta area to secure fresh produce. From seedless sweet oranges to crisp crowns of broccoli, everything is harvested and delivered within a 48-hour window, ensuring maximum nutrient density for senior wellness.
+            </p>
+            <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-cream-50 dark:bg-gray-800 border border-cream-200 dark:border-gray-750 text-xs font-semibold text-sage-900 dark:text-gray-300">
+              <span>Verified Local Supplier Partners</span>
+            </div>
+          </div>
+          <div class="lg:col-span-6 relative" data-reveal>
+            <div class="absolute -inset-4 bg-cream-200/50 dark:bg-gray-800/40 rounded-[2.5rem] blur-xl transform rotate-2 -z-10"></div>
+            <div class="relative rounded-3xl overflow-hidden shadow-lg aspect-[4/3] bg-cream-50 dark:bg-gray-850">
+              <img src="assets/images/sections/farmer-carrots.jpg" alt="Farmer arranging fresh organic harvest carrots on table" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: Household Packing & Unboxing Standards -->
+    <section class="py-16 sm:py-24 bg-cream-50 dark:bg-gray-950 border-t border-cream-200/40 dark:border-gray-850">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-6 lg:order-2 space-y-6" data-reveal>
+            <span class="text-sage-500 dark:text-sage-400 font-bold uppercase tracking-wider text-xs">Easy Handling</span>
+            <h2 class="text-3xl font-serif font-bold text-sage-900 dark:text-white leading-tight">Lightweight Safety Bags & Counter Packing</h2>
+            <p class="text-sm sm:text-base text-sage-800/80 dark:text-gray-300 leading-relaxed">
+              Lifting heavy milk jugs or toilet paper packs can cause severe back strain. Our logistics team limits bag weights to a maximum of 8 lbs per bag. Heavy laundry items or liquids are packed separately with dual handle supports. Drivers unpack these bags directly onto kitchen countertops to eliminate all senior bending.
+            </p>
+            <div class="space-y-3 font-semibold text-xs text-sage-850 dark:text-gray-300">
+              <div class="flex items-center space-x-2">
+                <span class="text-green-500 font-bold">✓</span>
+                <span>8 lb maximum weight limit per bag</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <span class="text-green-500 font-bold">✓</span>
+                <span>Dual reinforced handles for easy grip</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <span class="text-green-500 font-bold">✓</span>
+                <span>Countertop unloading and layout check</span>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-6 lg:order-1 relative" data-reveal>
+            <div class="absolute -inset-4 bg-cream-200/50 dark:bg-gray-800/40 rounded-[2.5rem] blur-xl transform -rotate-2 -z-10"></div>
+            <div class="relative rounded-3xl overflow-hidden shadow-lg aspect-[4/3] bg-cream-50 dark:bg-gray-850">
+              <img src="assets/images/sections/organic-foods-spread.jpg" alt="Fresh groceries and staples spread on the counter" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: Special Care Request Catalogue -->
+    <section class="py-16 sm:py-24 bg-white dark:bg-gray-900 border-t border-cream-200/40 dark:border-gray-850">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-6 space-y-6" data-reveal>
+            <span class="text-sage-500 dark:text-sage-400 font-bold uppercase tracking-wider text-xs">Custom Orders</span>
+            <h2 class="text-3xl font-serif font-bold text-sage-900 dark:text-white leading-tight">Special Care Pharmacy & Food Requests</h2>
+            <p class="text-sm sm:text-base text-sage-800/80 dark:text-gray-300 leading-relaxed">
+              If your parent requires dietary supplements, nutritional shakes, or specialized soft foods not present in our standard catalog, you can send requests to our Care Liaison team. We will source these items locally and add them to their shopping profile.
+            </p>
+            <div>
+              <a href="contact.html" class="inline-flex items-center space-x-2 px-6 py-3 rounded-xl bg-sage-500 hover:bg-sage-600 text-white font-bold text-sm shadow">
+                <span>Request Custom Items</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+              </a>
+            </div>
+          </div>
+          <div class="lg:col-span-6 relative" data-reveal>
+            <div class="absolute -inset-4 bg-cream-200/50 dark:bg-gray-800/40 rounded-[2.5rem] blur-xl transform rotate-2 -z-10"></div>
+            <div class="relative rounded-3xl overflow-hidden shadow-lg aspect-[4/3] bg-cream-50 dark:bg-gray-850">
+              <img src="assets/images/sections/supplements-medicine.jpg" alt="Supplements and medicine bottles standing on table" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: Out-of-Stock Substitute Policy Dashboard -->
+    <section class="py-16 sm:py-24 bg-cream-50 dark:bg-gray-950 border-t border-cream-200/40 dark:border-gray-850">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6" data-reveal>
+        <span class="text-sage-500 dark:text-sage-400 font-bold uppercase tracking-wider text-xs">Vetting Integrity</span>
+        <h2 class="text-3xl font-serif font-bold text-sage-900 dark:text-white max-w-2xl mx-auto">No-Surprise Replacement Guarantee</h2>
+        <p class="text-sm sm:text-base text-sage-800/80 dark:text-gray-300 max-w-xl mx-auto leading-relaxed">
+          If a specific low-sodium soup or whole milk brand is out of stock, we never make automated replacements without consulting you. Our care team calls or texts the caregiver to approve substitutions, ensuring your senior parent never receives a high-sodium or lactose-rich item by mistake.
+        </p>
+        <div class="inline-flex items-center space-x-2.5 px-4 py-2 rounded-full bg-white dark:bg-gray-850 border border-cream-200 dark:border-gray-750 text-xs font-bold text-sage-900 dark:text-white shadow-sm">
+          <span>Diet-Compliant Substitute Guarantee</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: Guarantee and Diet Safety Showcase -->
+    <section class="py-16 sm:py-24 bg-cream-100/40 dark:bg-gray-955/40 border-t border-cream-200/40 dark:border-gray-850">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <div class="lg:col-span-6 space-y-6" data-reveal>
+            <span class="text-sage-500 dark:text-sage-400 font-bold uppercase tracking-wider text-xs">Strict Standards</span>
+            <h2 class="text-3xl font-serif font-bold text-sage-900 dark:text-white">Strict Selection Standards for Elderly Safety</h2>
+            <p class="text-sm sm:text-base text-sage-800/80 dark:text-gray-300 leading-relaxed">
+              We vet every supplier and product before adding them to our system. Fresh fruits must have zero soft spots, dairy items must have at least 10 days of shelf life remaining upon delivery, and ready meals are slow-cooked to assure chewable tenderness.
+            </p>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="p-4 bg-white dark:bg-gray-850 rounded-xl border border-cream-200/50 dark:border-gray-700">
+                <span class="block text-xl">
+                  <svg class="w-6 h-6 text-sage-500" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                </span>
+                <span class="block font-bold text-sage-900 dark:text-white text-sm mt-1">Sodium Check</span>
+                <span class="block text-[11px] text-sage-800/60 dark:text-gray-400">All sodium-restricted food labels are checked double before packing.</span>
+              </div>
+              <div class="p-4 bg-white dark:bg-gray-850 rounded-xl border border-cream-200/50 dark:border-gray-700">
+                <span class="block text-xl">
+                  <svg class="w-6 h-6 text-sage-500" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707.707M12 8a4 4 0 100 8 4 4 0 000-8z"></path></svg>
+                </span>
+                <span class="block font-bold text-sage-900 dark:text-white text-sm mt-1">Freshness Checked</span>
+                <span class="block text-[11px] text-sage-800/60 dark:text-gray-400">We never deliver close-to-expiration milk, cheese, or eggs.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-6" data-reveal>
+            <div class="relative rounded-3xl overflow-hidden shadow-lg aspect-[4/3] bg-cream-50 dark:bg-gray-850">
+              <img src="assets/images/sections/veg-crate-market.jpg" alt="Fresh healthy groceries unpacked" class="w-full h-full object-cover">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9: Final CTA -->
+    <section class="py-16 bg-sage-500 text-white dark:bg-sage-900 text-center">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6" data-reveal>
+        <h2 class="text-3xl sm:text-4xl font-bold font-serif leading-tight">Order These Items for Your Parents Now</h2>
+        <p class="text-sage-100 max-w-xl mx-auto text-sm sm:text-base font-medium">Create a caregiver profile and customize their weekly delivery lists in minutes.</p>
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+          <a href="register.html" class="px-8 py-3.5 bg-white text-sage-800 hover:bg-cream-50 font-bold rounded-xl shadow-md transition-all">Schedule First Order</a>
+          <a href="dashboard.html" class="px-8 py-3.5 border border-white/45 hover:bg-white/10 text-white font-bold rounded-xl transition-all">Log in to Dashboard</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-charcoal dark:bg-charcoal-900 text-cream-200/90 pt-16 pb-8 border-t border-charcoal-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-12 border-b border-charcoal-800">
+        
+        <!-- About -->
+        <div class="space-y-4">
+          <a href="index.html" class="flex items-center space-x-2">
+            <div class="w-9 h-9 rounded-xl bg-sage-500 flex items-center justify-center text-white font-bold">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+            </div>
+            <span class="text-lg font-bold text-white tracking-tight">Elderly Eats</span>
+          </a>
+          <p class="text-xs sm:text-sm text-cream-200/70 leading-relaxed">
+            Delivering simple groceries, dietary compliance, and absolute peace of mind. We make food access smooth and convenient for elderly parents and their caregivers.
+          </p>
+        </div>
+
+        <!-- Site Navigation -->
+        <div>
+          <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Service Links</h4>
+          <ul class="space-y-2.5 text-xs sm:text-sm">
+            <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+            <li><a href="how-it-works.html" class="hover:text-white transition-colors">How It Works</a></li>
+            <li><a href="supported-items.html" class="hover:text-white transition-colors">Supported Items</a></li>
+            <li><a href="pricing-delivery.html" class="hover:text-white transition-colors">Pricing & Delivery</a></li>
+          </ul>
+        </div>
+
+        <!-- Help Support -->
+        <div>
+          <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Support & FAQ</h4>
+          <ul class="space-y-2.5 text-xs sm:text-sm">
+            <li><a href="contact.html" class="hover:text-white transition-colors">Contact Support</a></li>
+            <li><a href="pricing-delivery.html#faq" class="hover:text-white transition-colors">Help Center / FAQs</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Delivery Standards</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="space-y-4">
+          <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Newsletter</h4>
+          <p class="text-xs text-cream-200/70 leading-relaxed">Stay updated with fresh senior recipes, safety tips, and grocery discounts.</p>
+          <form class="flex space-x-2" onsubmit="event.preventDefault(); showToast('Subscribed to newsletter successfully!'); this.reset();">
+            <input type="email" placeholder="Email Address" required class="w-full px-4 py-2.5 rounded-xl bg-charcoal-800 text-cream-200 border border-charcoal-800 focus:outline-none focus:border-sage-500 text-xs sm:text-sm">
+            <button type="submit" class="px-4 py-2.5 bg-sage-500 hover:bg-sage-600 text-white font-semibold rounded-xl text-xs sm:text-sm transition-all">Subscribe</button>
+          </form>
+        </div>
+
+      </div>
+
+      <div class="flex flex-col md:flex-row items-center justify-between pt-8 text-xs text-cream-200/50">
+        <span>© 2026 Elderly Eats. All rights reserved.</span>
+        <div class="flex space-x-6 mt-4 md:mt-0">
+          <a href="#" class="hover:text-cream-200 transition-colors">Facebook</a>
+          <a href="#" class="hover:text-cream-200 transition-colors">Twitter</a>
+          <a href="#" class="hover:text-cream-200 transition-colors">Instagram</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Back to Top Button -->
+  <button id="back-to-top" class="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-sage-500 hover:bg-sage-600 text-white shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 opacity-0 pointer-events-none" aria-label="Back to Top">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+  </button>
+
+  <!-- Site Script -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

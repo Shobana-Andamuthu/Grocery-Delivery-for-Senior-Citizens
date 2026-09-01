@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caregiver Dashboard — Elderly Eats</title>
+  <meta name="description" content="Manage senior profiles, grocery lists, recurring orders, and view live doorstep deliveries.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            sage: {
+              50: '#f4f7f5',
+              100: '#e5ede7',
+              200: '#cedcd2',
+              300: '#abbfb1',
+              400: '#829d89',
+              500: '#617d69',
+              600: '#4d6554',
+              700: '#3e5244',
+              800: '#334237',
+              900: '#2b362e',
+            },
+            cream: {
+              50: '#fdfbf7',
+              100: '#faf6eb',
+              200: '#f2e8d3',
+              300: '#e5d3b0',
+              400: '#d5b786',
+              500: '#c59a5d',
+              600: '#b6834b',
+              700: '#97673c',
+              800: '#7c5335',
+              900: '#66452e',
+            },
+            charcoal: {
+              DEFAULT: '#2c3531',
+              50: '#f6f7f6',
+              100: '#eceeec',
+              800: '#1f2623',
+              900: '#111614',
+            }
+          },
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body class="bg-cream-100 text-charcoal dark:bg-gray-900 dark:text-gray-100 transition-colors duration-350 min-h-screen flex flex-col">
+
+  <!-- Page Loader -->
+  <div id="page-loader">
+    <div class="flex flex-col items-center">
+      <div class="loader-spinner mb-4"></div>
+      <div class="flex items-center space-x-2 text-sage-600 dark:text-sage-300 font-semibold tracking-wide">
+        <svg class="w-6 h-6 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+        <span>Elderly Eats</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky Main Site Navbar for Dashboard -->
+  <header id="site-header" class="sticky top-0 z-50 bg-cream-100/90 dark:bg-gray-900/90 backdrop-blur-md transition-all duration-300 border-b border-cream-200/50 dark:border-gray-800 w-full">
+    <div class="w-full px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 sm:h-20 flex-nowrap gap-4">
+        
+        <!-- Brand Logo -->
+        <a href="index.html" class="flex items-center space-x-2.5 group shrink-0 whitespace-nowrap">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-sage-500 flex items-center justify-center text-white shadow-md shadow-sage-500/20 group-hover:scale-105 transition-transform duration-300">
+            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <div>
+            <span class="text-base sm:text-xl font-bold tracking-tight text-sage-800 dark:text-white whitespace-nowrap block">Elderly Eats</span>
+            <span class="block text-[9px] sm:text-[10px] uppercase tracking-widest text-cream-600 dark:text-sage-400 font-semibold -mt-1 whitespace-nowrap">Dashboard</span>
+          </div>
+        </a>
+
+        <!-- Right Header Action Controls -->
+        <div class="flex items-center space-x-1.5 sm:space-x-3 shrink-0 whitespace-nowrap">
+          <!-- Dark Mode Toggle -->
+          <button data-theme-toggle class="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-cream-200/60 hover:bg-cream-300 dark:bg-gray-800 dark:hover:bg-gray-700 text-sage-800 dark:text-gray-200 transition-colors shrink-0" title="Toggle Dark/Light Mode">
+            <span data-theme-icon class="flex items-center justify-center">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </span>
+          </button>
+
+          <!-- RTL/LTR Toggle -->
+          <button data-rtl-toggle class="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-cream-200/60 hover:bg-cream-300 dark:bg-gray-800 dark:hover:bg-gray-700 text-sage-800 dark:text-gray-200 font-bold text-[10px] sm:text-xs transition-colors shrink-0" title="Toggle RTL/LTR">
+            <span data-rtl-label>RTL</span>
+          </button>
+
+          <!-- Log Out Button -->
+          <button onclick="doLogout()" class="p-2 sm:px-4 sm:py-2 rounded-full bg-sage-500 hover:bg-sage-600 text-white font-bold text-xs sm:text-sm shadow-sm flex items-center space-x-1.5 transition-all shrink-0 whitespace-nowrap" title="Log Out">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+            <span class="hidden sm:inline whitespace-nowrap">Log Out</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Dashboard Horizontal Scroll Navigation (Directly below navbar on mobile) -->
+  <nav id="mobile-dashboard-nav" class="md:hidden sticky top-16 sm:top-20 z-[9998] bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-cream-200 dark:border-gray-800 px-4 py-2.5 flex items-center space-x-2 overflow-x-auto whitespace-nowrap scrollbar-none shadow-sm w-full">
+    <button onclick="switchTab('overview')" data-mobile-nav-btn="overview" class="px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-sage-500 text-white shadow-sm shrink-0 transition-all">
+      Overview
+    </button>
+    <button onclick="switchTab('recipients')" data-mobile-nav-btn="recipients" class="px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-cream-50 dark:bg-gray-800 text-sage-800 dark:text-gray-200 border border-cream-200 dark:border-gray-700 shrink-0 transition-all">
+      Seniors Profile
+    </button>
+    <button onclick="switchTab('shop')" data-mobile-nav-btn="shop" class="px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-cream-50 dark:bg-gray-800 text-sage-800 dark:text-gray-200 border border-cream-200 dark:border-gray-700 shrink-0 transition-all">
+      Order Groceries
+    </button>
+    <button onclick="switchTab('recurring')" data-mobile-nav-btn="recurring" class="px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-cream-50 dark:bg-gray-800 text-sage-800 dark:text-gray-200 border border-cream-200 dark:border-gray-700 shrink-0 transition-all">
+      Recurring Deliveries
+    </button>
+    <button onclick="switchTab('diets')" data-mobile-nav-btn="diets" class="px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-cream-50 dark:bg-gray-800 text-sage-800 dark:text-gray-200 border border-cream-200 dark:border-gray-700 shrink-0 transition-all">
+      Dietary Preferences
+    </button>
+    <button onclick="switchTab('tracking')" data-mobile-nav-btn="tracking" class="px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-cream-50 dark:bg-gray-800 text-sage-800 dark:text-gray-200 border border-cream-200 dark:border-gray-700 shrink-0 transition-all">
+      Delivery Tracking
+    </button>
+    <button onclick="switchTab('history')" data-mobile-nav-btn="history" class="px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-cream-50 dark:bg-gray-800 text-sage-800 dark:text-gray-200 border border-cream-200 dark:border-gray-700 shrink-0 transition-all">
+      Order History
+    </button>
+    <button onclick="switchTab('tickets')" data-mobile-nav-btn="tickets" class="px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-cream-50 dark:bg-gray-800 text-sage-800 dark:text-gray-200 border border-cream-200 dark:border-gray-700 shrink-0 transition-all">
+      Support Tickets
+    </button>
+    <button onclick="switchTab('settings')" data-mobile-nav-btn="settings" class="px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-cream-50 dark:bg-gray-800 text-sage-800 dark:text-gray-200 border border-cream-200 dark:border-gray-700 shrink-0 transition-all">
+      Settings
+    </button>
+  </nav>
+
+  <!-- Dashboard Container -->
+  <div class="w-full min-h-[calc(100vh-80px)] flex-grow flex flex-col md:flex-row">
+    
+    <!-- Left Sidebar Menu (Desktop) -->
+    <aside id="dashboard-sidebar" class="hidden md:flex md:w-64 lg:w-72 shrink-0 bg-sage-800 text-white flex-col justify-start p-6 space-y-8 border-r border-sage-900/40 min-h-full">
+      
+      <!-- User Profile Header -->
+      <div class="flex items-center space-x-3 p-3 rounded-2xl bg-white/10 border border-white/10">
+        <div class="w-10 h-10 rounded-xl bg-sage-500 text-white flex items-center justify-center font-bold text-sm shadow">
+          SM
+        </div>
+        <div class="min-w-0 flex-1">
+          <span class="block text-[10px] uppercase tracking-wider text-sage-300 font-semibold">Welcome back,</span>
+          <h4 class="text-sm font-bold text-white truncate" id="sidebar-user-display-name">Sarah Mitchell</h4>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="space-y-1.5 w-full" id="dashboard-nav">
+        <button onclick="switchTab('overview')" data-nav-btn="overview" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl bg-sage-700 text-white font-semibold text-sm text-left transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2m0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+          <span>Dashboard Overview</span>
+        </button>
+        <button onclick="switchTab('recipients')" data-nav-btn="recipients" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-white/5 text-sage-200 hover:text-white font-semibold text-sm text-left transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+          <span>Seniors Profile</span>
+        </button>
+        <button onclick="switchTab('shop')" data-nav-btn="shop" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-white/5 text-sage-200 hover:text-white font-semibold text-sm text-left transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+          <span>Order Groceries</span>
+        </button>
+        <button onclick="switchTab('recurring')" data-nav-btn="recurring" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-white/5 text-sage-200 hover:text-white font-semibold text-sm text-left transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 3H21m0 0v5h-5"></path></svg>
+          <span>Recurring Deliveries</span>
+        </button>
+        <button onclick="switchTab('diets')" data-nav-btn="diets" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-white/5 text-sage-200 hover:text-white font-semibold text-sm text-left transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+          <span>Dietary Preferences</span>
+        </button>
+        <button onclick="switchTab('tracking')" data-nav-btn="tracking" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-white/5 text-sage-200 hover:text-white font-semibold text-sm text-left transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+          <span>Delivery Tracking</span>
+        </button>
+        <button onclick="switchTab('history')" data-nav-btn="history" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-white/5 text-sage-200 hover:text-white font-semibold text-sm text-left transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          <span>Order History</span>
+        </button>
+        <button onclick="switchTab('tickets')" data-nav-btn="tickets" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-white/5 text-sage-200 hover:text-white font-semibold text-sm text-left transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          <span>Support Tickets</span>
+        </button>
+        <button onclick="switchTab('settings')" data-nav-btn="settings" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-white/5 text-sage-200 hover:text-white font-semibold text-sm text-left transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+          <span>Settings</span>
+        </button>
+      </nav>
+
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 min-w-0 p-6 sm:p-8 lg:p-10 space-y-6 w-full">
+      
+      <!-- Caregiver Greeting Banner -->
+      <div class="flex items-center justify-between border-b border-cream-200/80 dark:border-gray-800 pb-4">
+        <div class="flex items-center space-x-3">
+          <div class="w-11 h-11 rounded-2xl bg-sage-500 text-white font-bold flex items-center justify-center text-sm shadow-md">
+            SM
+          </div>
+          <div>
+            <span class="text-xs uppercase font-bold tracking-wider text-sage-600 dark:text-sage-400">Welcome back,</span>
+            <h1 class="text-xl sm:text-2xl font-serif font-bold text-sage-900 dark:text-white" id="main-user-display-name">Sarah Mitchell</h1>
+          </div>
+        </div>
+        <div class="hidden sm:flex items-center space-x-2">
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-sage-100 dark:bg-sage-900/50 text-sage-800 dark:text-sage-300 border border-sage-200 dark:border-sage-800">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 mr-1.5 animate-pulse"></span> Monitored Senior: Eleanor Mitchell
+          </span>
+        </div>
+      </div>
+      
+      <!-- TOP STATUS ALERT BAR -->
+      <div class="bg-gradient-to-r from-sage-500 to-sage-600 text-white p-5 rounded-2xl shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div>
+          <span class="text-xs uppercase font-bold tracking-wider opacity-90">Live Status Tracker</span>
+          <h2 class="text-lg font-bold font-serif mt-0.5">Order #EE-4091 is Out for Delivery</h2>
+        </div>
+        <button onclick="switchTab('tracking')" class="px-4 py-2 bg-white text-sage-800 hover:bg-cream-50 text-xs font-bold rounded-xl shadow transition-all">Track Doorstep Handoff</button>
+      </div>
+
+      <!-- PANEL 1: OVERVIEW (Default) -->
+      <section id="panel-overview" class="dashboard-panel space-y-6">
+        
+        <!-- Stats Row -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white dark:bg-gray-800 p-5 rounded-2xl border border-cream-200 dark:border-gray-700/60 shadow-sm space-y-2">
+            <span class="text-sage-500 block">
+              <svg class="w-6 h-6 text-sage-600 dark:text-sage-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+            </span>
+            <span class="block text-2xl font-extrabold text-sage-900 dark:text-white" id="stat-recipients-count">1</span>
+            <span class="block text-xs text-sage-800/60 dark:text-gray-400">Monitored Seniors</span>
+          </div>
+          <div class="bg-white dark:bg-gray-800 p-5 rounded-2xl border border-cream-200 dark:border-gray-700/60 shadow-sm space-y-2">
+            <span class="text-sage-500 block">
+              <svg class="w-6 h-6 text-sage-600 dark:text-sage-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 3H21m0 0v5h-5"></path></svg>
+            </span>
+            <span class="block text-2xl font-extrabold text-sage-900 dark:text-white">Active</span>
+            <span class="block text-xs text-sage-800/60 dark:text-gray-400">Weekly Auto-Order</span>
+          </div>
+          <div class="bg-white dark:bg-gray-800 p-5 rounded-2xl border border-cream-200 dark:border-gray-700/60 shadow-sm space-y-2">
+            <span class="text-sage-500 block">
+              <svg class="w-6 h-6 text-sage-600 dark:text-sage-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+            </span>
+            <span class="block text-2xl font-extrabold text-sage-900 dark:text-white">3</span>
+            <span class="block text-xs text-sage-800/60 dark:text-gray-400">Deliveries This Month</span>
+          </div>
+          <div class="bg-white dark:bg-gray-800 p-5 rounded-2xl border border-cream-200 dark:border-gray-700/60 shadow-sm space-y-2">
+            <span class="text-sage-500 block">
+              <svg class="w-6 h-6 text-sage-600 dark:text-sage-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+            </span>
+            <span class="block text-2xl font-extrabold text-sage-900 dark:text-white">$84.50</span>
+            <span class="block text-xs text-sage-800/60 dark:text-gray-400">Monthly Spending</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Active Recipient Summary widget -->
+          <div class="lg:col-span-2 bg-white dark:bg-gray-800 p-6 rounded-3xl border border-cream-200 dark:border-gray-700/60 shadow-sm space-y-4">
+            <div class="flex items-center justify-between border-b border-cream-100 dark:border-gray-700 pb-3">
+              <h3 class="font-bold font-serif text-sage-900 dark:text-white text-base">Senior Profile Spotlight</h3>
+              <button onclick="switchTab('recipients')" class="text-xs text-sage-500 font-bold hover:underline">Manage Seniors</button>
+            </div>
+            <div id="overview-recipient-list" class="space-y-4">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <!-- Billing & Payment shortcut -->
+          <div class="bg-white dark:bg-gray-800 p-6 rounded-3xl border border-cream-200 dark:border-gray-700/60 shadow-sm space-y-4">
+            <h3 class="font-bold font-serif text-sage-900 dark:text-white text-base">Payment Details</h3>
+            <div class="p-4 bg-cream-50/50 dark:bg-gray-900 rounded-2xl border border-cream-200/50 dark:border-gray-700 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-sage-800 dark:text-gray-300 font-semibold">Primary Visa</span>
+                <span class="text-xs font-bold text-sage-900 dark:text-white">•••• 4920</span>
+              </div>
+              <p class="text-[10px] text-sage-800/60 dark:text-gray-400">Billing coordinated automatically with care plan deliveries.</p>
+            </div>
+            <button onclick="showToast('Payment methods can be updated inside caregiver settings.', 'info')" class="w-full py-2.5 bg-cream-200/50 hover:bg-cream-200 dark:bg-gray-750 dark:hover:bg-gray-700 text-center font-bold text-xs rounded-xl text-sage-850 dark:text-gray-200">Modify Billing Card</button>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- PANEL 2: RECIPIENTS CRUD -->
+      <section id="panel-recipients" class="dashboard-panel space-y-6 hidden">
+        
+        <div class="flex items-center justify-between border-b border-cream-200 dark:border-gray-750 pb-4">
+          <div>
+            <h2 class="text-xl sm:text-2xl font-serif font-bold text-sage-900 dark:text-white">Senior Recipient Profiles</h2>
+            <p class="text-xs text-sage-800/60 dark:text-gray-400 mt-0.5">Manage details, dietary filters, and doorstep coordination notes.</p>
+          </div>
+          <button onclick="openAddRecipientModal()" class="px-4 py-2 bg-sage-500 hover:bg-sage-600 text-white font-bold text-xs rounded-xl shadow">Add Profile</button>
+        </div>
+
+        <!-- Recipients List -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="recipients-grid-container">
+          <!-- Rendered via JS -->
+        </div>
+
+      </section>
+
+      <!-- PANEL 3: GROCERY SHOP (Persisted Cart) -->
+      <section id="panel-shop" class="dashboard-panel space-y-6 hidden">
+        
+        <div class="flex items-center justify-between border-b border-cream-200 dark:border-gray-750 pb-4">
+          <div>
+            <h2 class="text-xl sm:text-2xl font-serif font-bold text-sage-900 dark:text-white">Add Grocery Items</h2>
+            <p class="text-xs text-sage-800/60 dark:text-gray-400 mt-0.5">Select items to purchase or add to your parent's weekly recurring auto-plan.</p>
+          </div>
+          <!-- Mini Cart trigger/indicator -->
+          <div class="flex items-center space-x-2">
+            <span class="text-xs font-bold text-sage-800 dark:text-gray-300">Cart subtotal:</span>
+            <span class="text-sm font-bold text-sage-900 dark:text-white" id="cart-subtotal">$0.00</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <!-- Items List (8 cols) -->
+          <div class="lg:col-span-8 space-y-6">
+            
+            <!-- Category Tabs inside shop -->
+            <div class="flex space-x-2 border-b border-cream-100 dark:border-gray-800 pb-2 overflow-x-auto">
+              <button onclick="filterShopCategory('produce')" id="shop-tab-produce" class="px-4 py-2 rounded-xl text-xs font-bold bg-sage-500 text-white">Produce</button>
+              <button onclick="filterShopCategory('dairy')" id="shop-tab-dairy" class="px-4 py-2 rounded-xl text-xs font-bold hover:bg-cream-200 dark:hover:bg-gray-800 text-sage-800 dark:text-gray-200">Eggs & Dairy</button>
+              <button onclick="filterShopCategory('healthy')" id="shop-tab-healthy" class="px-4 py-2 rounded-xl text-xs font-bold hover:bg-cream-200 dark:hover:bg-gray-800 text-sage-800 dark:text-gray-200">Dietary Essentials</button>
+              <button onclick="filterShopCategory('household')" id="shop-tab-household" class="px-4 py-2 rounded-xl text-xs font-bold hover:bg-cream-200 dark:hover:bg-gray-800 text-sage-800 dark:text-gray-200">Household</button>
+            </div>
+
+            <!-- Shop Items Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4" id="shop-items-grid">
+              <!-- Rendered via JS -->
+            </div>
+
+          </div>
+
+          <!-- Checkout Cart Panel (4 cols) -->
+          <div class="lg:col-span-4 bg-white dark:bg-gray-800 p-6 rounded-3xl border border-cream-200 dark:border-gray-700/60 shadow-sm space-y-4">
+            <h3 class="font-bold font-serif text-sage-900 dark:text-white text-base">Selected Cart</h3>
+            <div class="divide-y divide-cream-100 dark:divide-gray-700 max-h-60 overflow-y-auto" id="cart-items-list">
+              <!-- Rendered via JS -->
+            </div>
+            
+            <div class="pt-4 border-t border-cream-100 dark:border-gray-750 space-y-2 text-xs">
+              <div class="flex justify-between font-medium text-sage-800 dark:text-gray-300">
+                <span>Items Subtotal</span>
+                <span id="summary-subtotal">$0.00</span>
+              </div>
+              <div class="flex justify-between font-medium text-sage-800 dark:text-gray-300">
+                <span>Delivery Fee</span>
+                <span id="summary-delivery">$3.99</span>
+              </div>
+              <div class="flex justify-between font-bold text-sage-900 dark:text-white text-sm pt-2 border-t border-dashed border-cream-100 dark:border-gray-750">
+                <span>Estimated Total</span>
+                <span id="summary-total">$3.99</span>
+              </div>
+            </div>
+
+            <button onclick="checkoutCart()" class="w-full py-3 bg-sage-500 hover:bg-sage-600 text-white font-bold rounded-xl text-xs sm:text-sm shadow transition-all">Submit Order</button>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- PANEL 4: RECURRING RULES -->
+      <section id="panel-recurring" class="dashboard-panel space-y-6 hidden">
+        
+        <div class="border-b border-cream-200 dark:border-gray-750 pb-4">
+          <h2 class="text-xl sm:text-2xl font-serif font-bold text-sage-900 dark:text-white">Configure Auto-Delivery Rules</h2>
+          <p class="text-xs text-sage-800/60 dark:text-gray-400 mt-0.5">Customize active weekly order schedules, skip dates, and coordinator instructions.</p>
+        </div>
+
+        <div class="max-w-xl bg-white dark:bg-gray-800 p-8 rounded-3xl border border-cream-200 dark:border-gray-700/60 shadow-sm space-y-6">
+          <form id="recurring-rules-form" onsubmit="event.preventDefault(); saveRecurringRules();">
+            
+            <div class="space-y-4">
+              <div>
+                <label class="block text-xs font-bold text-sage-800 dark:text-gray-300 uppercase tracking-wider mb-2">Select Active Senior Profile</label>
+                <select id="recurring-select-senior" class="w-full px-4 py-3 rounded-xl bg-cream-50/50 dark:bg-gray-900 text-sage-850 dark:text-gray-200 border border-cream-200 dark:border-gray-700 focus:outline-none focus:border-sage-500 text-sm">
+                  <!-- Rendered via JS -->
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-sage-800 dark:text-gray-300 uppercase tracking-wider mb-2">Weekly Delivery Day</label>
+                <select id="recurring-delivery-day" class="w-full px-4 py-3 rounded-xl bg-cream-50/50 dark:bg-gray-900 text-sage-850 dark:text-gray-200 border border-cream-200 dark:border-gray-700 focus:outline-none focus:border-sage-500 text-sm">
+                  <option value="Monday">Monday mornings (9am - 12pm)</option>
+                  <option value="Tuesday">Tuesday afternoons (1pm - 4pm)</option>
+                  <option value="Wednesday" selected>Wednesday mornings (10am - 1pm)</option>
+                  <option value="Thursday">Thursday afternoons (2pm - 5pm)</option>
+                  <option value="Friday">Friday mornings (9am - 12pm)</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-sage-800 dark:text-gray-300 uppercase tracking-wider mb-2">Doorstep Safety Instructions</label>
+                <textarea id="recurring-instructions" rows="4" class="w-full px-4 py-3 rounded-xl bg-cream-50/50 dark:bg-gray-900 text-sage-850 dark:text-gray-200 border border-cream-200 dark:border-gray-700 focus:outline-none focus:border-sage-500 text-sm" placeholder="e.g. Knock twice, carry bag inside. Mom walks slowly."></textarea>
+              </div>
+
+              <div class="p-4 bg-cream-50/50 dark:bg-gray-900 rounded-2xl border border-cream-200/50 dark:border-gray-700 text-xs text-sage-800/80 dark:text-gray-400 font-semibold leading-relaxed">
+                <span><span class="px-2 py-0.5 rounded bg-sage-500 text-white text-[10px] font-bold uppercase tracking-wider mr-1.5">Autopilot</span> Groceries selected in the shop tab will be automatically ordered and charged 12 hours before the schedule.</span>
+              </div>
+            </div>
+
+            <button type="submit" class="w-full py-3.5 bg-sage-500 hover:bg-sage-600 text-white font-bold rounded-xl text-sm transition-all shadow mt-6">Save Delivery Rules</button>
+
+          </form>
+        </div>
+
+      </section>
+
+      <!-- PANEL 5: REAL-TIME TRACKING -->
+      <section id="panel-tracking" class="dashboard-panel space-y-6 hidden">
+        
+        <div class="border-b border-cream-200 dark:border-gray-750 pb-4">
+          <h2 class="text-xl sm:text-2xl font-serif font-bold text-sage-900 dark:text-white">Live Delivery Progress</h2>
+          <p class="text-xs text-sage-800/60 dark:text-gray-400 mt-0.5">Real-time coordinator dashboard tracking for order #EE-4091.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Progress Tracker Timeline (5 cols) -->
+          <div class="lg:col-span-5 bg-white dark:bg-gray-800 p-6 rounded-3xl border border-cream-200 dark:border-gray-700/60 shadow-sm space-y-8">
+            <h3 class="font-bold font-serif text-sage-900 dark:text-white text-base">Tracking Checkpoints</h3>
+            
+            <div class="relative border-l-2 border-sage-500 dark:border-gray-700 ml-4 space-y-8 pb-2">
+              
+              <!-- Checkpoint 1 -->
+              <div class="relative pl-8">
+                <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-sage-500 ring-4 ring-sage-100 dark:ring-sage-950"></div>
+                <h4 class="font-bold text-sm text-sage-900 dark:text-white">Order Confirmed</h4>
+                <p class="text-[10px] text-sage-800/60 dark:text-gray-400">8:30 AM — Grocery items packed in crates.</p>
+              </div>
+
+              <!-- Checkpoint 2 -->
+              <div class="relative pl-8">
+                <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-sage-500 ring-4 ring-sage-100 dark:ring-sage-950"></div>
+                <h4 class="font-bold text-sm text-sage-900 dark:text-white">Dispatched in Vehicle</h4>
+                <p class="text-[10px] text-sage-800/60 dark:text-gray-400">9:15 AM — Loaded into delivery captain vehicle.</p>
+              </div>
+
+              <!-- Checkpoint 3 -->
+              <div class="relative pl-8">
+                <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-sage-500 ring-4 ring-sage-100 dark:ring-sage-950"></div>
+                <h4 class="font-bold text-sm text-sage-900 dark:text-white">Out for Delivery</h4>
+                <p class="text-[10px] text-sage-800/60 dark:text-gray-400">9:45 AM — Driver coordinates gate entry.</p>
+              </div>
+
+              <!-- Checkpoint 4 -->
+              <div class="relative pl-8">
+                <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-700"></div>
+                <h4 class="font-bold text-sm text-gray-500 dark:text-gray-400">Delivered Safely inside Kitchen</h4>
+                <p class="text-[10px] text-gray-400 dark:text-gray-600">Expected: 10:15 AM — Handoff confirmation photo will be sent.</p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Mock Map (7 cols) -->
+          <div class="lg:col-span-7 bg-white dark:bg-gray-800 p-6 rounded-3xl border border-cream-200 dark:border-gray-700/60 shadow-sm space-y-4">
+            
+            <div class="flex items-center justify-between border-b border-cream-100 dark:border-gray-700 pb-3">
+              <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-full bg-sage-100 dark:bg-sage-900 flex items-center justify-center font-bold text-sm">👤</div>
+                <div>
+                  <h4 class="font-bold text-sage-900 dark:text-white text-xs">Arthur Pendelton</h4>
+                  <p class="text-[9px] text-sage-800/60 dark:text-gray-400">Certified Senior Care Driver</p>
+                </div>
+              </div>
+              <button onclick="showToast('Connecting line to Driver Arthur Pendelton...', 'info')" class="px-3 py-1.5 bg-cream-200/50 hover:bg-cream-200 dark:bg-gray-750 dark:hover:bg-gray-700 text-xs font-semibold rounded-xl text-sage-850 dark:text-gray-200">Message Driver</button>
+            </div>
+
+            <!-- Visual representation of GPS tracker -->
+            <div class="relative w-full h-80 rounded-2xl overflow-hidden border border-cream-100 dark:border-gray-700 bg-sage-100 dark:bg-gray-950 flex items-center justify-center">
+              
+              <!-- Draw a cute mock vector schematic map style with CSS grid/circles -->
+              <div class="absolute inset-0 bg-[radial-gradient(#617d692a_1px,transparent_1px)] [background-size:24px_24px]"></div>
+              
+              <!-- Streets Mock layout -->
+              <div class="absolute w-full h-1 bg-white dark:bg-gray-800 top-1/3"></div>
+              <div class="absolute w-full h-1 bg-white dark:bg-gray-800 top-2/3"></div>
+              <div class="absolute h-full w-1 bg-white dark:bg-gray-800 left-1/3"></div>
+              <div class="absolute h-full w-1 bg-white dark:bg-gray-800 left-2/3"></div>
+
+              <!-- Driver Icon (moving) -->
+              <div class="absolute left-1/3 top-2/3 -translate-x-3.5 -translate-y-3.5 w-7 h-7 rounded-full bg-sage-500 border-2 border-white text-white flex items-center justify-center text-xs font-bold shadow animate-bounce">🚗</div>
+              
+              <!-- Target Destination Pin -->
+              <div class="absolute left-2/3 top-1/3 -translate-x-3.5 -translate-y-3.5 text-2xl animate-pulse">📍</div>
+
+              <div class="absolute bottom-4 left-4 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md px-3.5 py-2 rounded-xl text-[10px] font-bold text-sage-850 dark:text-white shadow-sm border border-cream-200/50 dark:border-gray-800">
+                <span>Driver speed: 22mph (Approaching Oakwood Ave)</span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- PANEL 6: CAREGIVER SETTINGS -->
+      <section id="panel-settings" class="dashboard-panel space-y-6 hidden">
+        
+        <div class="border-b border-cream-200 dark:border-gray-750 pb-4">
+          <h2 class="text-xl sm:text-2xl font-serif font-bold text-sage-900 dark:text-white">Caregiver Profile Settings</h2>
+          <p class="text-xs text-sage-800/60 dark:text-gray-400 mt-0.5">Manage your personal notifications, billing defaults, and global page layouts.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          
+          <!-- Caregiver Info Form (8 cols) -->
+          <div class="lg:col-span-8 bg-white dark:bg-gray-800 p-8 rounded-3xl border border-cream-200 dark:border-gray-700/60 shadow-sm">
+            <form id="settings-form" onsubmit="event.preventDefault(); saveCaregiverSettings(this);" class="space-y-6">
+              
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-xs font-bold text-sage-800 dark:text-gray-300 uppercase tracking-wider mb-2">Caregiver Full Name</label>
+                  <input type="text" id="settings-name" name="name" class="w-full px-4 py-3 rounded-xl bg-cream-50/50 dark:bg-gray-900 text-sage-850 dark:text-gray-200 border border-cream-200 dark:border-gray-700 focus:outline-none focus:border-sage-500 text-sm">
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-sage-800 dark:text-gray-300 uppercase tracking-wider mb-2">Relationship Type</label>
+                  <select id="settings-relationship" name="relationship" class="w-full px-4 py-3 rounded-xl bg-cream-50/50 dark:bg-gray-900 text-sage-850 dark:text-gray-200 border border-cream-200 dark:border-gray-700 focus:outline-none focus:border-sage-500 text-sm">
+                    <option value="Daughter">Daughter</option>
+                    <option value="Son">Son</option>
+                    <option value="Caregiver">Professional Caregiver</option>
+                    <option value="Self">Self</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-xs font-bold text-sage-800 dark:text-gray-300 uppercase tracking-wider mb-2">Email Address</label>
+                  <input type="email" id="settings-email" name="email" class="w-full px-4 py-3 rounded-xl bg-cream-50/50 dark:bg-gray-900 text-sage-850 dark:text-gray-200 border border-cream-200 dark:border-gray-700 focus:outline-none focus:border-sage-500 text-sm">
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-sage-800 dark:text-gray-300 uppercase tracking-wider mb-2">Contact phone</label>
+                  <input type="text" id="settings-phone" name="phone" class="w-full px-4 py-3 rounded-xl bg-cream-50/50 dark:bg-gray-900 text-sage-850 dark:text-gray-200 border border-cream-200 dark:border-gray-700 focus:outline-none focus:border-sage-500 text-sm">
+                </div>
+              </div>
+
+              <button type="submit" class="w-full py-3.5 bg-sage-500 hover:bg-sage-600 text-white font-bold rounded-xl text-sm transition-all shadow">Save Caregiver Info</button>
+
+            </form>
+          </div>
+
+          <!-- Notification Toggles (4 cols) -->
+          <div class="lg:col-span-4 bg-white dark:bg-gray-800 p-6 rounded-3xl border border-cream-200 dark:border-gray-700/60 shadow-sm space-y-4">
+            <h3 class="font-bold font-serif text-sage-900 dark:text-white text-base">Alert System</h3>
+            
+            <div class="space-y-4">
+              <label class="flex items-center justify-between cursor-pointer">
+                <div>
+                  <span class="block text-xs font-bold text-sage-800 dark:text-gray-200">Doorstep Photo SMS</span>
+                  <span class="block text-[10px] text-sage-800/60 dark:text-gray-400">Receive photo proofs on handoff</span>
+                </div>
+                <input type="checkbox" checked class="w-4 h-4 rounded text-sage-500 border-cream-300 focus:ring-sage-500">
+              </label>
+
+              <label class="flex items-center justify-between cursor-pointer">
+                <div>
+                  <span class="block text-xs font-bold text-sage-800 dark:text-gray-200">Dietary Violations Alert</span>
+                  <span class="block text-[10px] text-sage-800/60 dark:text-gray-400">Warn before checkout if items fail</span>
+                </div>
+                <input type="checkbox" checked class="w-4 h-4 rounded text-sage-500 border-cream-300 focus:ring-sage-500">
+              </label>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    
+      <!-- PANEL 5: DIETARY PREFERENCES -->
+      <section id="panel-diets" class="dashboard-panel space-y-6 hidden">
+        <div class="border-b border-cream-200 dark:border-gray-750 pb-4">
+          <h2 class="text-xl sm:text-2xl font-serif font-bold text-sage-900 dark:text-white">Dietary & Nutrition Preferences</h2>
+          <p class="text-xs text-sage-800/60 dark:text-gray-400 mt-0.5">Manage dietary filters and allergen safety rules for each senior profile.</p>
+        </div>
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-3xl border border-cream-200 dark:border-gray-700/60 shadow-sm space-y-6">
+          <div id="diets-senior-list" class="space-y-6">
+            <!-- Rendered via JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- PANEL 6: ORDER HISTORY -->
+      <section id="panel-history" class="dashboard-panel space-y-6 hidden">
+        <div class="border-b border-cream-200 dark:border-gray-750 pb-4">
+          <h2 class="text-xl sm:text-2xl font-serif font-bold text-sage-900 dark:text-white">Order & Delivery History</h2>
+          <p class="text-xs text-sage-800/60 dark:text-gray-400 mt-0.5">View invoices, detailed item lists, and delivery verification photographs.</p>
+        </div>
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-3xl border border-cream-200 dark:border-gray-700/60 shadow-sm space-y-4">
+          <div class="divide-y divide-cream-100 dark:divide-gray-700 space-y-4">
+            <!-- Order 1 -->
+            <div class="pt-4 first:pt-0 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+              <div class="space-y-1">
+                <div class="flex items-center space-x-2">
+                  <span class="text-sm font-bold text-sage-900 dark:text-white">Order #EE-3982</span>
+                  <span class="px-2 py-0.5 rounded-full bg-green-100 text-green-800 dark:bg-green-950 dark:text-green-300 text-[9px] font-bold">Delivered</span>
+                </div>
+                <p class="text-xs text-sage-800/60 dark:text-gray-400">August 24, 2026 • Recipient: Grandpa Albert</p>
+                <p class="text-xs text-sage-800/80 dark:text-gray-300">Items: Lactose-Free Milk, Cage-Free Eggs, Soft Beef Stew Meal</p>
+              </div>
+              <div class="text-right sm:text-right space-y-1">
+                <span class="block text-sm font-bold text-sage-900 dark:text-white">$19.37</span>
+                <button onclick="showToast('Invoice downloaded (Simulated).', 'success')" class="text-xs text-sage-500 font-bold hover:underline block">Download Invoice</button>
+              </div>
+            </div>
+            <!-- Order 2 -->
+            <div class="pt-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+              <div class="space-y-1">
+                <div class="flex items-center space-x-2">
+                  <span class="text-sm font-bold text-sage-900 dark:text-white">Order #EE-3827</span>
+                  <span class="px-2 py-0.5 rounded-full bg-green-100 text-green-800 dark:bg-green-950 dark:text-green-300 text-[9px] font-bold">Delivered</span>
+                </div>
+                <p class="text-xs text-sage-800/60 dark:text-gray-400">August 17, 2026 • Recipient: Grandpa Albert</p>
+                <p class="text-xs text-sage-800/80 dark:text-gray-300">Items: Organic Red Apples, Crisp Broccoli, Fragrance-Free Hand Soap</p>
+              </div>
+              <div class="text-right sm:text-right space-y-1">
+                <span class="block text-sm font-bold text-sage-900 dark:text-white">$15.27</span>
+                <button onclick="showToast('Invoice downloaded (Simulated).', 'success')" class="text-xs text-sage-500 font-bold hover:underline block">Download Invoice</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PANEL 7: SUPPORT TICKETS -->
+      <section id="panel-tickets" class="dashboard-panel space-y-6 hidden">
+        <div class="border-b border-cream-200 dark:border-gray-750 pb-4">
+          <h2 class="text-xl sm:text-2xl font-serif font-bold text-sage-900 dark:text-white">Care Liaison Support</h2>
+          <p class="text-xs text-sage-800/60 dark:text-gray-400 mt-0.5">Submit questions, address coordinate requests, or ask about custom items.</p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <!-- Ticket list -->
+          <div class="lg:col-span-8 bg-white dark:bg-gray-800 p-6 rounded-3xl border border-cream-200 dark:border-gray-700/60 shadow-sm space-y-4">
+            <h3 class="font-bold font-serif text-sage-900 dark:text-white text-base">Your Tickets</h3>
+            <div class="divide-y divide-cream-100 dark:divide-gray-700 space-y-4" id="tickets-list-container">
+              <!-- Ticket 1 -->
+              <div class="pt-4 first:pt-0 flex justify-between items-center">
+                <div>
+                  <span class="text-xs font-bold text-sage-900 dark:text-white">Request: Lactose-Free brand of yogurt</span>
+                  <span class="block text-[10px] text-sage-800/60 dark:text-gray-400">Created: 2 days ago • Category: Custom Item Request</span>
+                </div>
+                <span class="px-2.5 py-1 rounded-full bg-green-50 text-green-700 dark:bg-green-950/30 dark:text-green-400 text-[10px] font-bold">Resolved</span>
+              </div>
+              <!-- Ticket 2 -->
+              <div class="pt-4 flex justify-between items-center">
+                <div>
+                  <span class="text-xs font-bold text-sage-900 dark:text-white">Request: Confirm doorstep dropoff on back porch</span>
+                  <span class="block text-[10px] text-sage-800/60 dark:text-gray-400">Created: 5 days ago • Category: Delivery Notes</span>
+                </div>
+                <span class="px-2.5 py-1 rounded-full bg-green-50 text-green-700 dark:bg-green-950/30 dark:text-green-400 text-[10px] font-bold">Resolved</span>
+              </div>
+            </div>
+          </div>
+          <!-- Ticket Submit form -->
+          <div class="lg:col-span-4 bg-white dark:bg-gray-800 p-6 rounded-3xl border border-cream-200 dark:border-gray-700/60 shadow-sm space-y-4">
+            <h3 class="font-bold font-serif text-sage-900 dark:text-white text-base">New Request</h3>
+            <form onsubmit="event.preventDefault(); submitTicket();" class="space-y-3">
+              <div>
+                <label class="block text-[10px] font-bold text-sage-800 dark:text-gray-300 uppercase tracking-wider mb-1">Subject</label>
+                <input type="text" id="ticket-subject" required class="w-full px-3 py-2 rounded-xl bg-cream-50/50 dark:bg-gray-900 text-sage-850 dark:text-gray-200 border border-cream-200 dark:border-gray-700 text-xs">
+              </div>
+              <div>
+                <label class="block text-[10px] font-bold text-sage-800 dark:text-gray-300 uppercase tracking-wider mb-1">Message</label>
+                <textarea id="ticket-message" rows="3" required class="w-full px-3 py-2 rounded-xl bg-cream-50/50 dark:bg-gray-900 text-sage-850 dark:text-gray-200 border border-cream-200 dark:border-gray-700 text-xs"></textarea>
+              </div>
+              <button type="submit" class="w-full py-2 bg-sage-500 hover:bg-sage-600 text-white font-bold rounded-lg text-xs shadow">Submit Ticket</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+  <!-- ADD/EDIT RECIPIENT MODAL -->
+  <div id="recipient-modal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="w-full max-w-lg bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-2xl border border-cream-200 dark:border-gray-700 p-6 space-y-6">
+      
+      <div class="flex items-center justify-between border-b border-cream-100 dark:border-gray-700 pb-3">
+        <h3 class="text-lg font-serif font-bold text-sage-900 dark:text-white" id="modal-recipient-title">Add Senior Profile</h3>
+        <button onclick="closeModal('recipient-modal')" class="text-sage-800 dark:text-gray-300 hover:text-red-500">✕</button>
+      </div>
+
+      <form id="recipient-modal-form" onsubmit="event.preventDefault(); saveRecipientFormSubmit();" class="space-y-4">
+        <input type="hidden" id="modal-recipient-index" value="-1">
+
+        <div>
+          <label class="block text-xs font-bold text-sage-800 dark:text-gray-300 uppercase tracking-wider mb-2">Senior's Full Name</label>
+          <input type="text" id="modal-name" required class="w-full px-4 py-3 rounded-xl bg-cream-50/50 dark:bg-gray-900 text-sage-850 dark:text-gray-200 border border-cream-200 dark:border-gray-700 focus:outline-none focus:border-sage-500 text-sm">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-sage-800 dark:text-gray-300 uppercase tracking-wider mb-2">Delivery Address</label>
+          <input type="text" id="modal-address" required class="w-full px-4 py-3 rounded-xl bg-cream-50/50 dark:bg-gray-900 text-sage-850 dark:text-gray-200 border border-cream-200 dark:border-gray-700 focus:outline-none focus:border-sage-500 text-sm">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-sage-800 dark:text-gray-300 uppercase tracking-wider mb-2">Recipient Phone</label>
+          <input type="text" id="modal-phone" required class="w-full px-4 py-3 rounded-xl bg-cream-50/50 dark:bg-gray-900 text-sage-850 dark:text-gray-200 border border-cream-200 dark:border-gray-700 focus:outline-none focus:border-sage-500 text-sm">
+        </div>
+
+        <!-- Dietary Preferences checkboxes -->
+        <div>
+          <label class="block text-xs font-bold text-sage-800 dark:text-gray-300 uppercase tracking-wider mb-2">Dietary Restrictions</label>
+          <div class="grid grid-cols-2 gap-3 text-xs">
+            <label class="flex items-center space-x-2">
+              <input type="checkbox" id="modal-diet-sodium" class="rounded text-sage-500">
+              <span>Low Sodium</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input type="checkbox" id="modal-diet-sugar" class="rounded text-sage-500">
+              <span>Sugar-Conscious</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input type="checkbox" id="modal-diet-soft" class="rounded text-sage-500">
+              <span>Soft Foods</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input type="checkbox" id="modal-diet-lactose" class="rounded text-sage-500">
+              <span>Lactose-Free</span>
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full py-3.5 bg-sage-500 hover:bg-sage-600 text-white font-bold rounded-xl text-sm transition-all shadow">Save Profile Info</button>
+
+      </form>
+
+    </div>
+  </div>
+
+  
+
+  <!-- Site Script -->
+  <script src="assets/js/main.js"></script>
+  
+  <!-- Dashboard Page Specific Logic -->
+
+  <script>
+    // State management
+    let caregiverProfile = Store.get('ee_profile', {
+      name: 'Sarah Mitchell',
+      email: 'demo@elderlyeats.com',
+      phone: '(555) 012-3456',
+      relationship: 'Daughter'
+    });
+
+    let recipientsList = Store.get('ee_recipients', [
+      {
+        name: 'Grandpa Albert',
+        address: '482 Oakwood Ave, Atlanta, GA 30309',
+        phone: '(555) 987-6543',
+        diets: ['Low Sodium', 'Soft Foods'],
+        weeklyDay: 'Wednesday',
+        notes: 'Knock loud, mom walks slow. Put bags on kitchen counter.'
+      }
+    ]);
+
+    let shopItems = [
+      { id: 1, name: 'Organic Red Apples', price: 4.99, category: 'produce', image: 'assets/images/products/organic-red-apples.jpg' },
+      { id: 2, name: 'Soft Ripe Bananas', price: 2.49, category: 'produce', image: 'assets/images/products/soft-ripe-bananas.jpg' },
+      { id: 3, name: 'Crisp Broccoli', price: 3.29, category: 'produce', image: 'assets/images/products/broccoli-crowns.jpg' },
+      
+      { id: 4, name: 'Lactose-Free Milk', price: 4.89, category: 'dairy', image: 'assets/images/products/lactose-free-milk.jpg' },
+      { id: 5, name: 'Cage-Free Eggs', price: 5.49, category: 'dairy', image: 'assets/images/products/cage-free-eggs.jpg' },
+      { id: 6, name: 'Cheddar Cheese Slices', price: 4.29, category: 'dairy', image: 'assets/images/products/cheddar-slices.jpg' },
+      
+      { id: 7, name: 'Soft Beef Stew Meal', price: 8.99, category: 'healthy', image: 'assets/images/products/beef-carrot-stew.jpg' },
+      { id: 8, name: 'Low-Sodium Vegetable Soup', price: 3.49, category: 'healthy', image: 'assets/images/products/low-sodium-veg-soup.jpg' },
+      { id: 9, name: 'Nutrition Protein Shake', price: 4.49, category: 'healthy', image: 'assets/images/products/nutrition-shake.jpg' },
+      
+      { id: 10, name: 'Ultra-Soft Paper Towels', price: 6.99, category: 'household', image: 'assets/images/products/paper-towels.jpg' },
+      { id: 11, name: 'Fragrance-Free Hand Soap', price: 3.99, category: 'household', image: 'assets/images/products/liquid-hand-soap.jpg' },
+      { id: 12, name: 'Multi-Surface Cleaner', price: 4.29, category: 'household', image: 'assets/images/products/multi-surface-spray.jpg' }
+    ];
+
+    let currentShopCategory = 'produce';
+    let cart = [];
+
+    // Switch dashboard tabs (desktop sidebar & mobile horizontal bar)
+    function switchTab(tabId) {
+      document.querySelectorAll('.dashboard-panel').forEach(p => p.classList.add('hidden'));
+      const activePanel = document.getElementById('panel-' + tabId);
+      if (activePanel) activePanel.classList.remove('hidden');
+
+      // Desktop sidebar active state
+      document.querySelectorAll('#dashboard-nav button').forEach(btn => {
+        btn.classList.remove('bg-sage-700', 'bg-white/10', 'text-white');
+        btn.classList.add('hover:bg-white/5', 'text-sage-200', 'hover:text-white');
+      });
+
+      const activeBtn = document.querySelector('[data-nav-btn="' + tabId + '"]');
+      if (activeBtn) {
+        activeBtn.classList.remove('hover:bg-white/5', 'text-sage-200', 'hover:text-white');
+        activeBtn.classList.add('bg-sage-700', 'text-white');
+      }
+
+      // Mobile horizontal scroll bar active state
+      document.querySelectorAll('#mobile-dashboard-nav button').forEach(btn => {
+        btn.className = "px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-cream-50 dark:bg-gray-800 text-sage-800 dark:text-gray-200 border border-cream-200 dark:border-gray-700 shrink-0 transition-all";
+      });
+
+      const activeMobileBtn = document.querySelector('[data-mobile-nav-btn="' + tabId + '"]');
+      if (activeMobileBtn) {
+        activeMobileBtn.className = "px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-sage-500 text-white shadow-sm shrink-0 transition-all";
+        activeMobileBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+
+      // Trackers / dynamic loading
+      if (tabId === 'overview') renderOverview();
+      if (tabId === 'recipients') renderRecipients();
+      if (tabId === 'shop') renderShop();
+      if (tabId === 'recurring') renderRecurringRulesSetup();
+      if (tabId === 'diets') renderDiets();
+      if (tabId === 'settings') populateCaregiverSettings();
+    }
+
+    function openDashboardSidebar() {
+      const sidebar = document.getElementById('dashboard-sidebar');
+      const overlay = document.getElementById('dashboard-sidebar-overlay');
+      sidebar?.classList.remove('-translate-x-full');
+      overlay?.classList.remove('hidden');
+    }
+
+    function closeDashboardSidebar() {
+      const sidebar = document.getElementById('dashboard-sidebar');
+      const overlay = document.getElementById('dashboard-sidebar-overlay');
+      sidebar?.classList.add('-translate-x-full');
+      overlay?.classList.add('hidden');
+    }
+
+    // Initialize Dashboard
+    document.addEventListener('DOMContentLoaded', () => {
+      switchTab('overview');
+      
+      // Sync layout caregiver info safely
+      const mainName = document.getElementById('main-user-display-name');
+      const sidebarName = document.getElementById('sidebar-user-display-name');
+      
+      if (mainName) mainName.textContent = caregiverProfile.name;
+      if (sidebarName) sidebarName.textContent = caregiverProfile.name;
+
+      // Register responsive sidebar togglers
+      document.getElementById('dashboard-hamburger')?.addEventListener('click', openDashboardSidebar);
+      document.getElementById('dashboard-sidebar-close')?.addEventListener('click', closeDashboardSidebar);
+      document.getElementById('dashboard-sidebar-overlay')?.addEventListener('click', closeDashboardSidebar);
+    });
+
+    // ── Panel 1: Overview Render ───────────────────────────────
+    function renderOverview() {
+      document.getElementById('stat-recipients-count').textContent = recipientsList.length;
+
+      const container = document.getElementById('overview-recipient-list');
+      if (!recipientsList.length) {
+        container.innerHTML = '<p class="text-xs text-sage-800/60 dark:text-gray-400">No senior profiles configured yet.</p>';
+        return;
+      }
+
+      container.innerHTML = recipientsList.map(r => {
+        const dietsHtml = r.diets.map(d => '<span class="px-2 py-0.5 rounded-full bg-sage-100 text-sage-800 dark:bg-sage-900 dark:text-sage-300 text-[9px] font-bold">' + d + '</span>').join('');
+        return '<div class="p-4 bg-cream-50/50 dark:bg-gray-900 rounded-2xl border border-cream-200/50 dark:border-gray-700 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">' +
+          '<div class="space-y-1">' +
+            '<span class="font-bold text-sage-900 dark:text-white text-sm block">' + r.name + '</span>' +
+            '<span class="text-[11px] text-sage-800/60 dark:text-gray-400 block">' + r.address + '</span>' +
+            '<div class="flex flex-wrap gap-1.5 pt-1">' + dietsHtml + '</div>' +
+          '</div>' +
+          '<div class="text-right sm:text-right">' +
+            '<span class="text-[10px] font-bold uppercase tracking-wider text-sage-600 dark:text-sage-400 block">Weekly Schedule</span>' +
+            '<span class="text-xs font-bold text-sage-850 dark:text-white block">' + (r.weeklyDay || 'Wednesday') + '</span>' +
+          '</div>' +
+        '</div>';
+      }).join('');
+    }
+
+    // ── Panel 2: Recipients CRUD ───────────────────────────────
+    function renderRecipients() {
+      const container = document.getElementById('recipients-grid-container');
+      if (!recipientsList.length) {
+        container.innerHTML = '<p class="text-sm text-sage-800/60 dark:text-gray-400 col-span-2">No senior recipient profiles configured yet. Click Add Profile to start.</p>';
+        return;
+      }
+
+      container.innerHTML = recipientsList.map((r, index) => {
+        const dietsHtml = r.diets.length ? r.diets.map(d => '<span class="px-2 py-0.5 rounded-full bg-sage-100 text-sage-800 dark:bg-sage-900 dark:text-sage-300 text-[9px] font-bold">' + d + '</span>').join('') : '<span class="text-[10px] text-sage-800/50">None</span>';
+        return '<div class="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-cream-200 dark:border-gray-700/60 shadow-sm space-y-4">' +
+          '<div class="flex justify-between items-start">' +
+            '<div>' +
+              '<h3 class="font-bold font-serif text-sage-900 dark:text-white text-base">' + r.name + '</h3>' +
+              '<p class="text-xs text-sage-850 dark:text-gray-300 mt-1">' + r.address + '</p>' +
+              '<p class="text-xs text-sage-800/60 dark:text-gray-400">' + r.phone + '</p>' +
+            '</div>' +
+            '<div class="flex space-x-2">' +
+              '<button onclick="editRecipient(' + index + ')" class="text-xs text-sage-600 hover:underline">Edit</button>' +
+              '<button onclick="deleteRecipient(' + index + ')" class="text-xs text-red-500 hover:underline">Delete</button>' +
+            '</div>' +
+          '</div>' +
+          '<div class="space-y-2">' +
+             '<span class="block text-[10px] font-bold uppercase tracking-wider text-sage-600 dark:text-sage-400">Dietary Restrictions</span>' +
+             '<div class="flex flex-wrap gap-1.5">' + dietsHtml + '</div>' +
+          '</div>' +
+          '<div class="p-3 bg-cream-50/50 dark:bg-gray-900 rounded-xl text-[11px] text-sage-800/80 dark:text-gray-400">' +
+            '<b>Safety Instructions:</b> ' + (r.notes || 'None provided.') +
+          '</div>' +
+        '</div>';
+      }).join('');
+    }
+
+    function openAddRecipientModal() {
+      document.getElementById('modal-recipient-title').textContent = 'Add Senior Profile';
+      document.getElementById('modal-recipient-index').value = '-1';
+      document.getElementById('recipient-modal-form').reset();
+      openModal('recipient-modal');
+    }
+
+    function editRecipient(index) {
+      const r = recipientsList[index];
+      document.getElementById('modal-recipient-title').textContent = 'Edit Senior Profile';
+      document.getElementById('modal-recipient-index').value = index;
+      document.getElementById('modal-name').value = r.name;
+      document.getElementById('modal-address').value = r.address;
+      document.getElementById('modal-phone').value = r.phone;
+
+      document.getElementById('modal-diet-sodium').checked = r.diets.includes('Low Sodium');
+      document.getElementById('modal-diet-sugar').checked = r.diets.includes('Sugar-Conscious');
+      document.getElementById('modal-diet-soft').checked = r.diets.includes('Soft Foods');
+      document.getElementById('modal-diet-lactose').checked = r.diets.includes('Lactose-Free');
+
+      openModal('recipient-modal');
+    }
+
+    function deleteRecipient(index) {
+      if (confirm('Are you sure you want to delete this senior profile?')) {
+        recipientsList.splice(index, 1);
+        Store.set('ee_recipients', recipientsList);
+        showToast('Profile deleted successfully.', 'success');
+        renderRecipients();
+      }
+    }
+
+    function saveRecipientFormSubmit() {
+      const index = parseInt(document.getElementById('modal-recipient-index').value, 10);
+      const name = document.getElementById('modal-name').value;
+      const address = document.getElementById('modal-address').value;
+      const phone = document.getElementById('modal-phone').value;
+
+      const diets = [];
+      if (document.getElementById('modal-diet-sodium').checked) diets.push('Low Sodium');
+      if (document.getElementById('modal-diet-sugar').checked) diets.push('Sugar-Conscious');
+      if (document.getElementById('modal-diet-soft').checked) diets.push('Soft Foods');
+      if (document.getElementById('modal-diet-lactose').checked) diets.push('Lactose-Free');
+
+      const data = {
+        name,
+        address,
+        phone,
+        diets,
+        weeklyDay: index >= 0 ? (recipientsList[index].weeklyDay || 'Wednesday') : 'Wednesday',
+        notes: index >= 0 ? (recipientsList[index].notes || '') : ''
+      };
+
+      if (index >= 0) {
+        recipientsList[index] = data;
+        showToast('Profile updated successfully!', 'success');
+      } else {
+        recipientsList.push(data);
+        showToast('New profile added successfully!', 'success');
+      }
+
+      Store.set('ee_recipients', recipientsList);
+      closeModal('recipient-modal');
+      renderRecipients();
+    }
+
+    // ── Panel 3: Grocery Shop ───────────────────────────────
+    function filterShopCategory(cat) {
+      currentShopCategory = cat;
+      document.querySelectorAll('[id^="shop-tab-"]').forEach(btn => {
+        btn.className = "px-4 py-2 rounded-xl text-xs font-bold hover:bg-cream-200 dark:hover:bg-gray-800 text-sage-800 dark:text-gray-200";
+      });
+      const activeBtn = document.getElementById('shop-tab-' + cat);
+      if (activeBtn) activeBtn.className = "px-4 py-2 rounded-xl text-xs font-bold bg-sage-500 text-white";
+      renderShop();
+    }
+
+    function renderShop() {
+      const items = shopItems.filter(item => item.category === currentShopCategory);
+      const grid = document.getElementById('shop-items-grid');
+      
+      grid.innerHTML = items.map(item => {
+        return '<div class="bg-cream-50/50 dark:bg-gray-800 p-4 rounded-2xl border border-cream-200/60 dark:border-gray-700 flex flex-col justify-between space-y-3 shadow-sm">' +
+          '<div class="w-full aspect-square rounded-xl overflow-hidden bg-cream-100 dark:bg-gray-900 border border-cream-200/50 dark:border-gray-700/60">' +
+            '<img src="' + item.image + '" alt="' + item.name + '" class="w-full h-full object-cover">' +
+          '</div>' +
+          '<div>' +
+            '<h4 class="font-bold text-sage-900 dark:text-white text-xs">' + item.name + '</h4>' +
+            '<span class="block text-xs font-bold text-sage-850 dark:text-gray-200 mt-1">$' + item.price.toFixed(2) + '</span>' +
+          '</div>' +
+          '<button onclick="addToCart(' + item.id + ')" class="w-full py-2 bg-sage-500 hover:bg-sage-600 text-white font-bold rounded-lg text-[10px] transition-all shadow-sm">Add to Cart</button>' +
+        '</div>';
+      }).join('');
+    }
+
+    function addToCart(itemId) {
+      const item = shopItems.find(x => x.id === itemId);
+      if (!item) return;
+
+      const cartItem = cart.find(x => x.id === itemId);
+      if (cartItem) {
+        cartItem.qty += 1;
+      } else {
+        cart.push({ ...item, qty: 1 });
+      }
+
+      showToast('Added ' + item.name + ' to checkout cart.', 'success');
+      renderCart();
+    }
+
+    // Render cart items
+    function renderCart() {
+      const list = document.getElementById('cart-items-list');
+      if (!cart.length) {
+        list.innerHTML = '<p class="text-xs text-sage-800/60 dark:text-gray-400 py-6 text-center">Your cart is empty.</p>';
+        updateCartTotal(0);
+        return;
+      }
+
+      list.innerHTML = cart.map(item => {
+        return '<div class="py-3 flex items-center justify-between gap-3 border-b border-cream-100 dark:border-gray-700/60 last:border-0">' +
+          '<div class="w-8 h-8 rounded-lg overflow-hidden shrink-0 border border-cream-200 dark:border-gray-700">' +
+            '<img src="' + item.image + '" alt="' + item.name + '" class="w-full h-full object-cover">' +
+          '</div>' +
+          '<div class="min-w-0 flex-1">' +
+            '<h4 class="font-bold text-sage-900 dark:text-white text-xs truncate">' + item.name + '</h4>' +
+            '<span class="text-[10px] text-sage-800/65 dark:text-gray-400">$' + item.price.toFixed(2) + ' × ' + item.qty + '</span>' +
+          '</div>' +
+          '<div class="flex items-center space-x-1 flex-shrink-0">' +
+            '<button onclick="adjustCartQty(' + item.id + ', -1)" class="w-5 h-5 rounded bg-cream-200 dark:bg-gray-700 hover:bg-cream-300 flex items-center justify-center font-bold text-xs">-</button>' +
+            '<button onclick="adjustCartQty(' + item.id + ', 1)" class="w-5 h-5 rounded bg-cream-200 dark:bg-gray-700 hover:bg-cream-300 flex items-center justify-center font-bold text-xs">+</button>' +
+          '</div>' +
+        '</div>';
+      }).join('');
+
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      updateCartTotal(subtotal);
+    }
+
+    function adjustCartQty(itemId, amt) {
+      const item = cart.find(x => x.id === itemId);
+      if (!item) return;
+      item.qty += amt;
+      if (item.qty <= 0) {
+        cart = cart.filter(x => x.id !== itemId);
+      }
+      renderCart();
+    }
+
+    function updateCartTotal(subtotal) {
+      document.getElementById('cart-subtotal').textContent = '$' + subtotal.toFixed(2);
+      document.getElementById('summary-subtotal').textContent = '$' + subtotal.toFixed(2);
+      const delivery = subtotal > 0 ? 3.99 : 0.00;
+      document.getElementById('summary-delivery').textContent = '$' + delivery.toFixed(2);
+      document.getElementById('summary-total').textContent = '$' + (subtotal + delivery).toFixed(2);
+    }
+
+    function checkoutCart() {
+      if (!cart.length) {
+        showToast('Please add items to your cart first.', 'error');
+        return;
+      }
+      showToast('Order submitted successfully! Simulating doorstep delivery coordination.', 'success');
+      cart = [];
+      renderCart();
+      setTimeout(() => {
+        switchTab('tracking');
+      }, 1000);
+    }
+
+    // ── Panel 4: Recurring Rules ───────────────────────────────
+    function renderRecurringRulesSetup() {
+      const select = document.getElementById('recurring-select-senior');
+      if (!recipientsList.length) {
+        select.innerHTML = '<option value="">No seniors configured</option>';
+        return;
+      }
+
+      select.innerHTML = recipientsList.map((r, index) => '<option value="' + index + '">' + r.name + '</option>').join('');
+
+      // populate initial values based on selected senior
+      select.onchange = () => {
+        const val = select.value;
+        if (val !== "") {
+          const r = recipientsList[parseInt(val, 10)];
+          document.getElementById('recurring-delivery-day').value = r.weeklyDay || 'Wednesday';
+          document.getElementById('recurring-instructions').value = r.notes || '';
+        }
+      };
+      select.onchange();
+    }
+
+    function saveRecurringRules() {
+      const select = document.getElementById('recurring-select-senior');
+      const val = select.value;
+      if (val === "") {
+        showToast('Add a senior profile first before saving rules.', 'error');
+        return;
+      }
+
+      const index = parseInt(val, 10);
+      recipientsList[index].weeklyDay = document.getElementById('recurring-delivery-day').value;
+      recipientsList[index].notes = document.getElementById('recurring-instructions').value;
+
+      Store.set('ee_recipients', recipientsList);
+      showToast('Recurring rules updated successfully!', 'success');
+    }
+
+    // ── Panel 5: Dietary Restrictions ───────────────────────────────
+    function renderDiets() {
+      const container = document.getElementById('diets-senior-list');
+      if (!recipientsList.length) {
+        container.innerHTML = '<p class="text-xs text-sage-800/60 dark:text-gray-400 py-6 text-center">Add a senior profile first to configure dietary exclusions.</p>';
+        return;
+      }
+
+      container.innerHTML = recipientsList.map((r, index) => {
+        return '<div class="p-4 bg-cream-50/50 dark:bg-gray-900/40 rounded-2xl border border-cream-200/50 dark:border-gray-700 space-y-3">' +
+          '<div class="flex items-center justify-between border-b border-cream-100 dark:border-gray-700 pb-2">' +
+            '<h4 class="font-bold text-sage-900 dark:text-white text-sm">' + r.name + '</h4>' +
+            '<span class="text-[10px] font-semibold text-sage-800/60 dark:text-gray-400">Dietary Active</span>' +
+          '</div>' +
+          '<div class="grid grid-cols-2 gap-4 text-xs">' +
+            '<label class="flex items-center space-x-2">' +
+              '<input type="checkbox" ' + (r.diets.includes('Low Sodium') ? 'checked' : '') + ' onchange="toggleSeniorDiet(' + index + ', \'Low Sodium\')" class="rounded text-sage-500">' +
+              '<span>Low Sodium</span>' +
+            '</label>' +
+            '<label class="flex items-center space-x-2">' +
+              '<input type="checkbox" ' + (r.diets.includes('Sugar-Conscious') ? 'checked' : '') + ' onchange="toggleSeniorDiet(' + index + ', \'Sugar-Conscious\')" class="rounded text-sage-500">' +
+              '<span>Sugar-Conscious</span>' +
+            '</label>' +
+            '<label class="flex items-center space-x-2">' +
+              '<input type="checkbox" ' + (r.diets.includes('Soft Foods') ? 'checked' : '') + ' onchange="toggleSeniorDiet(' + index + ', \'Soft Foods\')" class="rounded text-sage-500">' +
+              '<span>Soft Foods</span>' +
+            '</label>' +
+            '<label class="flex items-center space-x-2">' +
+              '<input type="checkbox" ' + (r.diets.includes('Lactose-Free') ? 'checked' : '') + ' onchange="toggleSeniorDiet(' + index + ', \'Lactose-Free\')" class="rounded text-sage-500">' +
+              '<span>Lactose-Free</span>' +
+            '</label>' +
+          '</div>' +
+        '</div>';
+      }).join('');
+    }
+
+    function toggleSeniorDiet(index, dietName) {
+      const r = recipientsList[index];
+      if (r.diets.includes(dietName)) {
+        r.diets = r.diets.filter(d => d !== dietName);
+      } else {
+        r.diets.push(dietName);
+      }
+      Store.set('ee_recipients', recipientsList);
+      showToast('Updated dietary preferences for ' + r.name, 'success');
+    }
+
+    // ── Panel 7: Support Tickets ───────────────────────────────
+    function submitTicket() {
+      const sub = document.getElementById('ticket-subject').value;
+      const msg = document.getElementById('ticket-message').value;
+      
+      const container = document.getElementById('tickets-list-container');
+      const newTicketHtml = '<div class="pt-4 flex justify-between items-center border-t border-cream-100 dark:border-gray-700">' +
+          '<div>' +
+            '<span class="text-xs font-bold text-sage-900 dark:text-white">Request: ' + sub + '</span>' +
+            '<span class="block text-[10px] text-sage-800/60 dark:text-gray-400">Created: Just now • Category: General Support</span>' +
+          '</div>' +
+          '<span class="px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 dark:bg-blue-950/30 dark:text-blue-400 text-[10px] font-bold">Open</span>' +
+        '</div>';
+      
+      container.insertAdjacentHTML('afterbegin', newTicketHtml);
+      document.getElementById('ticket-subject').value = '';
+      document.getElementById('ticket-message').value = '';
+      
+      showToast('Support ticket submitted successfully! A care liaison will review it shortly.', 'success');
+    }
+
+    // ── Panel 8: Logout & Auth ───────────────────────────────
+    function doLogout() {
+      showToast('Logging you out safely...', 'info');
+      // clear session login state
+      Store.set('ee_logged_in', false);
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 1000);
+    }
+
+    // ── Panel 6: Settings ───────────────────────────────────────
+    function populateCaregiverSettings() {
+      document.getElementById('settings-name').value = caregiverProfile.name || '';
+      document.getElementById('settings-email').value = caregiverProfile.email || '';
+      document.getElementById('settings-phone').value = caregiverProfile.phone || '';
+      document.getElementById('settings-relationship').value = caregiverProfile.relationship || 'Daughter';
+    }
+
+    // Save Caregiver settings
+    function saveCaregiverSettings(form) {
+      caregiverProfile = {
+        name: document.getElementById('settings-name').value,
+        email: document.getElementById('settings-email').value,
+        phone: document.getElementById('settings-phone').value,
+        relationship: document.getElementById('settings-relationship').value
+      };
+
+      Store.set('ee_profile', caregiverProfile);
+      showToast('Settings saved successfully!', 'success');
+      
+      // Update top navbar and greeting
+      const hName = document.getElementById('header-user-display-name');
+      const navUserName = document.getElementById('nav-user-name');
+      if (hName) hName.textContent = caregiverProfile.name;
+      if (navUserName) navUserName.textContent = caregiverProfile.name;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Support — Elderly Eats</title>
+  <meta name="description" content="Reach our senior grocery care coordinators. Submit inquiries, check address coverage, or report delivery questions easily.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            gray: {
+              750: '#232d3d',
+              850: '#18212f',
+              855: '#18212f',
+              955: '#0b0f17',
+            },
+            sage: {
+              50: '#f4f7f5',
+              100: '#e5ede7',
+              200: '#cedcd2',
+              300: '#abbfb1',
+              400: '#829d89',
+              500: '#617d69',
+              600: '#4d6554',
+              700: '#3e5244',
+              800: '#334237',
+              900: '#2b362e',
+            },
+            cream: {
+              50: '#fdfbf7',
+              100: '#faf6eb',
+              200: '#f2e8d3',
+              300: '#e5d3b0',
+              400: '#d5b786',
+              500: '#c59a5d',
+              600: '#b6834b',
+              700: '#97673c',
+              800: '#7c5335',
+              900: '#66452e',
+            },
+            charcoal: {
+              DEFAULT: '#2c3531',
+              50: '#f6f7f6',
+              100: '#eceeec',
+              800: '#1f2623',
+              900: '#111614',
+            }
+          },
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body class="bg-cream-100 text-charcoal dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+  <!-- Page Loader -->
+  <div id="page-loader">
+    <div class="flex flex-col items-center">
+      <div class="loader-spinner mb-4"></div>
+      <div class="flex items-center space-x-2 text-sage-600 dark:text-sage-300 font-semibold tracking-wide">
+        <svg class="w-6 h-6 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+        <span>Elderly Eats</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header id="site-header" class="sticky top-0 z-50 bg-cream-100/90 dark:bg-gray-900/90 backdrop-blur-md transition-all duration-300 border-b border-cream-200/50 dark:border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20 flex-nowrap gap-4">
+        
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center space-x-2.5 group shrink-0 whitespace-nowrap">
+          <div class="w-10 h-10 rounded-xl bg-sage-500 flex items-center justify-center text-white shadow-md shadow-sage-500/20 group-hover:scale-105 transition-transform duration-300">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <div>
+            <span class="text-xl font-bold tracking-tight text-sage-800 dark:text-white whitespace-nowrap block">Elderly Eats</span>
+            <span class="block text-[10px] uppercase tracking-widest text-cream-600 dark:text-sage-400 font-semibold -mt-1 whitespace-nowrap">Senior Grocery</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden xl:flex items-center space-x-6 xl:space-x-7 shrink-0 whitespace-nowrap">
+          <!-- Home Dropdown Menu -->
+          <div class="relative">
+            <button id="home-dropdown-trigger" class="flex items-center space-x-1 text-[15px] font-medium text-sage-800 hover:text-sage-600 dark:text-gray-200 dark:hover:text-white py-2 focus:outline-none transition-colors whitespace-nowrap">
+              <span>Home</span>
+              <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div id="home-dropdown-menu" class="absolute left-0 mt-2 w-48 rounded-2xl bg-white dark:bg-gray-800 shadow-xl border border-cream-200/50 dark:border-gray-700/50 py-2 opacity-0 pointer-events-none translate-y-2 transition-all duration-200 z-50">
+              <a href="index.html" class="block px-5 py-2.5 text-sm font-medium text-sage-800 hover:bg-cream-50 dark:text-gray-200 dark:hover:bg-gray-700/50 whitespace-nowrap">Home 1 (Classic)</a>
+              <a href="home-2.html" class="block px-5 py-2.5 text-sm font-medium text-sage-800 hover:bg-cream-50 dark:text-gray-200 dark:hover:bg-gray-700/50 whitespace-nowrap">Home 2 (Editorial)</a>
+            </div>
+          </div>
+
+          <a href="how-it-works.html" class="text-[15px] font-medium text-sage-800 hover:text-sage-600 dark:text-gray-200 dark:hover:text-white transition-colors whitespace-nowrap">How It Works</a>
+          <a href="supported-items.html" class="text-[15px] font-medium text-sage-800 hover:text-sage-600 dark:text-gray-200 dark:hover:text-white transition-colors whitespace-nowrap">Supported Items</a>
+          <a href="pricing-delivery.html" class="text-[15px] font-medium text-sage-800 hover:text-sage-600 dark:text-gray-200 dark:hover:text-white transition-colors whitespace-nowrap">Pricing & Delivery</a>
+          <a href="contact.html" class="text-[15px] font-medium text-sage-800 hover:text-sage-600 dark:text-gray-200 dark:hover:text-white transition-colors whitespace-nowrap">Contact</a>
+        </nav>
+
+        <!-- Desktop Action Controls -->
+        <div class="hidden xl:flex items-center space-x-3 shrink-0 whitespace-nowrap">
+          <!-- RTL/LTR Toggle -->
+          <button data-rtl-toggle class="w-9 h-9 flex items-center justify-center rounded-lg bg-cream-200/60 hover:bg-cream-300 dark:bg-gray-800 dark:hover:bg-gray-700 text-sage-800 dark:text-gray-200 font-bold text-xs transition-colors shrink-0" title="Toggle RTL/LTR">
+            <span class="text-xs font-bold" data-rtl-label>RTL</span>
+          </button>
+          
+          <!-- Dark Mode Toggle -->
+          <button data-theme-toggle class="w-9 h-9 flex items-center justify-center rounded-lg bg-cream-200/60 hover:bg-cream-300 dark:bg-gray-800 dark:hover:bg-gray-700 text-sage-800 dark:text-gray-200 transition-colors shrink-0" title="Toggle Dark/Light Mode">
+            <span data-theme-icon class="flex items-center justify-center">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </span>
+          </button>
+
+          <!-- Auth Buttons -->
+          <div data-show-auth="out" class="flex items-center space-x-3 shrink-0 whitespace-nowrap">
+            <a href="login.html" class="text-[15px] font-medium text-sage-800 hover:text-sage-600 dark:text-gray-200 dark:hover:text-white px-3 py-2 transition-colors whitespace-nowrap">Log In</a>
+            <a href="register.html" class="px-5 py-2.5 rounded-xl bg-sage-500 hover:bg-sage-600 dark:bg-sage-600 dark:hover:bg-sage-500 text-white font-medium text-[15px] shadow-sm hover:shadow transition-all whitespace-nowrap">Get Started</a>
+          </div>
+          <div data-show-auth="in" class="flex items-center space-x-3 shrink-0 whitespace-nowrap" style="display: none;">
+            <a href="dashboard.html" class="px-5 py-2.5 rounded-xl bg-sage-500 hover:bg-sage-600 dark:bg-sage-600 dark:hover:bg-sage-500 text-white font-medium text-[15px] shadow-sm hover:shadow transition-all whitespace-nowrap">My Dashboard</a>
+            <button onclick="doLogout()" class="text-[15px] font-medium text-red-600 hover:text-red-500 px-3 py-2 transition-colors whitespace-nowrap">Log Out</button>
+          </div>
+        </div>
+
+        <!-- Hamburger Icon (Mobile) -->
+        <button id="hamburger" class="xl:hidden p-2 rounded-xl bg-cream-200/50 dark:bg-gray-800 text-sage-800 dark:text-gray-200 focus:outline-none transition-colors shrink-0" aria-expanded="false" aria-label="Toggle Menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-overlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[90] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <div id="mobile-menu" class="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-cream-100 dark:bg-gray-900 border-l border-cream-200 dark:border-gray-800 shadow-2xl z-[100] translate-x-full transition-transform duration-300 flex flex-col justify-between">
+    <div class="p-6">
+      <div class="flex items-center justify-between mb-8">
+        <span class="text-lg font-bold text-sage-800 dark:text-white">Menu</span>
+        <button id="mobile-close" class="p-2 rounded-xl bg-cream-200/50 dark:bg-gray-800 text-sage-800 dark:text-gray-200 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="space-y-1">
+        <div>
+          <button id="mobile-home-toggle" class="flex items-center justify-between w-full text-left font-medium text-sage-800 dark:text-gray-200 py-2 border-b border-cream-200/50 dark:border-gray-800">
+            <span>Home</span>
+            <svg data-arrow class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="mobile-home-submenu" class="hidden pl-4 py-2 space-y-2 bg-cream-50/50 dark:bg-gray-800/40 rounded-xl mt-1">
+            <a href="index.html" class="block py-1.5 text-sm font-medium text-sage-700 dark:text-gray-300">Home 1 (Classic)</a>
+            <a href="home-2.html" class="block py-1.5 text-sm font-medium text-sage-700 dark:text-gray-300">Home 2 (Editorial)</a>
+          </div>
+        </div>
+        <a href="how-it-works.html" class="block font-medium text-sage-800 dark:text-gray-200 py-2 border-b border-cream-200/50 dark:border-gray-800">How It Works</a>
+        <a href="supported-items.html" class="block font-medium text-sage-800 dark:text-gray-200 py-2 border-b border-cream-200/50 dark:border-gray-800">Supported Items</a>
+        <a href="pricing-delivery.html" class="block font-medium text-sage-800 dark:text-gray-200 py-2 border-b border-cream-200/50 dark:border-gray-800">Pricing & Delivery</a>
+        <a href="contact.html" class="block font-medium text-sage-800 dark:text-gray-200 py-2 border-b border-cream-200/50 dark:border-gray-800">Contact</a>
+      </nav>
+    </div>
+
+    <div class="p-6 border-t border-cream-200 dark:border-gray-800 bg-cream-50 dark:bg-gray-850">
+      <div class="flex items-center justify-between mb-6">
+        <button data-rtl-toggle class="flex items-center gap-2 px-3 py-2.5 rounded-lg bg-cream-200/60 dark:bg-gray-800 text-sage-800 dark:text-gray-200 text-xs font-bold">
+          <span class="text-xs font-bold" data-rtl-label>RTL</span>
+        </button>
+        <!-- Dark Mode -->
+        <button data-theme-toggle class="flex items-center gap-2 px-3 py-2.5 rounded-lg bg-cream-200/60 dark:bg-gray-800 text-sage-800 dark:text-gray-200">
+          <span data-theme-icon class="flex items-center justify-center">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </span>
+          <span class="text-xs font-semibold" data-theme-label>Dark Mode</span>
+        </button>
+      </div>
+
+      <div data-show-auth="out" class="grid grid-cols-2 gap-3">
+        <a href="login.html" class="py-3 rounded-xl bg-cream-200/50 hover:bg-cream-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-center font-medium text-sage-800 dark:text-gray-200 text-sm">Log In</a>
+        <a href="register.html" class="py-3 rounded-xl bg-sage-500 hover:bg-sage-600 dark:bg-sage-600 dark:hover:bg-sage-500 text-center text-white font-medium text-sm shadow">Register</a>
+      </div>
+      <div data-show-auth="in" class="grid grid-cols-1 gap-3" style="display: none;">
+        <a href="dashboard.html" class="py-3 rounded-xl bg-sage-500 hover:bg-sage-600 dark:bg-sage-600 dark:hover:bg-sage-500 text-center text-white font-medium text-sm shadow">My Dashboard</a>
+        <button onclick="doLogout()" class="py-2.5 rounded-xl border border-red-200 text-red-600 text-center font-medium text-sm">Log Out</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main>
+
+    <!-- SECTION 1: Page Hero -->
+    <section class="py-16 sm:py-20 bg-gradient-to-b from-cream-100 to-cream-50/20 dark:from-gray-900 dark:to-gray-950/20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <div class="lg:col-span-6 space-y-6" data-reveal>
+            <span class="text-sage-500 dark:text-sage-400 font-bold uppercase tracking-wider text-xs">Get In Touch</span>
+            <h1 class="text-4xl sm:text-5xl font-extrabold font-serif text-sage-900 dark:text-white leading-tight">Contact Our Care Liaison Team</h1>
+            <p class="text-base sm:text-lg text-sage-800/80 dark:text-gray-300">
+              Need help registering, verifying a zip code, or coordinating custom delivery notes? Submit the form below, and our care liaison will contact you shortly.
+            </p>
+          </div>
+
+          <div class="lg:col-span-6 relative" data-reveal>
+            <div class="absolute -inset-4 bg-cream-200/50 dark:bg-gray-800/40 rounded-[2.5rem] blur-xl transform rotate-2 -z-10"></div>
+            <div class="relative rounded-3xl overflow-hidden shadow-xl aspect-[16/10] bg-cream-50 dark:bg-gray-850 border border-cream-200/60 dark:border-gray-750">
+              <img src="assets/images/sections/contact_hero.png" alt="Friendly Elderly Eats Care Liaison customer support representative" class="w-full h-full object-cover">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: Form & Info Grid -->
+    <section class="py-16 sm:py-24 bg-white dark:bg-gray-900 border-t border-cream-200/50 dark:border-gray-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
+          <!-- Contact Info Column -->
+          <div class="lg:col-span-5 space-y-8" data-reveal>
+            
+            <div class="space-y-2">
+              <h3 class="text-2xl font-serif font-bold text-sage-900 dark:text-white">Care Support Hours</h3>
+              <p class="text-xs sm:text-sm text-sage-800/70 dark:text-gray-400 leading-relaxed">
+                Our care liaison team coordinates deliveries and updates caregiver accounts actively during daylight hours.
+              </p>
+            </div>
+
+            <div class="space-y-4">
+              <div class="flex items-start space-x-3.5">
+                <span class="text-sage-600 dark:text-sage-400">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                </span>
+                <div>
+                  <h4 class="font-bold text-sage-900 dark:text-white text-sm">Direct Support Phone</h4>
+                  <p class="text-xs text-sage-800/70 dark:text-gray-400">(555) 019-2831</p>
+                  <p class="text-[10px] text-sage-800/60 dark:text-gray-400">Monday – Sunday, 8am – 6pm EST</p>
+                </div>
+              </div>
+              <div class="flex items-start space-x-3.5">
+                <span class="text-sage-600 dark:text-sage-400">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                </span>
+                <div>
+                  <h4 class="font-bold text-sage-900 dark:text-white text-sm">Email Coordination</h4>
+                  <p class="text-xs text-sage-800/70 dark:text-gray-400">care@elderlyeats.com</p>
+                  <p class="text-[10px] text-sage-800/60 dark:text-gray-400">We reply in under 2 hours.</p>
+                </div>
+              </div>
+              <div class="flex items-start space-x-3.5">
+                <span class="text-sage-600 dark:text-sage-400">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                </span>
+                <div>
+                  <h4 class="font-bold text-sage-900 dark:text-white text-sm">Main Office</h4>
+                  <p class="text-xs text-sage-800/70 dark:text-gray-400">Elderly Eats Inc.</p>
+                  <p class="text-[10px] text-sage-800/60 dark:text-gray-400">284 Oakwood Lane, Suite 100, Atlanta, GA 30309</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Contact Form Column -->
+          <div class="lg:col-span-7 bg-cream-50 dark:bg-gray-800 p-8 rounded-3xl border border-cream-200 dark:border-gray-700 shadow-sm" data-reveal>
+            <form id="contact-form" class="space-y-6" onsubmit="event.preventDefault(); if(validateForm(this)) { showToast('Message submitted successfully! A care liaison will contact you shortly.', 'success'); this.reset(); }">
+              
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-xs font-bold text-sage-800 dark:text-gray-300 uppercase tracking-wider mb-2">Your Full Name</label>
+                  <input type="text" name="name" data-required class="w-full px-4 py-3 rounded-xl bg-white dark:bg-gray-900 text-sage-850 dark:text-gray-200 border border-cream-200 dark:border-gray-700 focus:outline-none focus:border-sage-500 text-sm">
+                  <span data-error="name" class="hidden text-xs text-red-500 mt-1">Please enter your name.</span>
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-sage-800 dark:text-gray-300 uppercase tracking-wider mb-2">Email Address</label>
+                  <input type="email" name="email" data-required class="w-full px-4 py-3 rounded-xl bg-white dark:bg-gray-900 text-sage-850 dark:text-gray-200 border border-cream-200 dark:border-gray-700 focus:outline-none focus:border-sage-500 text-sm">
+                  <span data-error="email" class="hidden text-xs text-red-500 mt-1">Please enter a valid email address.</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-xs font-bold text-sage-800 dark:text-gray-300 uppercase tracking-wider mb-2">Phone Number</label>
+                  <input type="text" name="phone" data-required class="w-full px-4 py-3 rounded-xl bg-white dark:bg-gray-900 text-sage-850 dark:text-gray-200 border border-cream-200 dark:border-gray-700 focus:outline-none focus:border-sage-500 text-sm">
+                  <span data-error="phone" class="hidden text-xs text-red-500 mt-1">Please enter your phone number.</span>
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-sage-800 dark:text-gray-300 uppercase tracking-wider mb-2">Subject</label>
+                  <select name="subject" class="w-full px-4 py-3 rounded-xl bg-white dark:bg-gray-900 text-sage-850 dark:text-gray-200 border border-cream-200 dark:border-gray-700 focus:outline-none focus:border-sage-500 text-sm">
+                    <option value="general">General Inquiry</option>
+                    <option value="registration">Registration Question</option>
+                    <option value="zipcode">Zip Code Verification</option>
+                    <option value="billing">Billing/Payment Inquiry</option>
+                    <option value="driver">Driver/Safety Feedback</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-sage-800 dark:text-gray-300 uppercase tracking-wider mb-2">Message</label>
+                <textarea name="message" data-required rows="5" class="w-full px-4 py-3 rounded-xl bg-white dark:bg-gray-900 text-sage-850 dark:text-gray-200 border border-cream-200 dark:border-gray-700 focus:outline-none focus:border-sage-500 text-sm"></textarea>
+                <span data-error="message" class="hidden text-xs text-red-500 mt-1">Please enter your message.</span>
+              </div>
+
+              <button type="submit" class="w-full py-4 bg-sage-500 hover:bg-sage-600 text-white font-bold rounded-xl text-sm transition-all shadow">Submit Contact Form</button>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    </section>
+
+    <!-- SECTION 3: Telephone Booking Support Center -->
+    <section class="py-16 sm:py-24 bg-cream-50 dark:bg-gray-950 border-t border-cream-200/40 dark:border-gray-850">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-16" data-reveal>
+          <span class="text-sage-500 dark:text-sage-400 font-bold uppercase tracking-wider text-xs">Telephone Hotline</span>
+          <h2 class="text-3xl font-serif font-bold text-sage-900 dark:text-white mt-2">Telephone Order Setup</h2>
+          <p class="text-xs sm:text-sm text-sage-800/70 dark:text-gray-400 mt-2">How seniors can order fresh food weekly without using a computer or phone app.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Step 1 -->
+          <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl border border-cream-200 dark:border-gray-700 shadow-sm text-center space-y-4" data-reveal>
+            <div class="w-12 h-12 mx-auto rounded-full bg-sage-100 dark:bg-sage-900 flex items-center justify-center font-bold text-sage-700 dark:text-sage-300 text-sm">1</div>
+            <h4 class="font-serif font-bold text-sage-900 dark:text-white text-base">Register Phone Profile</h4>
+            <p class="text-xs text-sage-800/70 dark:text-gray-400 leading-relaxed">Caregivers register the senior's phone number and delivery address on our portal or via phone agent.</p>
+          </div>
+          <!-- Step 2 -->
+          <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl border border-cream-200 dark:border-gray-700 shadow-sm text-center space-y-4" data-reveal>
+            <div class="w-12 h-12 mx-auto rounded-full bg-sage-100 dark:bg-sage-900 flex items-center justify-center font-bold text-sage-700 dark:text-sage-300 text-sm">2</div>
+            <h4 class="font-serif font-bold text-sage-900 dark:text-white text-base">Scheduled Weekly Call</h4>
+            <p class="text-xs text-sage-800/70 dark:text-gray-400 leading-relaxed">Our dedicated operator calls your parent on their scheduled weekly hour to check off their grocery list.</p>
+          </div>
+          <!-- Step 3 -->
+          <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl border border-cream-200 dark:border-gray-700 shadow-sm text-center space-y-4" data-reveal>
+            <div class="w-12 h-12 mx-auto rounded-full bg-sage-100 dark:bg-sage-900 flex items-center justify-center font-bold text-sage-700 dark:text-sage-300 text-sm">3</div>
+            <h4 class="font-serif font-bold text-sage-900 dark:text-white text-base">Autopilot Dispatch</h4>
+            <p class="text-xs text-sage-800/70 dark:text-gray-400 leading-relaxed">The list is processed and double-vetted for diet codes, dispatching our driver on schedule.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: Emergency Contacts & Route Intercepts -->
+    <section class="py-16 sm:py-24 bg-white dark:bg-gray-900 border-t border-cream-200/40 dark:border-gray-850">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-6 space-y-6" data-reveal>
+            <span class="text-sage-500 dark:text-sage-400 font-bold uppercase tracking-wider text-xs">Immediate Assistance</span>
+            <h2 class="text-3xl font-serif font-bold text-sage-900 dark:text-white leading-tight">Emergency Delivery Intercepts & Live Support</h2>
+            <p class="text-sm sm:text-base text-sage-800/80 dark:text-gray-300 leading-relaxed">
+              If your parent has an unexpected outpatient visit, doctor's appointment, or needs to travel, you can redirect or pause active grocery shipments without losing perishable items. Dial our direct intercept hotline at <span class="font-bold text-sage-900 dark:text-white">(555) 019-2899</span>. We will hold thermal packs at our facility or reroute bags immediately.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div class="p-4 bg-cream-50 dark:bg-gray-800 rounded-2xl border border-cream-200/60 dark:border-gray-700 flex items-start space-x-3">
+                <div class="mt-0.5 w-6 h-6 rounded-lg bg-sage-500 text-white flex items-center justify-center text-xs font-bold shrink-0">✓</div>
+                <div>
+                  <h4 class="text-xs font-bold text-sage-900 dark:text-white">Under-30-Min Reroute</h4>
+                  <p class="text-[11px] text-sage-800/80 dark:text-gray-300 mt-0.5">GPS route updates for active trucks in transit.</p>
+                </div>
+              </div>
+
+              <div class="p-4 bg-cream-50 dark:bg-gray-800 rounded-2xl border border-cream-200/60 dark:border-gray-700 flex items-start space-x-3">
+                <div class="mt-0.5 w-6 h-6 rounded-lg bg-sage-500 text-white flex items-center justify-center text-xs font-bold shrink-0">✓</div>
+                <div>
+                  <h4 class="text-xs font-bold text-sage-900 dark:text-white">Cold Tote Safe Hold</h4>
+                  <p class="text-[11px] text-sage-800/80 dark:text-gray-300 mt-0.5">Cold items kept in temperature lockers up to 24hrs.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-6 relative" data-reveal>
+            <div class="absolute -inset-4 bg-cream-200/50 dark:bg-gray-800/40 rounded-[2.5rem] blur-xl transform rotate-2 -z-10"></div>
+            <div class="relative rounded-3xl overflow-hidden shadow-lg aspect-[4/3] bg-cream-50 dark:bg-gray-850 border border-cream-200/60 dark:border-gray-700">
+              <img src="assets/images/sections/contact_dispatch.png" alt="Vetted delivery captain standing near vehicle with fresh grocery package" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: Frequently Asked Contact Inquiries -->
+    <section class="py-16 sm:py-24 bg-cream-50 dark:bg-gray-950 border-t border-cream-200/40 dark:border-gray-850">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-reveal>
+          <span class="text-sage-500 dark:text-sage-400 font-bold uppercase tracking-wider text-xs">Help Center</span>
+          <h2 class="text-3xl font-serif font-bold text-sage-900 dark:text-white mt-2">Support Coordination Inquiries</h2>
+        </div>
+
+        <div class="space-y-4" data-reveal>
+          <div class="bg-white dark:bg-gray-800 rounded-2xl border border-cream-200/50 dark:border-gray-700 overflow-hidden" data-accordion-item>
+            <button data-accordion-trigger class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none">
+              <span class="font-bold text-sage-900 dark:text-white text-sm sm:text-base">Can I request the exact same driver weekly?</span>
+              <svg data-acc-icon class="w-5 h-5 text-sage-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div data-accordion-content class="hidden px-6 pb-5 text-xs sm:text-sm text-sage-800/80 dark:text-gray-300 border-t border-cream-100 dark:border-gray-700 pt-4 leading-relaxed">
+              Yes. We do our best to map the same delivery captain to the same neighborhood weekly. Seniors appreciate familiarity, and this builds long-term doorstep trust.
+            </div>
+          </div>
+          <div class="bg-white dark:bg-gray-800 rounded-2xl border border-cream-200/50 dark:border-gray-700 overflow-hidden" data-accordion-item>
+            <button data-accordion-trigger class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none">
+              <span class="font-bold text-sage-900 dark:text-white text-sm sm:text-base">How do I submit physical dietary prescriptions?</span>
+              <svg data-acc-icon class="w-5 h-5 text-sage-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div data-accordion-content class="hidden px-6 pb-5 text-xs sm:text-sm text-sage-800/80 dark:text-gray-300 border-t border-cream-100 dark:border-gray-700 pt-4 leading-relaxed">
+              You can email medical dietary guidelines or custom menu files to care@elderlyeats.com. Our care liaisons will manually apply compliance filters to the recipient's shopping dashboard.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: Main Office Walkthrough & Interactive Map -->
+    <section class="py-16 sm:py-24 bg-white dark:bg-gray-900 border-t border-cream-200/40 dark:border-gray-850">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-6 lg:order-2 space-y-6" data-reveal>
+            <span class="text-sage-500 dark:text-sage-400 font-bold uppercase tracking-wider text-xs">Our Service Base</span>
+            <h2 class="text-3xl font-serif font-bold text-sage-900 dark:text-white leading-tight">Operations Hub & Care Liaison Center</h2>
+            <p class="text-sm sm:text-base text-sage-800/80 dark:text-gray-300 leading-relaxed">
+              Our central operations warehouse handles packaging, food safety checks, cold storage compliance, and logistics dispatch. Caregivers and family members are welcome to visit or schedule phone consultations to meet our staff in person.
+            </p>
+            <div class="space-y-3 pt-2">
+              <div class="p-4 bg-cream-50 dark:bg-gray-800 rounded-2xl border border-cream-200/60 dark:border-gray-700 flex items-start space-x-3">
+                <svg class="w-5 h-5 text-sage-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                <div>
+                  <p class="text-xs font-bold text-sage-900 dark:text-white">Elderly Eats HQ & Logistics Center</p>
+                  <p class="text-[11px] text-sage-800/70 dark:text-gray-400 mt-0.5">142 Caregiver Way, Suite 400, Atlanta, GA 30309</p>
+                </div>
+              </div>
+              <div class="p-4 bg-cream-50 dark:bg-gray-800 rounded-2xl border border-cream-200/60 dark:border-gray-700 flex items-start space-x-3">
+                <svg class="w-5 h-5 text-sage-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                <div>
+                  <p class="text-xs font-bold text-sage-900 dark:text-white">Direct Phone Support</p>
+                  <p class="text-[11px] text-sage-800/70 dark:text-gray-400 mt-0.5">(555) 019-2899 • Mon-Sat 7:00 AM - 7:00 PM EST</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-6 lg:order-1 relative" data-reveal>
+            <div class="absolute -inset-4 bg-cream-200/50 dark:bg-gray-800/40 rounded-[2.5rem] blur-xl transform -rotate-2 -z-10"></div>
+            <!-- Coimbatore Google Maps Embed -->
+            <div class="relative rounded-3xl overflow-hidden shadow-xl border border-cream-200 dark:border-gray-700" style="aspect-ratio:16/10;">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125324.44196699044!2d76.89396!3d11.01685!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba857c0b3a3e591%3A0x1f0c8b9b5e7f1d0a!2sCoimbatore%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1693000000000"
+                width="100%" height="100%"
+                style="border:0; display:block;"
+                allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Coimbatore, Tamil Nadu — Elderly Eats Operations"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: Regional Care Liaison Directory -->
+    <section class="py-16 sm:py-24 bg-cream-50 dark:bg-gray-950 border-t border-cream-200/40 dark:border-gray-850">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-16" data-reveal>
+          <span class="text-sage-500 dark:text-sage-400 font-bold uppercase tracking-wider text-xs">Regional Support</span>
+          <h2 class="text-3xl font-serif font-bold text-sage-900 dark:text-white mt-2">Regional Dispatch Directory</h2>
+          <p class="text-xs sm:text-sm text-sage-800/70 dark:text-gray-400 mt-2">Reach regional care managers in your senior parent's territory.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div class="bg-white dark:bg-gray-800 p-5 rounded-xl border border-cream-200 dark:border-gray-700 shadow-sm space-y-2" data-reveal>
+            <span class="block font-bold text-sage-900 dark:text-white text-sm">Georgia Region</span>
+            <span class="block text-xs text-sage-500 font-semibold">ga.support@elderlyeats.com</span>
+            <span class="block text-[10px] text-sage-800/60 dark:text-gray-400 mt-1">Atlanta, Marietta, Savannah</span>
+          </div>
+          <div class="bg-white dark:bg-gray-800 p-5 rounded-xl border border-cream-200 dark:border-gray-700 shadow-sm space-y-2" data-reveal>
+            <span class="block font-bold text-sage-900 dark:text-white text-sm">Texas Region</span>
+            <span class="block text-xs text-sage-500 font-semibold">tx.support@elderlyeats.com</span>
+            <span class="block text-[10px] text-sage-800/60 dark:text-gray-400 mt-1">Austin, Houston, Dallas</span>
+          </div>
+          <div class="bg-white dark:bg-gray-800 p-5 rounded-xl border border-cream-200 dark:border-gray-700 shadow-sm space-y-2" data-reveal>
+            <span class="block font-bold text-sage-900 dark:text-white text-sm">Florida Region</span>
+            <span class="block text-xs text-sage-500 font-semibold">fl.support@elderlyeats.com</span>
+            <span class="block text-[10px] text-sage-800/60 dark:text-gray-400 mt-1">Miami, Orlando, Tampa</span>
+          </div>
+          <div class="bg-white dark:bg-gray-800 p-5 rounded-xl border border-cream-200 dark:border-gray-700 shadow-sm space-y-2" data-reveal>
+            <span class="block font-bold text-sage-900 dark:text-white text-sm">Illinois Region</span>
+            <span class="block text-xs text-sage-500 font-semibold">il.support@elderlyeats.com</span>
+            <span class="block text-[10px] text-sage-800/60 dark:text-gray-400 mt-1">Chicago, Evanston, Naperville</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: Social Coordination Partnerships -->
+    <section class="py-16 sm:py-24 bg-white dark:bg-gray-900 border-t border-cream-200/40 dark:border-gray-850">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-6 space-y-6" data-reveal>
+            <span class="text-sage-500 dark:text-sage-400 font-bold uppercase tracking-wider text-xs">Community Programs</span>
+            <h2 class="text-3xl font-serif font-bold text-sage-900 dark:text-white leading-tight">Retirement Center & Facility Accounts</h2>
+            <p class="text-sm sm:text-base text-sage-800/80 dark:text-gray-300 leading-relaxed">
+              Are you a director of an assisted living facility or senior community center? We offer bulk shipment discounts, custom calendar scheduling, and direct billing coordinates for facility budgets. Reach out to our community partnership desk.
+            </p>
+            <span class="block text-xs font-bold text-sage-600 dark:text-sage-400">Inquire at: partner@elderlyeats.com</span>
+          </div>
+          <div class="lg:col-span-6 relative" data-reveal>
+            <div class="absolute -inset-4 bg-cream-200/50 dark:bg-gray-800/40 rounded-[2.5rem] blur-xl transform rotate-2 -z-10"></div>
+            <div class="relative rounded-3xl overflow-hidden shadow-lg aspect-[4/3] bg-cream-50 dark:bg-gray-850">
+              <img src="assets/images/sections/contact_community.png" alt="Senior community gathering enjoying healthy food together" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9: Caregiver Forums Zoom Signup CTA -->
+    <section class="py-16 bg-sage-500 text-white dark:bg-sage-900 text-center">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6" data-reveal>
+        <h2 class="text-3xl sm:text-4xl font-bold font-serif leading-tight">Join Our Caregiver Community Support Forums</h2>
+        <p class="text-sage-100 max-w-xl mx-auto text-sm sm:text-base font-medium">Register for our next live Zoom session on dementia care and senior diet plans.</p>
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+          <a href="register.html" class="px-8 py-3.5 bg-white text-sage-800 hover:bg-cream-50 font-bold rounded-xl shadow-md transition-all">Sign Up For Care Circle</a>
+          <button onclick="showToast('Zoom coordinator calendar loading...', 'info');" class="px-8 py-3.5 border border-white/40 hover:bg-white/10 text-white font-bold rounded-xl transition-all">Reserve Zoom Spot</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-charcoal dark:bg-charcoal-900 text-cream-200/90 pt-16 pb-8 border-t border-charcoal-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-12 border-b border-charcoal-800">
+        
+        <!-- About -->
+        <div class="space-y-4">
+          <a href="index.html" class="flex items-center space-x-2">
+            <div class="w-9 h-9 rounded-xl bg-sage-500 flex items-center justify-center text-white font-bold">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+            </div>
+            <span class="text-lg font-bold text-white tracking-tight">Elderly Eats</span>
+          </a>
+          <p class="text-xs sm:text-sm text-cream-200/70 leading-relaxed">
+            Delivering simple groceries, dietary compliance, and absolute peace of mind. We make food access smooth and convenient for elderly parents and their caregivers.
+          </p>
+        </div>
+
+        <!-- Site Navigation -->
+        <div>
+          <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Service Links</h4>
+          <ul class="space-y-2.5 text-xs sm:text-sm">
+            <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+            <li><a href="how-it-works.html" class="hover:text-white transition-colors">How It Works</a></li>
+            <li><a href="supported-items.html" class="hover:text-white transition-colors">Supported Items</a></li>
+            <li><a href="pricing-delivery.html" class="hover:text-white transition-colors">Pricing & Delivery</a></li>
+          </ul>
+        </div>
+
+        <!-- Help Support -->
+        <div>
+          <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Support & FAQ</h4>
+          <ul class="space-y-2.5 text-xs sm:text-sm">
+            <li><a href="contact.html" class="hover:text-white transition-colors">Contact Support</a></li>
+            <li><a href="pricing-delivery.html#faq" class="hover:text-white transition-colors">Help Center / FAQs</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Delivery Standards</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="space-y-4">
+          <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Newsletter</h4>
+          <p class="text-xs text-cream-200/70 leading-relaxed">Stay updated with fresh senior recipes, safety tips, and grocery discounts.</p>
+          <form class="flex space-x-2" onsubmit="event.preventDefault(); showToast('Subscribed to newsletter successfully!'); this.reset();">
+            <input type="email" placeholder="Email Address" required class="w-full px-4 py-2.5 rounded-xl bg-charcoal-800 text-cream-200 border border-charcoal-800 focus:outline-none focus:border-sage-500 text-xs sm:text-sm">
+            <button type="submit" class="px-4 py-2.5 bg-sage-500 hover:bg-sage-600 text-white font-semibold rounded-xl text-xs sm:text-sm transition-all">Subscribe</button>
+          </form>
+        </div>
+
+      </div>
+
+      <div class="flex flex-col md:flex-row items-center justify-between pt-8 text-xs text-cream-200/50">
+        <span>© 2026 Elderly Eats. All rights reserved.</span>
+        <div class="flex space-x-6 mt-4 md:mt-0">
+          <a href="#" class="hover:text-cream-200 transition-colors">Facebook</a>
+          <a href="#" class="hover:text-cream-200 transition-colors">Twitter</a>
+          <a href="#" class="hover:text-cream-200 transition-colors">Instagram</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Back to Top Button -->
+  <button id="back-to-top" class="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-sage-500 hover:bg-sage-600 text-white shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 opacity-0 pointer-events-none" aria-label="Back to Top">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+  </button>
+
+  <!-- Site Script -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
