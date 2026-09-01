@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="sageGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#617d69"/>
+      <stop offset="100%" stop-color="#3e5244"/>
+    </linearGradient>
+  </defs>
+  <!-- Background Rounded Square -->
+  <rect width="64" height="64" rx="16" fill="url(#sageGrad)"/>
+  
+  <!-- Grocery Basket / Shopping Cart -->
+  <path d="M13 18h7l4.5 22h24.5l4.5-16H23.5" fill="none" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Cart Wheels -->
+  <circle cx="26.5" cy="48.5" r="3.5" fill="#ffffff"/>
+  <circle cx="45.5" cy="48.5" r="3.5" fill="#ffffff"/>
+
+  <!-- Senior Care Heart Badge -->
+  <path d="M38.5 10.5c-1.8 0-3.3 1.2-3.8 2.8-.5-1.6-2-2.8-3.8-2.8-2.2 0-4 1.8-4 4 0 4.5 6.2 8 7.8 8.8.4.2.8.2 1.2 0 1.6-.8 7.8-4.3 7.8-8.8 0-2.2-1.8-4-4-4z" fill="#faf6eb"/>
+</svg>
