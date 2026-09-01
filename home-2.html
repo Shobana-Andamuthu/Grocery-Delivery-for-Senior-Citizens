@@ -205,43 +205,71 @@
   <!-- Main Content -->
   <main>
 
-    <!-- SECTION 1: Editorial Split Hero -->
-    <section class="py-12 sm:py-20 lg:py-24 bg-cream-50 dark:bg-gray-950">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
-          
-          <!-- Image Column First (Structural Difference) -->
-          <div class="lg:col-span-6 relative order-last lg:order-first" data-reveal>
-            <div class="absolute inset-0 bg-sage-500/10 dark:bg-sage-500/5 rounded-3xl transform rotate-2"></div>
-            <div class="relative rounded-3xl overflow-hidden shadow-xl border border-cream-200 dark:border-gray-800 aspect-[4/3] sm:aspect-[16/11]">
-              <img src="assets/images/hero/home2.png" alt="A daughter choosing fresh groceries with her elderly mother" class="w-full h-full object-cover">
+    <!-- SECTION 1: Full-Width Magazine/Editorial Hero (Home 2 Exclusive) -->
+    <section class="relative overflow-hidden bg-gray-950 dark:bg-gray-950 min-h-[540px] sm:min-h-[620px] lg:min-h-[680px] flex items-end">
+
+      <!-- Full-bleed background image -->
+      <div class="absolute inset-0 z-0">
+        <img src="assets/images/hero/home2.png" alt="A daughter and elderly mother planning fresh groceries together" class="w-full h-full object-cover opacity-60 dark:opacity-50">
+        <!-- Rich dual-direction gradient overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/60 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-gray-950/70 via-transparent to-transparent"></div>
+      </div>
+
+      <!-- Content Panel (overlaid at bottom-left, anchored) -->
+      <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-14 sm:pb-20 pt-28 sm:pt-40">
+
+        <!-- Freshness Badge – inside container, top-right of the padded content area -->
+        <div class="absolute top-6 sm:top-10 right-4 sm:right-6 lg:right-8 bg-white/10 backdrop-blur border border-white/20 px-4 py-3 rounded-2xl text-center hidden sm:block">
+          <span class="block text-2xl font-extrabold text-white">100%</span>
+          <span class="block text-xs text-gray-300 font-semibold">Freshness Guaranteed</span>
+        </div>
+        <div class="max-w-2xl space-y-6" data-reveal>
+
+          <!-- Eyebrow Badge -->
+          <span class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white/10 text-white border border-white/20 backdrop-blur-sm text-xs font-bold uppercase tracking-wider">
+            <svg class="w-3.5 h-3.5 text-sage-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+            <span>Nutrition-First Senior Care</span>
+          </span>
+
+          <!-- Headline -->
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-serif text-white leading-[1.1]">
+            Giving Seniors Independence Through
+            <span class="block text-sage-400 italic mt-1">Pure Nutrition.</span>
+          </h1>
+
+          <!-- Sub-paragraph -->
+          <p class="text-base sm:text-lg text-gray-300 font-medium leading-relaxed max-w-xl">
+            Premium organic foods, low-sodium ready-to-eat meals, and essential hygiene items — designed so caregivers can manage care remotely, and seniors keep their self-reliance.
+          </p>
+
+          <!-- Horizontal Nutrition-Fact Bar -->
+          <div class="flex flex-wrap items-center gap-x-6 gap-y-2 pt-1 border-t border-white/10">
+            <div class="flex items-center space-x-2">
+              <span class="w-2 h-2 rounded-full bg-sage-400 shrink-0"></span>
+              <span class="text-xs font-semibold text-gray-300">Organic & Low-Sodium</span>
             </div>
-            <!-- Dynamic statistic snippet -->
-            <div class="absolute top-6 right-6 bg-white/90 dark:bg-gray-900/90 backdrop-blur p-4 rounded-2xl shadow-lg border border-white/50 dark:border-gray-800">
-              <span class="block text-2xl font-bold text-sage-600 dark:text-sage-400">100%</span>
-              <span class="block text-xs text-gray-500 dark:text-gray-400 font-semibold">Freshness Guaranteed</span>
+            <div class="flex items-center space-x-2">
+              <span class="w-2 h-2 rounded-full bg-amber-400 shrink-0"></span>
+              <span class="text-xs font-semibold text-gray-300">Diabetic-Safe Options</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="w-2 h-2 rounded-full bg-blue-400 shrink-0"></span>
+              <span class="text-xs font-semibold text-gray-300">100% Freshness Guaranteed</span>
             </div>
           </div>
 
-          <!-- Hero Content -->
-          <div class="lg:col-span-6 space-y-6 text-center lg:text-left" data-reveal>
-            <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-cream-200 text-cream-800 dark:bg-cream-900/50 dark:text-cream-300 text-xs font-semibold uppercase tracking-wider">
-              <svg class="w-3.5 h-3.5 text-sage-600 dark:text-sage-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-11.314l.707.707m11.314 11.314l.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z"></path></svg> <span>Fresh Ingredients</span>
-            </div>
-            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-serif text-sage-900 dark:text-white leading-tight">
-              Giving Seniors Independence Through <span class="italic text-cream-600 dark:text-cream-400">Pure Nutrition</span>
-            </h1>
-            <p class="text-base sm:text-lg text-sage-800/85 dark:text-gray-300 font-medium">
-              We focus on premium, organic foods, low-sodium healthy ready-to-eat meals, and essential home hygiene items. Created to allow caregivers to maintain care, and parents to keep their self-reliance.
-            </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-              <a href="register.html" class="w-full sm:w-auto px-8 py-3.5 bg-sage-500 hover:bg-sage-600 text-white font-semibold rounded-2xl text-center shadow-md">Create Care Profile</a>
-              <a href="supported-items.html" class="w-full sm:w-auto px-8 py-3.5 bg-white hover:bg-cream-50 dark:bg-gray-800 dark:hover:bg-gray-700 text-sage-800 dark:text-gray-200 font-semibold rounded-2xl text-center border border-cream-200 dark:border-gray-700 shadow-sm">Browse Supported Items</a>
-            </div>
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row items-start gap-3.5 pt-2">
+            <a href="register.html" class="px-8 py-3.5 bg-sage-500 hover:bg-sage-600 text-white font-bold text-sm rounded-xl shadow-lg shadow-sage-500/20 hover:shadow-xl transition-all">Create Care Profile</a>
+            <a href="supported-items.html" class="px-8 py-3.5 bg-white/10 hover:bg-white/20 backdrop-blur border border-white/20 text-white font-bold text-sm rounded-xl transition-all">Browse Supported Items</a>
           </div>
 
         </div>
       </div>
+
+
+
     </section>
 
     <!-- SECTION 2: Trust Statistics Section -->

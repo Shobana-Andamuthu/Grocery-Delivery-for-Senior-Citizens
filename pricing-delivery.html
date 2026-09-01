@@ -208,30 +208,62 @@
   <!-- Main Content -->
   <main>
 
-    <!-- SECTION 1: Page Hero -->
-    <section class="relative py-20 sm:py-28 bg-gradient-to-b from-cream-100 via-cream-50 to-white dark:from-gray-900 dark:via-gray-900 dark:to-gray-950 overflow-hidden min-h-[420px] flex items-center">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          <!-- Text Column -->
-          <div class="lg:col-span-7 space-y-6" data-reveal>
-            <span class="text-sage-600 dark:text-sage-400 font-bold uppercase tracking-wider text-xs">Transparent Pricing</span>
-            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-serif text-sage-900 dark:text-white leading-tight">Simple Pricing & Patient Doorstep Delivery</h1>
-            <p class="text-base sm:text-lg text-sage-800/80 dark:text-gray-300 leading-relaxed">
-              No hidden fees, surprise subscription traps, or complex club memberships. Choose flexible one-time delivery when needed, or enjoy discounted slots with our automated weekly plan.
-            </p>
-            <div class="flex flex-wrap gap-4 pt-2">
-              <a href="#plans" class="px-6 py-3.5 bg-sage-500 hover:bg-sage-600 text-white font-bold text-sm rounded-xl shadow-md transition-all">Explore Delivery Plans</a>
-              <a href="#faq" class="px-6 py-3.5 bg-white dark:bg-gray-800 hover:bg-cream-100 text-sage-800 dark:text-gray-200 font-bold text-sm rounded-xl border border-cream-200 dark:border-gray-700 shadow-sm transition-all">Pricing FAQ</a>
+    <!-- SECTION 1: Pricing/Delivery-Focused Hero Section -->
+    <section class="py-14 sm:py-20 lg:py-24 bg-gradient-to-b from-cream-100 via-cream-50 to-white dark:from-gray-900 dark:via-gray-900 dark:to-gray-950 border-b border-cream-200/50 dark:border-gray-800/80">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8" data-reveal>
+        
+        <div>
+          <span class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-sage-100 text-sage-800 dark:bg-sage-900/50 dark:text-sage-300 text-xs font-bold uppercase tracking-wider mb-4">
+            <svg class="w-3.5 h-3.5 text-sage-600 dark:text-sage-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <span>TRANSPARENT PRICING & PROMISE</span>
+          </span>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-serif text-sage-900 dark:text-white leading-[1.15]">
+            Simple Pricing. Patient Doorstep Delivery.
+          </h1>
+        </div>
+
+        <p class="text-base sm:text-lg text-sage-800/85 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed font-medium">
+          No hidden fees, surprise subscription traps, or complex club memberships. Choose flexible one-time delivery when needed, or enjoy discounted slots with our automated weekly caregiver plan.
+        </p>
+
+        <!-- 3 Horizontal Pricing Guarantee Badges -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto pt-2">
+          <div class="p-4 rounded-2xl bg-white dark:bg-gray-800 border border-cream-200/80 dark:border-gray-700 shadow-sm flex items-center space-x-3.5 text-left">
+            <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-lg shrink-0">
+              $0
+            </div>
+            <div>
+              <h4 class="text-xs font-bold text-sage-900 dark:text-white">Zero Hidden Fees</h4>
+              <p class="text-[11px] text-sage-800/70 dark:text-gray-400">Clear itemized receipts always.</p>
             </div>
           </div>
-          <!-- Hero Image Column -->
-          <div class="lg:col-span-5 relative" data-reveal>
-            <div class="absolute -inset-4 bg-sage-500/10 dark:bg-sage-400/10 rounded-[2.5rem] blur-xl transform rotate-2 -z-10"></div>
-            <div class="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/3] bg-cream-50 dark:bg-gray-800 border border-cream-200/60 dark:border-gray-700">
-              <img src="assets/images/hero/pricing_hero.png" alt="Caregiver reviewing pricing plans on smartphone with fresh groceries" class="w-full h-full object-cover">
+
+          <div class="p-4 rounded-2xl bg-white dark:bg-gray-800 border border-cream-200/80 dark:border-gray-700 shadow-sm flex items-center space-x-3.5 text-left">
+            <div class="w-10 h-10 rounded-xl bg-sage-100 dark:bg-sage-900/60 text-sage-600 dark:text-sage-400 flex items-center justify-center font-bold text-lg shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+            </div>
+            <div>
+              <h4 class="text-xs font-bold text-sage-900 dark:text-white">Patient Handoff</h4>
+              <p class="text-[11px] text-sage-800/70 dark:text-gray-400">Unpacking support included.</p>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-white dark:bg-gray-800 border border-cream-200/80 dark:border-gray-700 shadow-sm flex items-center space-x-3.5 text-left">
+            <div class="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-lg shrink-0">
+              ⚡
+            </div>
+            <div>
+              <h4 class="text-xs font-bold text-sage-900 dark:text-white">Cancel Anytime</h4>
+              <p class="text-[11px] text-sage-800/70 dark:text-gray-400">No long-term contracts ever.</p>
             </div>
           </div>
         </div>
+
+        <div class="flex flex-wrap justify-center gap-4 pt-2">
+          <a href="#plans" class="px-7 py-3.5 bg-sage-500 hover:bg-sage-600 text-white font-bold text-sm rounded-xl shadow-md hover:shadow-lg transition-all">Explore Delivery Plans</a>
+          <a href="#faq" class="px-7 py-3.5 bg-white dark:bg-gray-800 hover:bg-cream-100 text-sage-800 dark:text-gray-200 font-bold text-sm rounded-xl border border-cream-200 dark:border-gray-700 shadow-sm transition-all">Pricing FAQ</a>
+        </div>
+
       </div>
     </section>
 
@@ -301,7 +333,7 @@
               </ul>
             </div>
 
-            <a href="register.html" class="block w-full py-3 bg-sage-500 hover:bg-sage-600 text-white text-center font-bold text-xs sm:text-sm rounded-xl shadow">Schedule Weekly Plan</a>
+            <a href="register.html" class="block w-full py-3 bg-white hover:bg-cream-50 dark:bg-gray-900 dark:hover:bg-gray-850 text-center font-bold text-xs sm:text-sm rounded-xl border border-cream-200 dark:border-gray-700 text-sage-800 dark:text-gray-200">Schedule Weekly Plan</a>
           </div>
 
           <!-- Card 3: Priority -->
