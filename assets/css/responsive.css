@@ -85,4 +85,21 @@ body {
   }
 }
 
+/* Extra Responsive Grid and Text Protection */
+img, video, iframe, canvas, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 480px) {
+  .hdr-action-btn {
+    font-size: 0.8125rem !important; /* 13px on mobile drawer */
+  }
+  .px-4 {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+}
+
+
 

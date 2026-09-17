@@ -83,7 +83,7 @@
       <div class="flex items-center justify-between h-16 flex-nowrap gap-4">
         
         <!-- Brand Logo -->
-        <a href="index.html" class="flex items-center space-x-2 group shrink-0 whitespace-nowrap">
+        <a href="index.html" class="flex items-center gap-2 group shrink-0 whitespace-nowrap">
           <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-sage-500 flex items-center justify-center text-white shadow-sm shadow-sage-500/20 group-hover:scale-105 transition-transform duration-300">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
@@ -96,21 +96,21 @@
         </a>
 
         <!-- Right Header Action Controls -->
-        <div class="flex items-center space-x-2 shrink-0 whitespace-nowrap">
+        <div class="flex items-center gap-2.5 shrink-0 whitespace-nowrap">
+          <!-- RTL/LTR Toggle -->
+          <button data-rtl-toggle class="hdr-action-btn hdr-action-icon bg-cream-200/60 hover:bg-cream-300 dark:bg-gray-800 dark:hover:bg-gray-700 text-sage-800 dark:text-gray-200 font-bold text-xs transition-colors shrink-0" title="Toggle RTL/LTR">
+            <span class="text-xs font-bold" data-rtl-label>RTL</span>
+          </button>
+
           <!-- Dark Mode Toggle -->
-          <button data-theme-toggle class="w-8 h-8 flex items-center justify-center rounded-lg bg-cream-200/60 hover:bg-cream-300 dark:bg-gray-800 dark:hover:bg-gray-700 text-sage-800 dark:text-gray-200 transition-colors shrink-0" title="Toggle Dark/Light Mode">
+          <button data-theme-toggle class="hdr-action-btn hdr-action-icon bg-cream-200/60 hover:bg-cream-300 dark:bg-gray-800 dark:hover:bg-gray-700 text-sage-800 dark:text-gray-200 transition-colors shrink-0" title="Toggle Dark/Light Mode">
             <span data-theme-icon class="flex items-center justify-center">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
             </span>
           </button>
 
-          <!-- RTL/LTR Toggle -->
-          <button data-rtl-toggle class="w-8 h-8 flex items-center justify-center rounded-lg bg-cream-200/60 hover:bg-cream-300 dark:bg-gray-800 dark:hover:bg-gray-700 text-sage-800 dark:text-gray-200 font-bold text-xs transition-colors shrink-0" title="Toggle RTL/LTR">
-            <span data-rtl-label>RTL</span>
-          </button>
-
           <!-- Log Out Button -->
-          <button onclick="doLogout()" class="px-3.5 py-1.5 rounded-lg bg-sage-500 hover:bg-sage-600 text-white font-medium text-sm shadow-sm flex items-center space-x-1.5 transition-all shrink-0 whitespace-nowrap" title="Log Out">
+          <button onclick="doLogout()" class="hdr-action-btn px-4 bg-sage-500 hover:bg-sage-600 text-white font-medium text-sm shadow-sm flex items-center gap-1.5 transition-all shrink-0 whitespace-nowrap" title="Log Out">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
             <span class="hidden sm:inline whitespace-nowrap">Log Out</span>
           </button>
@@ -321,13 +321,13 @@
 
       </section>
 
-      <!-- PANEL 3: GROCERY SHOP (Persisted Cart) -->
+      <!-- PANEL 3: GROCERY SHOP (Persisted Cart & Scheduling) -->
       <section id="panel-shop" class="dashboard-panel space-y-6 hidden">
         
         <div class="flex items-center justify-between border-b border-cream-200 dark:border-gray-750 pb-4">
           <div>
-            <h2 class="text-xl sm:text-2xl font-serif font-bold text-sage-900 dark:text-white">Add Grocery Items</h2>
-            <p class="text-xs text-sage-800/60 dark:text-gray-400 mt-0.5">Select items to purchase or add to your parent's weekly recurring auto-plan.</p>
+            <h2 class="text-xl sm:text-2xl font-serif font-bold text-sage-900 dark:text-white">Add Grocery Items & Schedule Delivery</h2>
+            <p class="text-xs text-sage-800/60 dark:text-gray-400 mt-0.5">Select fresh products, add custom requests, pick delivery slots, and coordinate doorstep delivery.</p>
           </div>
           <!-- Mini Cart trigger/indicator -->
           <div class="flex items-center space-x-2">
@@ -340,44 +340,93 @@
           <!-- Items List (8 cols) -->
           <div class="lg:col-span-8 space-y-6">
             
-            <!-- Category Tabs inside shop -->
+            <!-- Category Tabs inside shop (6 Categories) -->
             <div class="flex space-x-2 border-b border-cream-100 dark:border-gray-800 pb-2 overflow-x-auto">
-              <button onclick="filterShopCategory('produce')" id="shop-tab-produce" class="px-4 py-2 rounded-xl text-xs font-bold bg-sage-500 text-white">Produce</button>
-              <button onclick="filterShopCategory('dairy')" id="shop-tab-dairy" class="px-4 py-2 rounded-xl text-xs font-bold hover:bg-cream-200 dark:hover:bg-gray-800 text-sage-800 dark:text-gray-200">Eggs & Dairy</button>
-              <button onclick="filterShopCategory('healthy')" id="shop-tab-healthy" class="px-4 py-2 rounded-xl text-xs font-bold hover:bg-cream-200 dark:hover:bg-gray-800 text-sage-800 dark:text-gray-200">Dietary Essentials</button>
-              <button onclick="filterShopCategory('household')" id="shop-tab-household" class="px-4 py-2 rounded-xl text-xs font-bold hover:bg-cream-200 dark:hover:bg-gray-800 text-sage-800 dark:text-gray-200">Household</button>
+              <button onclick="filterShopCategory('fruits-veg')" id="shop-tab-fruits-veg" class="px-4 py-2 rounded-xl text-xs font-bold bg-sage-500 text-white shrink-0">Fresh Produce</button>
+              <button onclick="filterShopCategory('dairy-eggs')" id="shop-tab-dairy-eggs" class="px-4 py-2 rounded-xl text-xs font-bold hover:bg-cream-200 dark:hover:bg-gray-800 text-sage-800 dark:text-gray-200 shrink-0">Dairy & Eggs</button>
+              <button onclick="filterShopCategory('pantry')" id="shop-tab-pantry" class="px-4 py-2 rounded-xl text-xs font-bold hover:bg-cream-200 dark:hover:bg-gray-800 text-sage-800 dark:text-gray-200 shrink-0">Pantry Staples</button>
+              <button onclick="filterShopCategory('snacks')" id="shop-tab-snacks" class="px-4 py-2 rounded-xl text-xs font-bold hover:bg-cream-200 dark:hover:bg-gray-800 text-sage-800 dark:text-gray-200 shrink-0">Healthy Snacks</button>
+              <button onclick="filterShopCategory('beverages')" id="shop-tab-beverages" class="px-4 py-2 rounded-xl text-xs font-bold hover:bg-cream-200 dark:hover:bg-gray-800 text-sage-800 dark:text-gray-200 shrink-0">Beverages</button>
+              <button onclick="filterShopCategory('household')" id="shop-tab-household" class="px-4 py-2 rounded-xl text-xs font-bold hover:bg-cream-200 dark:hover:bg-gray-800 text-sage-800 dark:text-gray-200 shrink-0">Household</button>
             </div>
 
             <!-- Shop Items Grid -->
-            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4" id="shop-items-grid">
+            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4" id="shop-items-grid">
               <!-- Rendered via JS -->
+            </div>
+
+            <!-- Custom Item Request Form Box -->
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-3xl border border-cream-200 dark:border-gray-700/60 shadow-sm space-y-4">
+              <div class="flex items-center space-x-3">
+                <div class="w-9 h-9 rounded-xl bg-sage-100 dark:bg-sage-900/60 text-sage-600 dark:text-sage-400 flex items-center justify-center font-bold shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
+                </div>
+                <div>
+                  <h3 class="font-bold font-serif text-sage-900 dark:text-white text-sm">Can't Find a Specific Brand or Item?</h3>
+                  <p class="text-[11px] text-sage-800/60 dark:text-gray-400">Request a custom grocery item and our shopper will fulfill it from your senior's preferred local market.</p>
+                </div>
+              </div>
+              <form id="custom-item-form" onsubmit="event.preventDefault(); submitCustomItem();" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <input type="text" id="custom-item-name" placeholder="Item name & brand (e.g. Horizon Organic Lactose-Free Milk 32oz)" required class="sm:col-span-2 px-4 py-2.5 rounded-xl bg-cream-50/50 dark:bg-gray-900 text-sage-850 dark:text-gray-200 border border-cream-200 dark:border-gray-700 focus:outline-none focus:border-sage-500 text-xs">
+                <button type="submit" class="px-4 py-2.5 bg-sage-500 hover:bg-sage-600 text-white font-bold rounded-xl text-xs shadow transition-all">Add Custom Request</button>
+              </form>
             </div>
 
           </div>
 
-          <!-- Checkout Cart Panel (4 cols) -->
-          <div class="lg:col-span-4 bg-white dark:bg-gray-800 p-6 rounded-3xl border border-cream-200 dark:border-gray-700/60 shadow-sm space-y-4">
-            <h3 class="font-bold font-serif text-sage-900 dark:text-white text-base">Selected Cart</h3>
-            <div class="divide-y divide-cream-100 dark:divide-gray-700 max-h-60 overflow-y-auto" id="cart-items-list">
+          <!-- Checkout Cart & Delivery Scheduling Panel (4 cols) -->
+          <div class="lg:col-span-4 bg-white dark:bg-gray-800 p-6 rounded-3xl border border-cream-200 dark:border-gray-700/60 shadow-sm space-y-5">
+            <h3 class="font-bold font-serif text-sage-900 dark:text-white text-base">Order Breakdown</h3>
+            
+            <!-- Cart Items List -->
+            <div class="divide-y divide-cream-100 dark:divide-gray-700 max-h-56 overflow-y-auto" id="cart-items-list">
               <!-- Rendered via JS -->
             </div>
             
+            <!-- Delivery Scheduling Inputs -->
+            <div class="pt-4 border-t border-cream-100 dark:border-gray-750 space-y-3">
+              <h4 class="text-xs font-bold text-sage-900 dark:text-white uppercase tracking-wider">Delivery Schedule & Location</h4>
+              <div>
+                <label class="block text-[11px] text-sage-800/70 dark:text-gray-400 mb-1">Target Delivery Date</label>
+                <input type="date" id="checkout-date" class="w-full px-3 py-2 rounded-xl bg-cream-50/50 dark:bg-gray-900 text-sage-850 dark:text-gray-200 border border-cream-200 dark:border-gray-700 text-xs focus:outline-none focus:border-sage-500">
+              </div>
+              <div>
+                <label class="block text-[11px] text-sage-800/70 dark:text-gray-400 mb-1">Delivery Time Slot</label>
+                <select id="checkout-timeslot" class="w-full px-3 py-2 rounded-xl bg-cream-50/50 dark:bg-gray-900 text-sage-850 dark:text-gray-200 border border-cream-200 dark:border-gray-700 text-xs focus:outline-none focus:border-sage-500">
+                  <option value="9am-12pm">Morning Window (9:00 AM - 12:00 PM)</option>
+                  <option value="1pm-4pm">Afternoon Window (1:00 PM - 4:00 PM)</option>
+                  <option value="5pm-7pm">Evening Window (5:00 PM - 7:00 PM)</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-[11px] text-sage-800/70 dark:text-gray-400 mb-1">Senior Delivery Address</label>
+                <select id="checkout-address" class="w-full px-3 py-2 rounded-xl bg-cream-50/50 dark:bg-gray-900 text-sage-850 dark:text-gray-200 border border-cream-200 dark:border-gray-700 text-xs focus:outline-none focus:border-sage-500">
+                  <!-- Populated from recipientsList dynamically -->
+                </select>
+              </div>
+            </div>
+
+            <!-- Detailed Fee Breakdown -->
             <div class="pt-4 border-t border-cream-100 dark:border-gray-750 space-y-2 text-xs">
               <div class="flex justify-between font-medium text-sage-800 dark:text-gray-300">
                 <span>Items Subtotal</span>
                 <span id="summary-subtotal">$0.00</span>
               </div>
               <div class="flex justify-between font-medium text-sage-800 dark:text-gray-300">
-                <span>Delivery Fee</span>
+                <span>Doorstep Delivery Fee</span>
                 <span id="summary-delivery">$3.99</span>
               </div>
+              <div class="flex justify-between font-medium text-sage-800 dark:text-gray-300">
+                <span>Caregiver Handling & Unpacking</span>
+                <span id="summary-handling">$1.50</span>
+              </div>
               <div class="flex justify-between font-bold text-sage-900 dark:text-white text-sm pt-2 border-t border-dashed border-cream-100 dark:border-gray-750">
-                <span>Estimated Total</span>
-                <span id="summary-total">$3.99</span>
+                <span>Final Total</span>
+                <span id="summary-total">$5.49</span>
               </div>
             </div>
 
-            <button onclick="checkoutCart()" class="w-full py-3 bg-sage-500 hover:bg-sage-600 text-white font-bold rounded-xl text-xs sm:text-sm shadow transition-all">Submit Order</button>
+            <button onclick="checkoutCart()" class="w-full py-3.5 bg-sage-500 hover:bg-sage-600 text-white font-bold rounded-xl text-xs sm:text-sm shadow transition-all">Schedule & Complete Order</button>
           </div>
         </div>
 
@@ -785,24 +834,35 @@
     ]);
 
     let shopItems = [
-      { id: 1, name: 'Organic Red Apples', price: 4.99, category: 'produce', image: 'assets/images/products/organic-red-apples.jpg' },
-      { id: 2, name: 'Soft Ripe Bananas', price: 2.49, category: 'produce', image: 'assets/images/products/soft-ripe-bananas.jpg' },
-      { id: 3, name: 'Crisp Broccoli', price: 3.29, category: 'produce', image: 'assets/images/products/broccoli-crowns.jpg' },
+      // 1. Fresh Produce (fruits-veg)
+      { id: 1, name: 'Organic Red Apples', unit: '3 lb bag', price: 4.99, category: 'fruits-veg', image: 'assets/images/products/organic-red-apples.jpg' },
+      { id: 2, name: 'Soft Ripe Bananas', unit: '1 bunch (~3 lb)', price: 2.49, category: 'fruits-veg', image: 'assets/images/products/soft-ripe-bananas.jpg' },
+      { id: 3, name: 'Crisp Broccoli Crowns', unit: '1.5 lb pack', price: 3.29, category: 'fruits-veg', image: 'assets/images/products/broccoli-crowns.jpg' },
       
-      { id: 4, name: 'Lactose-Free Milk', price: 4.89, category: 'dairy', image: 'assets/images/products/lactose-free-milk.jpg' },
-      { id: 5, name: 'Cage-Free Eggs', price: 5.49, category: 'dairy', image: 'assets/images/products/cage-free-eggs.jpg' },
-      { id: 6, name: 'Cheddar Cheese Slices', price: 4.29, category: 'dairy', image: 'assets/images/products/cheddar-slices.jpg' },
+      // 2. Dairy & Eggs (dairy-eggs)
+      { id: 4, name: 'Lactose-Free Whole Milk', unit: '1/2 gallon', price: 4.89, category: 'dairy-eggs', image: 'assets/images/products/lactose-free-milk.jpg' },
+      { id: 5, name: 'Grade A Cage-Free Eggs', unit: '1 dozen (12 eggs)', price: 5.49, category: 'dairy-eggs', image: 'assets/images/products/cage-free-eggs.jpg' },
+      { id: 6, name: 'Mild Cheddar Slices', unit: '8 oz pack', price: 4.29, category: 'dairy-eggs', image: 'assets/images/products/cheddar-slices.jpg' },
       
-      { id: 7, name: 'Soft Beef Stew Meal', price: 8.99, category: 'healthy', image: 'assets/images/products/beef-carrot-stew.jpg' },
-      { id: 8, name: 'Low-Sodium Vegetable Soup', price: 3.49, category: 'healthy', image: 'assets/images/products/low-sodium-veg-soup.jpg' },
-      { id: 9, name: 'Nutrition Protein Shake', price: 4.49, category: 'healthy', image: 'assets/images/products/nutrition-shake.jpg' },
-      
-      { id: 10, name: 'Ultra-Soft Paper Towels', price: 6.99, category: 'household', image: 'assets/images/products/paper-towels.jpg' },
-      { id: 11, name: 'Fragrance-Free Hand Soap', price: 3.99, category: 'household', image: 'assets/images/products/liquid-hand-soap.jpg' },
-      { id: 12, name: 'Multi-Surface Cleaner', price: 4.29, category: 'household', image: 'assets/images/products/multi-surface-spray.jpg' }
+      // 3. Pantry Staples (pantry)
+      { id: 7, name: 'Whole Grain Oatmeal', unit: '18 oz tub', price: 3.99, category: 'pantry', image: 'assets/images/products/whole-grain-oatmeal.jpg' },
+      { id: 8, name: 'Soft Beef Stew Meal', unit: '14 oz bowl', price: 8.99, category: 'pantry', image: 'assets/images/products/beef-carrot-stew.jpg' },
+      { id: 9, name: 'Low-Sodium Veg Soup', unit: '18.8 oz can', price: 3.49, category: 'pantry', image: 'assets/images/products/low-sodium-veg-soup.jpg' },
+
+      // 4. Healthy Snacks (snacks)
+      { id: 10, name: 'Unsalted Mixed Nuts', unit: '10 oz tin', price: 6.49, category: 'snacks', image: 'assets/images/products/unsalted-mixed-nuts.jpg' },
+      { id: 11, name: 'Soft Fruit Puree Pouches', unit: '4 pack (3.2 oz)', price: 4.49, category: 'snacks', image: 'assets/images/products/fruit-puree-pouches.jpg' },
+
+      // 5. Beverages (beverages)
+      { id: 12, name: 'Nutrition Protein Shake', unit: '6 pack (8 fl oz)', price: 9.99, category: 'beverages', image: 'assets/images/products/nutrition-shake.jpg' },
+      { id: 13, name: 'Calcium Pure OJ', unit: '52 fl oz bottle', price: 4.29, category: 'beverages', image: 'assets/images/products/calcium-orange-juice.jpg' },
+
+      // 6. Household Essentials (household)
+      { id: 14, name: 'Ultra-Soft Paper Towels', unit: '2 giant rolls', price: 6.99, category: 'household', image: 'assets/images/products/paper-towels.jpg' },
+      { id: 15, name: 'Fragrance-Free Hand Soap', unit: '11.25 fl oz pump', price: 3.99, category: 'household', image: 'assets/images/products/liquid-hand-soap.jpg' }
     ];
 
-    let currentShopCategory = 'produce';
+    let currentShopCategory = 'fruits-veg';
     let cart = [];
 
     // Switch dashboard tabs (desktop sidebar & mobile horizontal bar)
@@ -1015,17 +1075,79 @@
       const grid = document.getElementById('shop-items-grid');
       
       grid.innerHTML = items.map(item => {
+        const cartItem = cart.find(x => x.id === item.id);
+        const qty = cartItem ? cartItem.qty : 0;
+        
+        let buttonHtml = '';
+        if (qty === 0) {
+          buttonHtml = '<button onclick="addToCart(' + item.id + ')" class="w-full py-2 bg-sage-500 hover:bg-sage-600 text-white font-bold rounded-xl text-xs shadow-sm transition-all flex items-center justify-center space-x-1.5 whitespace-nowrap">' +
+            '<svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>' +
+            '<span>Add to Cart</span>' +
+          '</button>';
+        } else {
+          buttonHtml = '<div class="w-full flex items-center justify-between bg-sage-100/70 dark:bg-sage-950/60 p-1 rounded-xl border border-sage-200/80 dark:border-sage-800/60">' +
+            '<button onclick="adjustCartQty(' + item.id + ', -1)" class="w-7 h-7 bg-white dark:bg-gray-800 hover:bg-cream-200 dark:hover:bg-gray-700 text-sage-900 dark:text-white font-bold rounded-lg shadow-xs text-sm flex items-center justify-center transition-all">-</button>' +
+            '<span class="text-xs font-bold text-sage-900 dark:text-white px-2 whitespace-nowrap">' + qty + ' in cart</span>' +
+            '<button onclick="addToCart(' + item.id + ')" class="w-7 h-7 bg-sage-500 hover:bg-sage-600 text-white font-bold rounded-lg shadow-xs text-sm flex items-center justify-center transition-all">+</button>' +
+          '</div>';
+        }
+
         return '<div class="bg-cream-50/50 dark:bg-gray-800 p-4 rounded-2xl border border-cream-200/60 dark:border-gray-700 flex flex-col justify-between space-y-3 shadow-sm">' +
-          '<div class="w-full aspect-square rounded-xl overflow-hidden bg-cream-100 dark:bg-gray-900 border border-cream-200/50 dark:border-gray-700/60">' +
+          '<div class="w-full aspect-square rounded-xl overflow-hidden bg-cream-100 dark:bg-gray-900 border border-cream-200/50 dark:border-gray-700/60 relative">' +
             '<img src="' + item.image + '" alt="' + item.name + '" class="w-full h-full object-cover">' +
+            (qty > 0 ? '<span class="absolute top-2 right-2 bg-sage-500 text-white font-bold text-[10px] w-6 h-6 rounded-full flex items-center justify-center shadow-md">' + qty + '</span>' : '') +
           '</div>' +
           '<div>' +
-            '<h4 class="font-bold text-sage-900 dark:text-white text-xs">' + item.name + '</h4>' +
+            '<h4 class="font-bold text-sage-900 dark:text-white text-xs leading-snug">' + item.name + '</h4>' +
+            '<span class="block text-[11px] text-sage-800/60 dark:text-gray-400 mt-0.5">' + (item.unit || 'Standard Pack') + '</span>' +
             '<span class="block text-xs font-bold text-sage-850 dark:text-gray-200 mt-1">$' + item.price.toFixed(2) + '</span>' +
           '</div>' +
-          '<button onclick="addToCart(' + item.id + ')" class="w-full py-2 bg-sage-500 hover:bg-sage-600 text-white font-bold rounded-lg text-[10px] transition-all shadow-sm">Add to Cart</button>' +
+          '<div>' + buttonHtml + '</div>' +
         '</div>';
       }).join('');
+
+      populateCheckoutAddresses();
+    }
+
+    function populateCheckoutAddresses() {
+      const addrSelect = document.getElementById('checkout-address');
+      const dateInput = document.getElementById('checkout-date');
+      if (!addrSelect) return;
+
+      if (!recipientsList.length) {
+        addrSelect.innerHTML = '<option value="">No senior profiles configured</option>';
+      } else {
+        addrSelect.innerHTML = recipientsList.map(r => '<option value="' + r.address + '">' + r.name + ' (' + r.address + ')</option>').join('');
+      }
+
+      if (dateInput && !dateInput.value) {
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        dateInput.value = tomorrow.toISOString().split('T')[0];
+      }
+    }
+
+    function submitCustomItem() {
+      const nameInput = document.getElementById('custom-item-name');
+      const val = nameInput ? nameInput.value.trim() : '';
+      if (!val) return;
+
+      const customId = Date.now();
+      const customItem = {
+        id: customId,
+        name: val + ' (Custom Request)',
+        unit: 'Caregiver Fulfillment',
+        price: 5.00,
+        category: 'custom',
+        image: 'assets/images/products/organic-red-apples.jpg',
+        qty: 1
+      };
+
+      cart.push(customItem);
+      nameInput.value = '';
+      showToast('Custom item request "' + val + '" added to checkout cart.', 'success');
+      renderCart();
+      renderShop();
     }
 
     function addToCart(itemId) {
@@ -1041,13 +1163,14 @@
 
       showToast('Added ' + item.name + ' to checkout cart.', 'success');
       renderCart();
+      renderShop();
     }
 
     // Render cart items
     function renderCart() {
       const list = document.getElementById('cart-items-list');
       if (!cart.length) {
-        list.innerHTML = '<p class="text-xs text-sage-800/60 dark:text-gray-400 py-6 text-center">Your cart is empty.</p>';
+        list.innerHTML = '<p class="text-xs text-sage-800/60 dark:text-gray-400 py-6 text-center">Your cart is currently empty.</p>';
         updateCartTotal(0);
         return;
       }
@@ -1059,11 +1182,12 @@
           '</div>' +
           '<div class="min-w-0 flex-1">' +
             '<h4 class="font-bold text-sage-900 dark:text-white text-xs truncate">' + item.name + '</h4>' +
-            '<span class="text-[10px] text-sage-800/65 dark:text-gray-400">$' + item.price.toFixed(2) + ' × ' + item.qty + '</span>' +
+            '<span class="text-[10px] text-sage-800/65 dark:text-gray-400 block">$' + item.price.toFixed(2) + ' × ' + item.qty + '</span>' +
           '</div>' +
           '<div class="flex items-center space-x-1 flex-shrink-0">' +
-            '<button onclick="adjustCartQty(' + item.id + ', -1)" class="w-5 h-5 rounded bg-cream-200 dark:bg-gray-700 hover:bg-cream-300 flex items-center justify-center font-bold text-xs">-</button>' +
-            '<button onclick="adjustCartQty(' + item.id + ', 1)" class="w-5 h-5 rounded bg-cream-200 dark:bg-gray-700 hover:bg-cream-300 flex items-center justify-center font-bold text-xs">+</button>' +
+            '<button onclick="adjustCartQty(' + item.id + ', -1)" class="w-5 h-5 rounded bg-cream-200 dark:bg-gray-700 hover:bg-cream-300 dark:hover:bg-gray-600 flex items-center justify-center font-bold text-xs">-</button>' +
+            '<span class="text-xs font-bold px-1 text-sage-900 dark:text-white">' + item.qty + '</span>' +
+            '<button onclick="adjustCartQty(' + item.id + ', 1)" class="w-5 h-5 rounded bg-cream-200 dark:bg-gray-700 hover:bg-cream-300 dark:hover:bg-gray-600 flex items-center justify-center font-bold text-xs">+</button>' +
           '</div>' +
         '</div>';
       }).join('');
@@ -1080,27 +1204,43 @@
         cart = cart.filter(x => x.id !== itemId);
       }
       renderCart();
+      renderShop();
     }
 
     function updateCartTotal(subtotal) {
-      document.getElementById('cart-subtotal').textContent = '$' + subtotal.toFixed(2);
-      document.getElementById('summary-subtotal').textContent = '$' + subtotal.toFixed(2);
       const delivery = subtotal > 0 ? 3.99 : 0.00;
-      document.getElementById('summary-delivery').textContent = '$' + delivery.toFixed(2);
-      document.getElementById('summary-total').textContent = '$' + (subtotal + delivery).toFixed(2);
+      const handling = subtotal > 0 ? 1.50 : 0.00;
+      const total = subtotal + delivery + handling;
+
+      const subElem = document.getElementById('cart-subtotal');
+      const sumSub = document.getElementById('summary-subtotal');
+      const sumDel = document.getElementById('summary-delivery');
+      const sumHan = document.getElementById('summary-handling');
+      const sumTot = document.getElementById('summary-total');
+
+      if (subElem) subElem.textContent = '$' + subtotal.toFixed(2);
+      if (sumSub) sumSub.textContent = '$' + subtotal.toFixed(2);
+      if (sumDel) sumDel.textContent = '$' + delivery.toFixed(2);
+      if (sumHan) sumHan.textContent = '$' + handling.toFixed(2);
+      if (sumTot) sumTot.textContent = '$' + total.toFixed(2);
     }
 
     function checkoutCart() {
       if (!cart.length) {
-        showToast('Please add items to your cart first.', 'error');
+        showToast('Please add items to your cart before scheduling.', 'error');
         return;
       }
-      showToast('Order submitted successfully! Simulating doorstep delivery coordination.', 'success');
+      
+      const dateVal = document.getElementById('checkout-date')?.value || 'Tomorrow';
+      const slotVal = document.getElementById('checkout-timeslot')?.value || '9am-12pm';
+      
+      showToast('Order scheduled for ' + dateVal + ' (' + slotVal + ')! Transitioning to live delivery tracking.', 'success');
       cart = [];
       renderCart();
+      renderShop();
       setTimeout(() => {
         switchTab('tracking');
-      }, 1000);
+      }, 1200);
     }
 
     // ── Panel 4: Recurring Rules ───────────────────────────────

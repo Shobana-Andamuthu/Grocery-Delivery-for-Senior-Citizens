@@ -75,6 +75,39 @@ html.dark .premium-card:hover {
   transform: scaleX(-1);
 }
 
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] body {
+  direction: rtl;
+}
+
+/* Fix Tailwind space-x inversion issues in RTL */
+[dir="rtl"] .space-x-1 > * + * { margin-left: 0 !important; margin-right: 0.25rem !important; }
+[dir="rtl"] .space-x-2 > * + * { margin-left: 0 !important; margin-right: 0.5rem !important; }
+[dir="rtl"] .space-x-2\.5 > * + * { margin-left: 0 !important; margin-right: 0.625rem !important; }
+[dir="rtl"] .space-x-3 > * + * { margin-left: 0 !important; margin-right: 0.75rem !important; }
+[dir="rtl"] .space-x-4 > * + * { margin-left: 0 !important; margin-right: 1rem !important; }
+[dir="rtl"] .space-x-5 > * + * { margin-left: 0 !important; margin-right: 1.25rem !important; }
+[dir="rtl"] .space-x-6 > * + * { margin-left: 0 !important; margin-right: 1.5rem !important; }
+
+/* Proper Bidi Punctuation handling for English text in RTL mode */
+[dir="rtl"] p,
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6,
+[dir="rtl"] span,
+[dir="rtl"] a,
+[dir="rtl"] li,
+[dir="rtl"] button {
+  unicode-bidi: plaintext;
+}
+
+
 /* ── Dashboard Specific Leaf Pattern and Glow ── */
 .dashboard-glow {
   background: radial-gradient(circle at 50% 50%, rgba(97, 125, 105, 0.15) 0%, transparent 80%);
@@ -140,6 +173,29 @@ html.dark ::-webkit-scrollbar-thumb {
   white-space: nowrap;
 }
 
+/* ── Standardized Header Action Controls ── */
+.hdr-action-btn {
+  height: 38px !important;
+  min-height: 38px !important;
+  max-height: 38px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 0.75rem !important; /* rounded-xl */
+  font-size: 0.875rem !important; /* 14px text-sm */
+  font-weight: 500 !important;
+  box-sizing: border-box !important;
+  vertical-align: middle !important;
+  transition: all 0.2s ease-in-out !important;
+  line-height: 1 !important;
+}
+
+.hdr-action-icon {
+  width: 38px !important;
+  min-width: 38px !important;
+  max-width: 38px !important;
+  padding: 0 !important;
+}
 
 /* ── Nav Active State Indicator ── */
 /* Active desktop link: underline indicator */
@@ -157,3 +213,4 @@ html.dark ::-webkit-scrollbar-thumb {
   border-left-style: solid;
   padding-left: 0.875rem; /* 14px = pl-3.5 */
 }
+

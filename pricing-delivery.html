@@ -89,7 +89,7 @@
       <div class="flex items-center justify-between h-16 flex-nowrap gap-4">
         
         <!-- Logo -->
-        <a href="index.html" class="flex items-center space-x-2 group shrink-0 whitespace-nowrap">
+        <a href="index.html" class="flex items-center gap-2 group shrink-0 whitespace-nowrap">
           <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-sage-500 flex items-center justify-center text-white shadow-sm shadow-sage-500/20 group-hover:scale-105 transition-transform duration-300">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
@@ -102,10 +102,10 @@
         </a>
 
         <!-- Desktop Navigation -->
-        <nav class="hidden xl:flex items-center space-x-5 xl:space-x-6 shrink-0 whitespace-nowrap">
+        <nav class="hidden lg:flex items-center gap-5 lg:gap-6 shrink-0 whitespace-nowrap">
           <!-- Home Dropdown Menu -->
           <div class="relative">
-            <button id="home-dropdown-trigger" class="flex items-center space-x-1 text-sm font-medium text-sage-800 hover:text-sage-600 dark:text-gray-200 dark:hover:text-white py-1.5 focus:outline-none transition-colors whitespace-nowrap">
+            <button id="home-dropdown-trigger" class="flex items-center gap-1.5 text-sm font-medium text-sage-800 hover:text-sage-600 dark:text-gray-200 dark:hover:text-white py-1.5 focus:outline-none transition-colors whitespace-nowrap">
               <span>Home</span>
               <svg class="w-3.5 h-3.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </button>
@@ -122,31 +122,31 @@
         </nav>
 
         <!-- Desktop Action Controls -->
-        <div class="hidden xl:flex items-center space-x-2.5 shrink-0 whitespace-nowrap">
+        <div class="hidden lg:flex items-center gap-2.5 shrink-0 whitespace-nowrap">
           <!-- RTL/LTR Toggle -->
-          <button data-rtl-toggle class="w-8 h-8 flex items-center justify-center rounded-lg bg-cream-200/60 hover:bg-cream-300 dark:bg-gray-800 dark:hover:bg-gray-700 text-sage-800 dark:text-gray-200 font-bold text-xs transition-colors shrink-0" title="Toggle RTL/LTR">
+          <button data-rtl-toggle class="hdr-action-btn hdr-action-icon bg-cream-200/60 hover:bg-cream-300 dark:bg-gray-800 dark:hover:bg-gray-700 text-sage-800 dark:text-gray-200 font-bold text-xs transition-colors shrink-0" title="Toggle RTL/LTR">
             <span class="text-xs font-bold" data-rtl-label>RTL</span>
           </button>
           
           <!-- Dark Mode Toggle -->
-          <button data-theme-toggle class="w-8 h-8 flex items-center justify-center rounded-lg bg-cream-200/60 hover:bg-cream-300 dark:bg-gray-800 dark:hover:bg-gray-700 text-sage-800 dark:text-gray-200 transition-colors shrink-0" title="Toggle Dark/Light Mode">
+          <button data-theme-toggle class="hdr-action-btn hdr-action-icon bg-cream-200/60 hover:bg-cream-300 dark:bg-gray-800 dark:hover:bg-gray-700 text-sage-800 dark:text-gray-200 transition-colors shrink-0" title="Toggle Dark/Light Mode">
             <span data-theme-icon class="flex items-center justify-center">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
             </span>
           </button>
 
           <!-- Auth Buttons -->
-          <div data-show-auth="out" class="flex items-center space-x-2 shrink-0 whitespace-nowrap">
-            <a href="login.html" class="text-sm font-medium text-sage-800 hover:text-sage-600 dark:text-gray-200 dark:hover:text-white px-2.5 py-1.5 transition-colors whitespace-nowrap">Log In</a>
-            <a href="register.html" class="px-4 py-2 rounded-xl bg-sage-500 hover:bg-sage-600 dark:bg-sage-600 dark:hover:bg-sage-500 text-white font-medium text-sm shadow-sm hover:shadow transition-all whitespace-nowrap">Get Started</a>
+          <div data-show-auth="out" class="flex items-center gap-2 shrink-0 whitespace-nowrap">
+            <a href="login.html" class="hdr-action-btn px-3 text-sm font-medium text-sage-800 hover:text-sage-600 dark:text-gray-200 dark:hover:text-white transition-colors whitespace-nowrap">Log In</a>
+            <a href="register.html" class="hdr-action-btn px-4 bg-sage-500 hover:bg-sage-600 dark:bg-sage-600 dark:hover:bg-sage-500 text-white font-medium text-sm shadow-sm hover:shadow transition-all whitespace-nowrap">Get Started</a>
           </div>
-          <div data-show-auth="in" class="flex items-center space-x-2 shrink-0 whitespace-nowrap" style="display: none;">
-            <a href="login.html" class="px-4 py-2 rounded-xl bg-sage-500 hover:bg-sage-600 dark:bg-sage-600 dark:hover:bg-sage-500 text-white font-medium text-sm shadow-sm hover:shadow transition-all whitespace-nowrap">Log In</a>
+          <div data-show-auth="in" class="flex items-center gap-2 shrink-0 whitespace-nowrap" style="display: none;">
+            <a href="login.html" class="hdr-action-btn px-4 bg-sage-500 hover:bg-sage-600 dark:bg-sage-600 dark:hover:bg-sage-500 text-white font-medium text-sm shadow-sm hover:shadow transition-all whitespace-nowrap">Log In</a>
           </div>
         </div>
 
         <!-- Hamburger Icon (Mobile) -->
-        <button id="hamburger" class="xl:hidden p-2 rounded-xl bg-cream-200/50 dark:bg-gray-800 text-sage-800 dark:text-gray-200 focus:outline-none transition-colors shrink-0" aria-expanded="false" aria-label="Toggle Menu">
+        <button id="hamburger" class="lg:hidden p-2 rounded-xl bg-cream-200/50 dark:bg-gray-800 text-sage-800 dark:text-gray-200 focus:outline-none transition-colors shrink-0" aria-expanded="false" aria-label="Toggle Menu">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
         </button>
 
@@ -185,12 +185,12 @@
     </div>
 
     <div class="p-6 border-t border-cream-200 dark:border-gray-800 bg-cream-50 dark:bg-gray-850">
-      <div class="flex items-center justify-between mb-6">
-        <button data-rtl-toggle class="flex items-center gap-2 px-3 py-2.5 rounded-lg bg-cream-200/60 dark:bg-gray-800 text-sage-800 dark:text-gray-200 text-xs font-bold">
+      <div class="flex items-center justify-between mb-6 gap-2">
+        <button data-rtl-toggle class="hdr-action-btn px-3 flex-1 bg-cream-200/60 hover:bg-cream-300 dark:bg-gray-800 dark:hover:bg-gray-700 text-sage-800 dark:text-gray-200 text-xs font-bold gap-1.5">
           <span class="text-xs font-bold" data-rtl-label>RTL</span>
         </button>
         <!-- Dark Mode -->
-        <button data-theme-toggle class="flex items-center gap-2 px-3 py-2.5 rounded-lg bg-cream-200/60 dark:bg-gray-800 text-sage-800 dark:text-gray-200">
+        <button data-theme-toggle class="hdr-action-btn px-3 flex-1 bg-cream-200/60 hover:bg-cream-300 dark:bg-gray-800 dark:hover:bg-gray-700 text-sage-800 dark:text-gray-200 gap-1.5">
           <span data-theme-icon class="flex items-center justify-center">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
           </span>
@@ -252,12 +252,12 @@
           </div>
 
           <div class="p-4 rounded-2xl bg-white dark:bg-gray-800 border border-cream-200/80 dark:border-gray-700 shadow-sm flex items-center space-x-3.5 text-left">
-            <div class="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-lg shrink-0">
-              ⚡
+            <div class="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-900/60 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-lg shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
             </div>
             <div>
-              <h4 class="text-xs font-bold text-sage-900 dark:text-white">Cancel Anytime</h4>
-              <p class="text-[11px] text-sage-800/70 dark:text-gray-400">No long-term contracts ever.</p>
+              <h4 class="text-xs font-bold text-sage-900 dark:text-white">100% Satisfaction</h4>
+              <p class="text-[11px] text-sage-800/70 dark:text-gray-400">Freshness guarantee on all items.</p>
             </div>
           </div>
         </div>
@@ -265,6 +265,11 @@
         <div class="flex flex-wrap justify-center gap-4 pt-2">
           <a href="#plans" class="px-7 py-3.5 bg-sage-500 hover:bg-sage-600 text-white font-bold text-sm rounded-xl shadow-md hover:shadow-lg transition-all">Explore Delivery Plans</a>
           <a href="#faq" class="px-7 py-3.5 bg-white dark:bg-gray-800 hover:bg-cream-100 text-sage-800 dark:text-gray-200 font-bold text-sm rounded-xl border border-cream-200 dark:border-gray-700 shadow-sm transition-all">Pricing FAQ</a>
+        </div>
+
+        <!-- Pricing Hero Image Banner -->
+        <div class="max-w-4xl mx-auto mt-8 rounded-3xl overflow-hidden shadow-xl border border-cream-200/80 dark:border-gray-700 h-[260px] sm:h-[340px] md:h-[380px] relative bg-white dark:bg-gray-800 flex items-center justify-center p-2">
+          <img src="assets/images/hero/pricing_hero.png" alt="Fresh grocery delivery crate and doorstep handoff" class="w-full h-full object-contain rounded-2xl">
         </div>
 
       </div>
