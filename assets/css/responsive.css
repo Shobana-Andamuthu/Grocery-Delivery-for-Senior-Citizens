@@ -103,6 +103,89 @@ img, video, iframe, canvas, svg {
   height: auto;
 }
 
+/* ── Universal Form & Select Dropdown Full Responsiveness ── */
+form {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+select,
+input,
+textarea,
+button {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Enhanced Select Dropdown with Clean Custom Arrow */
+select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23617d69' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 8l4 4 4-4'/%3e%3c/svg%3e") !important;
+  background-position: right 0.85rem center !important;
+  background-repeat: no-repeat !important;
+  background-size: 1.15em 1.15em !important;
+  padding-right: 2.5rem !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  cursor: pointer;
+  line-height: 1.5;
+}
+
+html.dark select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23cedcd2' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 8l4 4 4-4'/%3e%3c/svg%3e") !important;
+}
+
+[dir="rtl"] select {
+  background-position: left 0.85rem center !important;
+  padding-right: 1rem !important;
+  padding-left: 2.5rem !important;
+}
+
+select option {
+  background-color: #ffffff;
+  color: #232d3d;
+  padding: 10px 14px;
+}
+
+html.dark select option {
+  background-color: #1f2937;
+  color: #f3f4f6;
+}
+
+/* Custom Dropdown Component Strict Container & Width Constraints */
+.custom-dropdown {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.custom-dropdown-btn {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.custom-dropdown-menu {
+  position: absolute !important;
+  top: 100% !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+  z-index: 50 !important;
+  overflow: hidden !important;
+}
+
+.custom-dropdown-option {
+  white-space: normal !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  box-sizing: border-box !important;
+}
+
 @media (max-width: 480px) {
   .hdr-action-btn {
     font-size: 0.8125rem !important; /* 13px */
@@ -111,4 +194,11 @@ img, video, iframe, canvas, svg {
     padding-left: 0.875rem !important;
     padding-right: 0.875rem !important;
   }
+  .custom-dropdown-option {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+    font-size: 0.8125rem !important; /* 13px */
+  }
 }
+
+

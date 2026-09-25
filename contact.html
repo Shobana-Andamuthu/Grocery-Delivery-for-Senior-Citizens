@@ -329,10 +329,10 @@
           </div>
 
           <!-- Contact Form Column -->
-          <div class="lg:col-span-7 bg-cream-50 dark:bg-gray-800 p-8 rounded-3xl border border-cream-200 dark:border-gray-700 shadow-sm" data-reveal>
+          <div class="lg:col-span-7 bg-cream-50 dark:bg-gray-800 p-6 sm:p-8 rounded-3xl border border-cream-200 dark:border-gray-700 shadow-sm" data-reveal>
             <form id="contact-form" class="space-y-6" onsubmit="event.preventDefault(); if(validateForm(this)) { showToast('Message submitted successfully! A care liaison will contact you shortly.', 'success'); this.reset(); }">
               
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div>
                   <label class="block text-xs font-bold text-sage-800 dark:text-gray-300 uppercase tracking-wider mb-2">Your Full Name</label>
                   <input type="text" name="name" data-required class="w-full px-4 py-3 rounded-xl bg-white dark:bg-gray-900 text-sage-850 dark:text-gray-200 border border-cream-200 dark:border-gray-700 focus:outline-none focus:border-sage-500 text-sm">
@@ -345,21 +345,28 @@
                 </div>
               </div>
 
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div>
                   <label class="block text-xs font-bold text-sage-800 dark:text-gray-300 uppercase tracking-wider mb-2">Phone Number</label>
                   <input type="text" name="phone" data-required class="w-full px-4 py-3 rounded-xl bg-white dark:bg-gray-900 text-sage-850 dark:text-gray-200 border border-cream-200 dark:border-gray-700 focus:outline-none focus:border-sage-500 text-sm">
                   <span data-error="phone" class="hidden text-xs text-red-500 mt-1">Please enter your phone number.</span>
                 </div>
-                <div>
+                <div class="relative custom-dropdown" id="contact-subject-dropdown">
                   <label class="block text-xs font-bold text-sage-800 dark:text-gray-300 uppercase tracking-wider mb-2">Subject</label>
-                  <select name="subject" class="w-full px-4 py-3 rounded-xl bg-white dark:bg-gray-900 text-sage-850 dark:text-gray-200 border border-cream-200 dark:border-gray-700 focus:outline-none focus:border-sage-500 text-sm">
-                    <option value="general">General Inquiry</option>
-                    <option value="registration">Registration Question</option>
-                    <option value="zipcode">Zip Code Verification</option>
-                    <option value="billing">Billing/Payment Inquiry</option>
-                    <option value="driver">Driver/Safety Feedback</option>
-                  </select>
+                  <input type="hidden" name="subject" id="contact-subject-input" value="general">
+                  
+                  <button type="button" class="custom-dropdown-btn w-full px-4 py-3 rounded-xl bg-white dark:bg-gray-900 text-sage-850 dark:text-gray-200 border border-cream-200 dark:border-gray-700 focus:outline-none focus:border-sage-500 text-sm flex items-center justify-between text-left shadow-sm transition-all focus:ring-2 focus:ring-sage-500/10" aria-haspopup="listbox" aria-expanded="false">
+                    <span class="custom-dropdown-label truncate font-medium">General Inquiry</span>
+                    <svg class="custom-dropdown-arrow w-4 h-4 text-sage-600 dark:text-sage-400 shrink-0 ml-2 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+                  </button>
+
+                  <div class="custom-dropdown-menu absolute top-full left-0 right-0 w-full max-w-full z-50 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-cream-200 dark:border-gray-700 py-1.5 mt-1.5 opacity-0 pointer-events-none translate-y-1 transition-all duration-200 overflow-hidden" role="listbox">
+                    <div class="custom-dropdown-option px-3.5 py-2.5 text-xs sm:text-sm text-sage-900 dark:text-gray-100 hover:bg-cream-100 dark:hover:bg-gray-800 transition-colors cursor-pointer rounded-xl mx-1.5 my-0.5 whitespace-normal break-words leading-snug bg-sage-500/10 text-sage-800 dark:bg-sage-900/40 dark:text-sage-300 font-semibold" data-value="general" role="option" aria-selected="true">General Inquiry</div>
+                    <div class="custom-dropdown-option px-3.5 py-2.5 text-xs sm:text-sm text-sage-900 dark:text-gray-100 hover:bg-cream-100 dark:hover:bg-gray-800 transition-colors cursor-pointer rounded-xl mx-1.5 my-0.5 whitespace-normal break-words leading-snug" data-value="registration" role="option">Registration Question</div>
+                    <div class="custom-dropdown-option px-3.5 py-2.5 text-xs sm:text-sm text-sage-900 dark:text-gray-100 hover:bg-cream-100 dark:hover:bg-gray-800 transition-colors cursor-pointer rounded-xl mx-1.5 my-0.5 whitespace-normal break-words leading-snug" data-value="zipcode" role="option">Zip Code Verification</div>
+                    <div class="custom-dropdown-option px-3.5 py-2.5 text-xs sm:text-sm text-sage-900 dark:text-gray-100 hover:bg-cream-100 dark:hover:bg-gray-800 transition-colors cursor-pointer rounded-xl mx-1.5 my-0.5 whitespace-normal break-words leading-snug" data-value="billing" role="option">Billing/Payment Inquiry</div>
+                    <div class="custom-dropdown-option px-3.5 py-2.5 text-xs sm:text-sm text-sage-900 dark:text-gray-100 hover:bg-cream-100 dark:hover:bg-gray-800 transition-colors cursor-pointer rounded-xl mx-1.5 my-0.5 whitespace-normal break-words leading-snug" data-value="driver" role="option">Driver/Safety Feedback</div>
+                  </div>
                 </div>
               </div>
 
@@ -376,8 +383,6 @@
 
         </div>
       </div>
-    </section>
-
     </section>
 
     <!-- SECTION 3: Telephone Booking Support Center -->
