@@ -74,7 +74,7 @@ function initializeApp() {
         dashLink = document.createElement('a');
         dashLink.href = 'dashboard.html';
         dashLink.textContent = 'Dashboard';
-        dashLink.className = 'text-[15px] font-medium text-sage-800 hover:text-sage-600 dark:text-gray-200 dark:hover:text-white py-1 transition-colors whitespace-nowrap';
+        dashLink.className = 'text-sm font-medium text-sage-800 hover:text-sage-600 dark:text-gray-200 dark:hover:text-white transition-colors whitespace-nowrap';
         desktopNav.appendChild(dashLink);
       }
     }
@@ -86,7 +86,7 @@ function initializeApp() {
         mobileDashLink = document.createElement('a');
         mobileDashLink.href = 'dashboard.html';
         mobileDashLink.textContent = 'Dashboard';
-        mobileDashLink.className = 'block font-medium text-sage-800 dark:text-gray-200 px-4 py-2.5 border-b border-cream-200/40 dark:border-gray-800/60 transition-all mb-1';
+        mobileDashLink.className = 'block font-medium text-sage-800 dark:text-gray-200 py-2 border-b border-cream-200/50 dark:border-gray-800';
         mobileNav.appendChild(mobileDashLink);
       }
     }
@@ -96,9 +96,9 @@ function initializeApp() {
       const homeTrigger = document.getElementById('home-dropdown-trigger');
       if (homeTrigger) {
         if (isHome) {
-          homeTrigger.className = 'flex items-center space-x-1 text-[15px] font-bold text-sage-700 dark:text-sage-300 border-b-2 border-sage-500 dark:border-sage-400 py-1 transition-all focus:outline-none whitespace-nowrap';
+          homeTrigger.className = 'flex items-center gap-1.5 text-sm font-bold text-sage-700 dark:text-sage-300 border-b-2 border-sage-500 dark:border-sage-400 py-1 transition-all focus:outline-none whitespace-nowrap';
         } else {
-          homeTrigger.className = 'flex items-center space-x-1 text-[15px] font-medium text-sage-800 hover:text-sage-600 dark:text-gray-200 dark:hover:text-white py-1 transition-colors focus:outline-none whitespace-nowrap';
+          homeTrigger.className = 'flex items-center gap-1.5 text-sm font-medium text-sage-800 hover:text-sage-600 dark:text-gray-200 dark:hover:text-white py-1.5 transition-colors focus:outline-none whitespace-nowrap';
         }
       }
 
@@ -106,9 +106,9 @@ function initializeApp() {
         const hrefPage = normalizePage(link.getAttribute('href'));
         const isActive = (hrefPage === currentPageName);
         if (isActive) {
-          link.className = 'text-[15px] font-bold text-sage-700 dark:text-sage-300 border-b-2 border-sage-500 dark:border-sage-400 py-1 transition-all whitespace-nowrap';
+          link.className = 'text-sm font-bold text-sage-700 dark:text-sage-300 border-b-2 border-sage-500 dark:border-sage-400 py-1 transition-all whitespace-nowrap';
         } else {
-          link.className = 'text-[15px] font-medium text-sage-800 hover:text-sage-600 dark:text-gray-200 dark:hover:text-white py-1 transition-colors whitespace-nowrap';
+          link.className = 'text-sm font-medium text-sage-800 hover:text-sage-600 dark:text-gray-200 dark:hover:text-white transition-colors whitespace-nowrap';
         }
       });
     }
@@ -120,7 +120,7 @@ function initializeApp() {
         if (isHome) {
           mobileHomeToggle.className = 'flex items-center justify-between w-full text-left font-bold text-sage-700 dark:text-sage-300 border-l-4 border-sage-500 dark:border-sage-400 pl-3 py-2.5 transition-all mb-1';
         } else {
-          mobileHomeToggle.className = 'flex items-center justify-between w-full text-left font-medium text-sage-800 dark:text-gray-200 px-4 py-2.5 border-b border-cream-200/40 dark:border-gray-800/60 transition-all mb-1';
+          mobileHomeToggle.className = 'flex items-center justify-between w-full text-left font-medium text-sage-800 dark:text-gray-200 py-2 border-b border-cream-200/50 dark:border-gray-800 transition-all';
         }
       }
 
@@ -130,7 +130,7 @@ function initializeApp() {
         if (isActive) {
           link.className = 'block font-bold text-sage-700 dark:text-sage-300 border-l-4 border-sage-500 dark:border-sage-400 pl-3 py-2.5 transition-all mb-1';
         } else {
-          link.className = 'block font-medium text-sage-800 dark:text-gray-200 px-4 py-2.5 border-b border-cream-200/40 dark:border-gray-800/60 transition-all mb-1';
+          link.className = 'block font-medium text-sage-800 dark:text-gray-200 py-2 border-b border-cream-200/50 dark:border-gray-800 transition-all';
         }
       });
     }
@@ -145,13 +145,13 @@ function initializeApp() {
         if (isMobileSub) {
           link.className = 'block py-2 px-3.5 text-sm font-bold text-sage-700 dark:text-sage-300 border-l-2 border-sage-500 dark:border-sage-400 flex items-center justify-between';
         } else {
-          link.className = 'block px-5 py-2.5 text-sm font-bold text-sage-700 dark:text-sage-300 border-l-2 border-sage-500 dark:border-sage-400 flex items-center justify-between';
+          link.className = 'block px-4 py-2 text-sm font-bold text-sage-700 dark:text-sage-300 border-l-2 border-sage-500 dark:border-sage-400 flex items-center justify-between';
         }
       } else {
         if (isMobileSub) {
           link.className = 'block py-2 px-3.5 text-sm font-medium text-sage-700 dark:text-gray-300 hover:text-sage-900 dark:hover:text-white hover:bg-cream-100/50 dark:hover:bg-gray-800 rounded-lg transition-colors';
         } else {
-          link.className = 'block px-5 py-2.5 text-sm font-medium text-sage-800 dark:text-gray-200 hover:bg-cream-50 dark:hover:bg-gray-700/50 transition-colors';
+          link.className = 'block px-4 py-2 text-sm font-medium text-sage-800 hover:bg-cream-50 dark:text-gray-200 dark:hover:bg-gray-700/50 whitespace-nowrap transition-colors';
         }
       }
     });
@@ -178,24 +178,41 @@ function initializeApp() {
 
   function openMobileMenu() {
     setupNavigation();
+    mobileMenu?.classList.add('menu-open');
     mobileMenu?.classList.remove('translate-x-full');
     mobileOverlay?.classList.remove('opacity-0', 'pointer-events-none');
     hamburger?.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
   }
   function closeMobileMenu() {
+    mobileMenu?.classList.remove('menu-open');
     mobileMenu?.classList.add('translate-x-full');
     mobileOverlay?.classList.add('opacity-0', 'pointer-events-none');
     hamburger?.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
   }
 
-  hamburger?.addEventListener('click', () => {
+  hamburger?.addEventListener('click', (e) => {
+    e.stopPropagation();
     const expanded = hamburger.getAttribute('aria-expanded') === 'true';
     expanded ? closeMobileMenu() : openMobileMenu();
   });
   mobileOverlay?.addEventListener('click', closeMobileMenu);
   document.getElementById('mobile-close')?.addEventListener('click', closeMobileMenu);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && hamburger?.getAttribute('aria-expanded') === 'true') {
+      closeMobileMenu();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1280 && hamburger?.getAttribute('aria-expanded') === 'true') {
+      closeMobileMenu();
+    }
+  });
 
   /* ── Desktop Home Dropdown ───────────────────────────── */
   const dropdownTrigger = document.getElementById('home-dropdown-trigger');

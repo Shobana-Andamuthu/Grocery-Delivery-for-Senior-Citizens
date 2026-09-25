@@ -3,17 +3,28 @@
    Extra responsive refinements to ensure flawless layout scaling
    ============================================================ */
 
+/* ── Typography & Section Resets for Small Viewports ── */
 @media (max-width: 640px) {
   .hero-title-main {
-    font-size: 2.25rem !important; /* 36px */
-    line-height: 2.75rem !important;
+    font-size: 2.125rem !important; /* ~34px */
+    line-height: 2.5rem !important;
   }
   .hero-text-main {
-    font-size: 1rem !important;
+    font-size: 0.9375rem !important;
   }
   .section-padding-custom {
-    padding-top: 3rem !important;
-    padding-bottom: 3rem !important;
+    padding-top: 2.75rem !important;
+    padding-bottom: 2.75rem !important;
+  }
+  h1 {
+    word-break: break-word;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-title-main {
+    font-size: 1.875rem !important; /* 30px */
+    line-height: 2.25rem !important;
   }
 }
 
@@ -24,11 +35,9 @@
   }
 }
 
-/* Ensure no horizontal overflow on mobile viewports.
-   NOTE: overflow on <html> or <body> breaks position:sticky.
-   Instead we use a clip wrapper approach via max-width. */
+/* ── Prevent Horizontal Overflow Globally ── */
 html {
-  overflow-x: clip; /* 'clip' does NOT create a new scroll container unlike 'hidden' */
+  overflow-x: clip; /* 'clip' prevents scrollbars while preserving position:sticky */
 }
 body {
   overflow-x: clip;
@@ -44,48 +53,51 @@ body {
   }
 }
 
-/* Squeezing header navigation fixes for medium-to-large desktop viewports */
-@media (min-width: 1024px) and (max-width: 1440px) {
-  #site-header nav.hidden.lg\:flex > * + *,
-  #site-header nav.hidden.xl\:flex > * + * {
-    margin-left: 1.25rem !important; /* reduce space-x to 20px */
+/* ── Header & Navigation Breakpoint Management ── */
+/* Below 1280px (Mobile, Tablet, iPad Portrait & Landscape 768px-1024px-1194px):
+   Ensure Desktop Nav and Action Controls are hidden, Hamburger is visible */
+@media (max-width: 1279px) {
+  #site-header nav.hidden.xl\:flex,
+  #site-header div.hidden.xl\:flex {
+    display: none !important;
   }
-  #site-header nav.hidden.lg\:flex > a,
-  #site-header nav.hidden.xl\:flex > a,
-  #site-header nav.hidden.lg\:flex > div > button,
-  #site-header nav.hidden.xl\:flex > div > button {
-    font-size: 14px !important;
-  }
-  #site-header div.hidden.lg\:flex.items-center > * + *,
-  #site-header div.hidden.xl\:flex.items-center > * + * {
-    margin-left: 0.75rem !important; /* reduce space-x to 12px */
-  }
-  #site-header div.hidden.lg\:flex.items-center a,
-  #site-header div.hidden.xl\:flex.items-center a,
-  #site-header div.hidden.lg\:flex.items-center button,
-  #site-header div.hidden.xl\:flex.items-center button {
-    font-size: 14px !important;
+  #site-header #hamburger {
+    display: inline-flex !important;
   }
 }
 
-@media (min-width: 1024px) and (max-width: 1200px) {
-  #site-header nav.hidden.lg\:flex > * + *,
-  #site-header nav.hidden.xl\:flex > * + * {
-    margin-left: 0.75rem !important;
+/* At 1280px and above (Laptops, Desktops, Large Screens):
+   Desktop Nav and Action Controls are flex, Hamburger is hidden */
+@media (min-width: 1280px) {
+  #site-header nav.hidden.xl\:flex,
+  #site-header div.hidden.xl\:flex {
+    display: flex !important;
   }
-  #site-header nav.hidden.lg\:flex > a,
-  #site-header nav.hidden.xl\:flex > a,
-  #site-header nav.hidden.lg\:flex > div > button,
-  #site-header nav.hidden.xl\:flex > div > button {
-    font-size: 13.5px !important;
-  }
-  #site-header div.hidden.lg\:flex.items-center > * + *,
-  #site-header div.hidden.xl\:flex.items-center > * + * {
-    margin-left: 0.5rem !important;
+  #site-header #hamburger {
+    display: none !important;
   }
 }
 
-/* Extra Responsive Grid and Text Protection */
+/* ── Mobile Menu Drawer Responsiveness & RTL Handling ── */
+#mobile-menu {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+[dir="rtl"] #mobile-menu {
+  right: auto !important;
+  left: 0 !important;
+  border-left-width: 0 !important;
+  border-right-width: 1px !important;
+  transform: translateX(-100%) !important;
+}
+
+[dir="rtl"] #mobile-menu.menu-open,
+[dir="rtl"] #mobile-menu:not(.translate-x-full) {
+  transform: translateX(0) !important;
+}
+
+/* Extra Responsive Grid and Media Protection */
 img, video, iframe, canvas, svg {
   max-width: 100%;
   height: auto;
@@ -93,13 +105,10 @@ img, video, iframe, canvas, svg {
 
 @media (max-width: 480px) {
   .hdr-action-btn {
-    font-size: 0.8125rem !important; /* 13px on mobile drawer */
+    font-size: 0.8125rem !important; /* 13px */
   }
   .px-4 {
-    padding-left: 0.75rem !important;
-    padding-right: 0.75rem !important;
+    padding-left: 0.875rem !important;
+    padding-right: 0.875rem !important;
   }
 }
-
-
-
